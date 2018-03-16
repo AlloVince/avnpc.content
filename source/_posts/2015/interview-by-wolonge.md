@@ -2,6 +2,8 @@
 slug: interview-by-wolonge
 date: '2015-06-04 22:11:13'
 title: 专访 ：徐谦——以职人精神打造架构师的工匠之心
+id: 195
+tags: []
 ---
 
 [卧龙阁](http://www.wolonge.com/)最近对我进行了一次专访，主要聊了工作以来的一些经验和对技术的看法，现全文转载如下，希望对新入行的朋友有帮助，如果有兴趣的话也可以移步[原文阅读](http://www.wolonge.com//interview/detail/17?hmsr=xuqianself)。

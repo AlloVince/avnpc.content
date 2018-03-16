@@ -2,6 +2,10 @@
 slug: evaoauth
 date: '2015-05-01 17:21:07'
 title: EvaOAuth 1.0：统一接口的OAuth登录PHP类库
+id: 194
+tags:
+  - php
+  - OAuth
 ---
 
 [![Latest Stable Version](https://poser.pugx.org/evaengine/eva-oauth/v/stable.svg)](https://packagist.org/packages/evaengine/eva-oauth)

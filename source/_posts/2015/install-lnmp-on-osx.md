@@ -2,6 +2,13 @@
 slug: install-lnmp-on-osx
 date: '2015-01-21 01:55:48'
 title: Mac下安装LNMP(Nginx+PHP5.6)环境
+id: 193
+tags:
+  - php
+  - nginx
+  - osx
+  - homebrew
+  - mysql
 ---
 
 ## 安装Homebrew

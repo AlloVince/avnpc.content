@@ -2,6 +2,11 @@
 slug: phalcon-mvc-process
 date: '2014-05-30 23:29:41'
 title: Phalcon Framework的Mvc结构及启动流程（部分源码分析）
+id: 191
+tags:
+  - php
+  - MVC
+  - Phalcon
 ---
 
 很久没更新Blog甚是惭愧，但是[工作方面还是有不少进展](http://avnpc.com/pages/fought-side-by-side-with-me-in-wallstreetcn)，技术方面一个重大的转变是我选择了[Phalcon Framework](http://phalconphp.com/en/)作为未来一段时间的核心框架。技术选型的原因会单开一篇Blog另说，本次优先对[Phalcon的MVC架构与启动流程](http://avnpc.com/pages/phalcon-mvc-process)进行分析说明，如有遗漏还望指出。

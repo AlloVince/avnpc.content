@@ -2,6 +2,10 @@
 slug: profiler-php-performance-online-by-xhprof
 date: '2014-12-26 23:40:08'
 title: 使用xhprof进行线上PHP性能追踪及分析
+id: 192
+tags:
+  - php
+  - xhprof
 ---
 
 之前一直使用[基于Xdebug进行PHP的性能分析](http://avnpc.com/pages/how-to-debug-under-zf2)，对于本地开发环境来说是够用了，但如果是线上环境的话，xdebug消耗较大，配置也不够灵活，因此线上环境建议使用[xhprof进行PHP性能追踪及分析](http://avnpc.com/pages/profiler-php-performance-online-by-xhprof)。
