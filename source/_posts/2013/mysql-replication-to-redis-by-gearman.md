@@ -47,20 +47,26 @@ tags:
 
 以下均以Ubuntu12.04为例。
 
-    apt-get install gearman gearman-server libgearman-dev
+```
+apt-get install gearman gearman-server libgearman-dev
+```
 
 检查Gearman的运行状况：
 
-    /etc/init.d/gearman-job-server status
-    * gearmand is running
+```
+/etc/init.d/gearman-job-server status
+* gearmand is running
+```
 
 说明Gearman已经安装成功。
 
 [PHP的Gearman扩展](http://pecl.php.net/package/gearman)可以通过pecl直接安装
 
-    pecl install gearman
-    echo "extension=gearman.so" > /etc/php5/conf.d/gearman.ini
-    service php5-fpm restart
+```
+pecl install gearman
+echo "extension=gearman.so" > /etc/php5/conf.d/gearman.ini
+service php5-fpm restart
+```
 
 但是实测发现ubuntu默认安装的gearman版本过低，直接运行`pecl install gearman`会报错
 
@@ -68,30 +74,40 @@ tags:
 
 因此Gearman + PHP扩展建议通过编译方式安装，这里为了简单说明，选择安装旧版本扩展：
 
-    pecl install gearman-1.0.3
+```
+pecl install gearman-1.0.3
+```
 
 #### Gearman + PHP实例
 
 为了更容易理解后文Gearman的运行流程，这里不妨从一个最简单的Gearman实例来说明，比如我们要进行一个文件处理的操作，首先编写一个Gearman Client并命名为client.php：
 
-    <?php
-    $client = new GearmanClient();
-    $client->addServer();
-    $client->doBackground('writeLog', 'Log content');
-    echo '文件已经在后台操作';
+``` php
+<?php
+$client = new GearmanClient();
+$client->addServer();
+$client->doBackground('writeLog', 'Log content');
+echo '文件已经在后台操作';
+```
 
 运行这个文件，相当于模拟用户请求一个Web页面后，将处理结束的信息返回用户：
 
-    php client.php
+```
+php client.php
+```
 
 查看一下Gearman的状况：
 
-    (echo status ; sleep 0.1) | netcat 127.0.0.1 4730
+```
+(echo status ; sleep 0.1) | netcat 127.0.0.1 4730
+```
 
 可以看到输出为
 
-    writeLog        1       0       0
-    .
+```
+writeLog        1       0       0
+.
+```
 
 说明我们已经在Gearman中建立了一个名为writeLog的任务，并且有1个任务在队列等待中。
 
@@ -104,31 +120,38 @@ tags:
 
 可以使用watch进行实时监控：
 
-    watch -n 1 "(echo status; sleep 0.1) | nc 127.0.0.1 4730"
+```
+watch -n 1 "(echo status; sleep 0.1) | nc 127.0.0.1 4730"
+```
 
 然后我们需要编写一个Gearman Worker命名为worker.php：
 
-    <?php
-    $worker = new GearmanWorker();
-    $worker->addServer();
-    $worker->addFunction('writeLog', 'writeLog');
-    while($worker->work());
+``` php
+<?php
+$worker = new GearmanWorker();
+$worker->addServer();
+$worker->addFunction('writeLog', 'writeLog');
+while($worker->work());
 
-    function writeLog($job)
-    {
-            $log = $job->workload();
-            file_put_contents(__DIR__ . '/gearman.log', $log . "\n", FILE_APPEND | LOCK_EX);
-    }
+function writeLog($job)
+{
+        $log = $job->workload();
+        file_put_contents(__DIR__ . '/gearman.log', $log . "\n", FILE_APPEND | LOCK_EX);
+}
+```
 
 
 Worker使用一个while死循环实现守护进程，运行
 
-    php worker.php
+```
+php worker.php
+```
 
 可以看到Gearman状态变为：
 
-    writeLog        0       0       1
-
+```
+writeLog        0       0       1
+```
 
 同时查看同目录下gearman.log，内容应为从Client传入的值`Log content`。
 
@@ -140,61 +163,76 @@ MySQL要实现与外部程序互通的最好方式还是通过[MySQL UDF（MySQL
 
 使用lib_mysqludf_json的原因是因为Gearman只接受字符串作为入口参数，可以通过lib_mysqludf_json将MySQL中的数据编码为JSON字符串
 
-    apt-get install libmysqlclient-dev
-    wget https://github.com/mysqludf/lib_mysqludf_json/archive/master.zip
-    unzip master.zip
-    cd lib_mysqludf_json-master/
-    rm lib_mysqludf_json.so
-    gcc $(mysql_config --cflags) -shared -fPIC -o lib_mysqludf_json.so lib_mysqludf_json.c
+``` shell
+apt-get install libmysqlclient-dev
+wget https://github.com/mysqludf/lib_mysqludf_json/archive/master.zip
+unzip master.zip
+cd lib_mysqludf_json-master/
+rm lib_mysqludf_json.so
+gcc $(mysql_config --cflags) -shared -fPIC -o lib_mysqludf_json.so lib_mysqludf_json.c
+```
 
 可以看到重新编译生成了 lib_mysqludf_json.so 文件，此时需要查看MySQL的插件安装路径：
 
-    mysql -u root -pPASSWORD --execute="show variables like '%plugin%';"
-    +---------------+------------------------+
-    | Variable_name | Value                  |
-    +---------------+------------------------+
-    | plugin_dir    | /usr/lib/mysql/plugin/ |
-    +---------------+------------------------+
+```
+mysql -u root -pPASSWORD --execute="show variables like '%plugin%';"
++---------------+------------------------+
+| Variable_name | Value                  |
++---------------+------------------------+
+| plugin_dir    | /usr/lib/mysql/plugin/ |
++---------------+------------------------+
+```
 
 然后将 lib_mysqludf_json.so 文件复制到对应位置：
 
-    cp lib_mysqludf_json.so /usr/lib/mysql/plugin/
+```
+cp lib_mysqludf_json.so /usr/lib/mysql/plugin/
+```
 
 最后登入MySQL运行语句注册UDF函数：
 
-    CREATE FUNCTION json_object RETURNS STRING SONAME 'lib_mysqludf_json.so';
+``` sql
+CREATE FUNCTION json_object RETURNS STRING SONAME 'lib_mysqludf_json.so';
+```
 
 #### 安装gearman-mysql-udf
 
 方法几乎一样：
 
-    apt-get install libgearman-dev
-    wget https://launchpad.net/gearman-mysql-udf/trunk/0.6/+download/gearman-mysql-udf-0.6.tar.gz
-    tar -xzf gearman-mysql-udf-0.6.tar.gz
-    cd gearman-mysql-udf-0.6
-    ./configure --with-mysql=/usr/bin/mysql_config --libdir=/usr/lib/mysql/plugin/
-    make && make install
-
+``` shell
+apt-get install libgearman-dev
+wget https://launchpad.net/gearman-mysql-udf/trunk/0.6/+download/gearman-mysql-udf-0.6.tar.gz
+tar -xzf gearman-mysql-udf-0.6.tar.gz
+cd gearman-mysql-udf-0.6
+./configure --with-mysql=/usr/bin/mysql_config --libdir=/usr/lib/mysql/plugin/
+make && make install
+```
 
 登入MySQL运行语句注册UDF函数：
 
-    CREATE FUNCTION gman_do_background RETURNS STRING SONAME 'libgearman_mysql_udf.so';
-    CREATE FUNCTION gman_servers_set RETURNS STRING SONAME 'libgearman_mysql_udf.so';
+``` sql
+CREATE FUNCTION gman_do_background RETURNS STRING SONAME 'libgearman_mysql_udf.so';
+CREATE FUNCTION gman_servers_set RETURNS STRING SONAME 'libgearman_mysql_udf.so';
+```
 
 最后指定Gearman服务器的信息：
 
-    SELECT gman_servers_set('127.0.0.1:4730');
+``` sql
+SELECT gman_servers_set('127.0.0.1:4730');
+```
 
 #### 通过MySQL触发器实现数据同步
 
 最终同步哪些数据，同步的条件，还是需要根据实际情况决定，比如我希望将数据表`data`的数据在每次更新时同步，那么编写Trigger如下：
 
-    DELIMITER $$
-    CREATE TRIGGER datatoredis AFTER UPDATE ON data
-      FOR EACH ROW BEGIN
-        SET @ret=gman_do_background('syncToRedis', json_object(NEW.id as `id`, NEW.volume as `volume`)); 
-      END$$
-    DELIMITER ;
+``` sql
+DELIMITER $$
+CREATE TRIGGER datatoredis AFTER UPDATE ON data
+  FOR EACH ROW BEGIN
+    SET @ret=gman_do_background('syncToRedis', json_object(NEW.id as `id`, NEW.volume as `volume`));
+  END$$
+DELIMITER ;
+```
 
 尝试在数据库中更新一条数据查看Gearman是否生效。
 
@@ -203,36 +241,42 @@ MySQL要实现与外部程序互通的最好方式还是通过[MySQL UDF（MySQL
 
 Redis作为时下当热的NoSQL缓存解决方案无需过多介绍，其安装及使用也非常简单：
 
-    apt-get install redis-server 
-    pecl install redis
-    echo "extension=redis.so" > /etc/php5/conf.d/redis.ini
+``` shell
+apt-get install redis-server
+pecl install redis
+echo "extension=redis.so" > /etc/php5/conf.d/redis.ini
+```
 
 然后编写一个Gearman Worker：redis_worker.php 
 
-    #!/usr/bin/env php
-    <?
-    $worker = new GearmanWorker();
-    $worker->addServer();
-    $worker->addFunction('syncToRedis', 'syncToRedis');
+``` php
+#!/usr/bin/env php
+<?
+$worker = new GearmanWorker();
+$worker->addServer();
+$worker->addFunction('syncToRedis', 'syncToRedis');
 
-    $redis = new Redis();
-    $redis->connect('127.0.0.1', 6379);
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
 
-    while($worker->work());
-    function syncToRedis($job)
-    {
-            global $redis;
-            $workString = $job->workload();
-            $work = json_decode($workString);
-            if(!isset($work->id)){
-                    return false;
-            }
-            $redis->set($work->id, $workString);
-    }
+while($worker->work());
+function syncToRedis($job)
+{
+        global $redis;
+        $workString = $job->workload();
+        $work = json_decode($workString);
+        if(!isset($work->id)){
+                return false;
+        }
+        $redis->set($work->id, $workString);
+}
+```
 
 最后需要将Worker在后台运行：
 
-    nohup php redis_worker.php &
+```
+nohup php redis_worker.php &
+```
 
 通过这种方式将MySQL数据复制到Redis，经测试单Worker基本可以瞬时完成。
 
@@ -240,18 +284,23 @@ Redis作为时下当热的NoSQL缓存解决方案无需过多介绍，其安装�
 
 在实际操作中发现，Gearman UDF在每次MySQL服务重启后会丢失已经设置的服务器信息。因为时间有限没有深入的调查原因，而用了曲线救国的解决方法，让MySQL在每次服务启动时自动运行一次设置语句：
 
-    vi /var/lib/mysql/init_file.sql
+```
+vi /var/lib/mysql/init_file.sql
+```
 
 加入
 
-    SELECT gman_servers_set('127.0.0.1:4730');
+``` sql
+SELECT gman_servers_set('127.0.0.1:4730');
+```
 
 然后在/etc/mysql/my.cnf的`[mysqld]`小节下加入
 
-    init-file=/var/lib/mysql/init_file.sql
+```
+init-file=/var/lib/mysql/init_file.sql
+```
 
 然后重启服务。
-
 
 
 ## 参考

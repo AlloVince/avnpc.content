@@ -84,35 +84,47 @@ __原日文网页版“[配列とポインタの完全制覇](http://kmaebashi.c
 
 我认为像
 
-    int *hoge_p;
+``` c
+int *hoge_p;
+```
 
 还有
 
-    int hoge[10];
+``` c
+int hoge[10];
+```
 
 这样的声明方式很奇怪。
 
 对于这种程序的声明方式，可能也有很多人感觉不到有什么别扭的地方。那就再看下面的这个例子：
 
-    char *color_name[] = {
-        “red”,
-        “green”,
-        “blue”,
-    };
+``` c
+char *color_name[] = {
+    “red”,
+    “green”,
+    “blue”,
+};
+```
 
 这里声明了一个“指向char的指针的数组”。
 
 正如2.3.2节中介绍的那样，可以像下面这样声明一个“指向将double作为参数并且返回int的函数的指针”，
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 关于这样的声明，在K&R中有下面这样一段说明：
 
-    int *f();  /* f：返回指向int指针的函数*/
+``` c
+int *f();  /* f：返回指向int指针的函数*/
+```
 
 和
 
-    int (*pt)();  /* pf： 指向返回int的函数的指针*/
+``` c
+int (*pt)();  /* pf： 指向返回int的函数的指针*/
+```
 
 
 这两个声明最能说明问题。在这里，因为`*`是前置运算符，它的优先度低于`()`，为了让连接正确地进行，有必要加上括号。
@@ -123,7 +135,9 @@ __原日文网页版“[配列とポインタの完全制覇](http://kmaebashi.c
 
 先将这个问题放在一边。如果你老老实实地去读这段文字，该会嘀咕“是不是搞反了”。如果说
 
-    int (*pf)();
+``` c
+int (*pf)();
+```
 
 是指向函数的指针，使用括弧先将星号（指针）括起来是不是很奇怪？
 
@@ -138,6 +152,7 @@ __原日文网页版“[配列とポインタの完全制覇](http://kmaebashi.c
 翻译成中文，则为
 
 > pf为指向返回int的函数的指针。
+
 
 ### POINT：用英语来读C的声明。
 
@@ -158,43 +173,63 @@ __原日文网页版“[配列とポインタの完全制覇](http://kmaebashi.c
 
 比如，
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 1) 首先着眼于识别符。
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 英语的表达为：
 
-    func_p is
+``` c
+func_p is
+```
 
 2) 因为存在括号，这里着眼于*。
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 英语的表达为：
 
-    func_p is pointer to
+``` c
+func_p is pointer to
+```
 
 3) 解释用于函数的()，参数是double。
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 英语的表达为：
 
-    func_p is pointer to function(double) returning
+``` c
+func_p is pointer to function(double) returning
+```
 
 4) 最后，解释类型指定符int。
 
-    int (*func_p)(double);
+``` c
+int (*func_p)(double);
+```
 
 英语的表达为：
 
-    func_p is pointer to function(double) returning int
+``` c
+func_p is pointer to function(double) returning int
+```
 
 5) 翻译成中文：
 
-    func_p是指向返回int的函数的指针。
+``` c
+func_p是指向返回int的函数的指针。
+```
 
 使用和上面相同的方式，我们在下面的表中解读各种各样的声明（表3-1），
 
@@ -226,8 +261,10 @@ K&R中同时也记载了下面这段文字，
 
 在Pascal中，C的`int hoge[10]`可以这样声明，
 
-    var
-        hoge: array[0..9] of integer
+``` c
+var
+    hoge: array[0..9] of integer
+```
 
 这种声明，从左向右用英语按顺序解读是完全没有问题的。
 
@@ -238,33 +275,40 @@ const是通过ANSI C被追加的修饰符，它将类型修饰为“只读”。
 
 名不符实的是，const__不一定代表常量__。const最主要被用于修饰函数的参数，将一个常量传递给函数是没有意义的。无论怎样，使用const修饰符（变量名），只意味着使其“只读”。
 
-    /* const参数的范例 */
-    char *strcpy(char *dest, const char *src);
+``` c
+/* const参数的范例 */
+char *strcpy(char *dest, const char *src);
+```
 
 strcpy是持有被const修饰的参数的范例，此时，所谓的“只读”是如何表现的呢？
 
 做个实验应该很快就会明白，上面例子中的src这个变量__没有定义为只读__。
 
-    char *my_strcpy(char *dest, const char *src)
-    {
-        src = NULL;		←即使对src赋值，编译器也没有报错
-    }
+``` c
+char *my_strcpy(char *dest, const char *src)
+{
+    src = NULL;		←即使对src赋值，编译器也没有报错
+}
+```
 
 此时，成为只读的不是“src”，而是src所指向的对象。
 
-    char *my_strcpy(char *dest, const char *src)
-    {
-        *src = ‘a’;		←ERROR!!
-    }
+``` c
+char *my_strcpy(char *dest, const char *src)
+{
+    *src = ‘a’;		←ERROR!!
+}
+```
 
 如果将“src”和“src指向的对象”都定义为“只读”，可以写成下面这样，
 
-    char *my_strcpy(char *dest, const char * const src)
-    {
-        src = NULL; 	←ERROR!!
-        *src = ‘a’;		←ERROR!!
-    }
-
+``` c
+char *my_strcpy(char *dest, const char * const src)
+{
+    src = NULL; 	←ERROR!!
+    *src = ‘a’;		←ERROR!!
+}
+```
 
 在现实中，在指针作为参数的时候，const常用于将指针指向的对象设定为只读。
 
@@ -293,36 +337,52 @@ strcpy是持有被const修饰的参数的范例，此时，所谓的“只读”
 
 因此，
 
-    char * const src
+``` c
+char * const src
+```
 
 可以解释成，
 
-    src is read-only pointer to char
+``` c
+src is read-only pointer to char
+```
 
 src是指向char的只读的指针
 
-    char const *src
+``` c
+char const *src
+```
 
 可以解释成，
 
-    src is pointer to read-only char
+``` c
+src is pointer to read-only char
+```
 
 `src`是指向只读的`char`的指针
 
 此外，容易造成混乱的是，
 
-    char const *src
+``` c
+char const *src
+```
+
 和
 
-    const char *src
+``` c
+const char *src
+```
 
 的__意思完全相同__。
+
 
 ## 将数组解读成指针
 
 正如在前面翻来覆去提到的那样，在表达式中，数组可以解读成指针。
 
-     int hoge[10];
+``` c
+int hoge[10];
+```
 
 以上的声明中，`hoge`等同于`&hoge[0]`。
 
@@ -346,6 +406,7 @@ hoge原本的类型为“int的数组(元素数10)”，但并不妨碍将其类
 我们都知道字符串常量是“`char`的数组”，在表达式中它通常被解读成“指向char的指针”。其实，初始化`char`的数组时的字符串常量，作为在花括号中将字符分开写的初始化符的省略形式，会被编译器特别解释。
 
 在初始化`char`的指针的时候，关于字符串常量的特别之处，需要引起注意。
+
 
 ## 数组和指针相关的运算符
 

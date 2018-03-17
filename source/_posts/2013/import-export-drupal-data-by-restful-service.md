@@ -15,6 +15,7 @@ tags:
 
 从性能来讲，前者肯定是占优的，但是需要对Drupal有更深入的了解。后者虽然牺牲了一些性能，但是有更好的适用性，应用范围更广。下文将介绍[Drupal 7下RESTFul服务的搭建以及如何实现数据的导入与导出](http://avnpc.com/pages/import-export-drupal-data-by-restful-service)。
 
+
 ## Drupal搭建RESTFul Service
 
 Drupal可以通过以下几个模块简单的搭建出一个高度可定制的RESTFul Service：
@@ -37,21 +38,30 @@ Drupal可以通过以下几个模块简单的搭建出一个高度可定制的RE
 
 保存后可以看到Services列表中已经出现了一组名为drupalapi的Service。可以通过Edit Resources来选择具体需要公开哪些资源。以node为例，公开node资源后访问：
 
-    GET http://avnpc.com/drupalapi/node
+```
+GET http://avnpc.com/drupalapi/node
+```
 
 即可以得到XML格式的node列表：
 
-    <result is_array="true"><item><nid>49038</nid><vid>49063</vid><type>news</type><language>zh-hans</language>...
+```
+<result is_array="true"><item><nid>49038</nid><vid>49063</vid><type>news</type><language>zh-hans</language>...
+```
 
 Drupal Services还支持通过更改资源扩展名切换资源格式，如
 
-    GET http://avnpc.com/drupalapi/node.json
+```
+GET http://avnpc.com/drupalapi/node.json
+```
 
 将得到JSON格式的node列表
 
-    [{"nid":"49038","vid":"49063","type":"news","language":"zh-hans"...
+```
+[{"nid":"49038","vid":"49063","type":"news","language":"zh-hans"...
+```
 
 更加完整的Drupal RESTFul API可以参考[Drupal Services官方文档](https://drupal.org/node/1699354)。
+
 
 ### 通过资源Actions获得附属/关联资源
 
@@ -64,31 +74,44 @@ Drupal Services中还存在Actions的概念。这里的Actions可以理解为对
 
 那么默认可以通过
 
-    GET http://avnpc.com/drupalapi/taxonomy_term/7351
+```
+GET http://avnpc.com/drupalapi/taxonomy_term/7351
+```
 
 获得该Item的信息
 
-    <result><tid>7351</tid><vid>2</vid><name>中国</name>...
+```
+<result><tid>7351</tid><vid>2</vid><name>中国</name>...
+```
 
 而往往我们还需要获得该分类下的所有node，此时就需要使用taxonomy下的`selectNodes` Action来获取数据。
 
 但是Drupal Services设计很奇怪的地方是Actions一般需要用POST方法获得，这很难还能称得上是“RESTFul”风格，比如我理解获得一个taxonomy item下的node理论上应该是这样：
 
-    GET http://avnpc.com/drupalapi/taxonomy_term/7351/selectNodes
+```
+GET http://avnpc.com/drupalapi/taxonomy_term/7351/selectNodes
+```
 
 但实际上我们需要这样做：
 
-    POST http://avnpc.com/drupalapi/taxonomy_term/selectNodes
+```
+POST http://avnpc.com/drupalapi/taxonomy_term/selectNodes
+```
 
 POST header中需要包含：
 
-    Content-Type: application/x-www-form-urlencoded
+```
+Content-Type: application/x-www-form-urlencoded
+```
 
 POST body为：
 
-    tid=7351
+```
+tid=7351
+```
 
 实在让人无法言语。所以一般来说比较复杂的资源，还是需要通过Views + Services Views共同实现比较好。
+
 
 ## 通过Drupal Views创建可以接收参数的RESTFul API
 
@@ -101,7 +124,9 @@ POST body为：
 
 而此时我们希望开放一个API，形如：
 
-    GET http://avnpc.com/drupalapi/news?tid=<tid>
+```
+GET http://avnpc.com/drupalapi/news?tid=<tid>
+```
 
 可以通过更改URL中的`tid`参数，将该分类下的新闻全部筛选出来。操作方法如下：
 
@@ -138,7 +163,10 @@ __4. 保存并公开Service API__
 
 然后可以尝试访问一下
 
-    GET http://avnpc.com/drupalapi/news?tid=7351
+```
+GET http://avnpc.com/drupalapi/news?tid=7351
+```
+
 
 ### 解决Services Views产生的缓存不更新BUG
 
@@ -150,6 +178,7 @@ __4. 保存并公开Service API__
 
 即可
 
+
 ## Drupal RESTFul API创建/更新资源
 
 通过上面的方法，已经可以将Drupal的所有资源以RESTFul API的形式公布给第三方用户，从而可以实现数据的导出或与第三方的交互。而如果要向Drupal中导入数据，则需要访问API的写入接口。
@@ -160,79 +189,90 @@ __4. 保存并公开Service API__
 
 如果没有安装其他第三方认证模块，Drupal RESTFul的权限认证默认是通过Session来进行的：
 
-    Requests::post('http://avnpc.com/apiv1/user/login.json', array(
-        'Content-type' => 'application/json'
-    ), json_encode(array('username' => 'yourname', 'password' => '123456')));
+``` php
+Requests::post('http://avnpc.com/apiv1/user/login.json', array(
+    'Content-type' => 'application/json'
+), json_encode(array('username' => 'yourname', 'password' => '123456')));
+```
 
 这样可以取得一个`session_name`和`sessid`，之后的写入请求需要将这两部分用`=`拼接后附加在header的`Cookie`中即可。
 
 但是由于旧版本的Drupal Services还存在[CSRF](https://drupal.org/node/1890222)安全漏洞，最新的Drupal Services中还加入了`X-CSRF-Token`的限制。需要携带登陆后的Session信息去换取一个CSRF Token：
 
-    Requests::post('http://avnpc.com/services/session/token', array(
-        'Cookie' => 'session info here',
-    ));
+``` php
+Requests::post('http://avnpc.com/services/session/token', array(
+    'Cookie' => 'session info here',
+));
+```
 
 那么完整的权限认证代码如下：
 
-    $res = Requests::post('http://avnpc.com/apiv1/user/login.json', array(
-        'Content-type' => 'application/json'
-    ), json_encode(array('username' => 'yourname', 'password' => '123456')));
+``` php
+$res = Requests::post('http://avnpc.com/apiv1/user/login.json', array(
+    'Content-type' => 'application/json'
+), json_encode(array('username' => 'yourname', 'password' => '123456')));
 
-    $loginRes = json_decode($res->body);
+$loginRes = json_decode($res->body);
 
-    $token = Requests::post('http://avnpc.com/services/session/token' array(
-        'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
-    ));
-    $loginRes->token = $token->body;
+$token = Requests::post('http://avnpc.com/services/session/token' array(
+    'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
+));
+$loginRes->token = $token->body;
+```
 
 最后就可以使用认证信息去创建资源了:
 
-    Requests::post('http://avnpc.com/apiv1/node', array(
-        'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
-        'X-CSRF-Token' => $loginRes->token,
-        'Content-type' => 'application/json'
-    ), json_encode(array(
-        //node info array
-    )));
+``` php
+Requests::post('http://avnpc.com/apiv1/node', array(
+    'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
+    'X-CSRF-Token' => $loginRes->token,
+    'Content-type' => 'application/json'
+), json_encode(array(
+    //node info array
+)));
+```
+
 
 ### 如何通过Drupal RESTFul API创建附带自定义字段的资源
-
 
 Drupal的最大优势就是可以灵活的为Node绑定任意自定义字段，那么在通过RESTFul API创建资源时，也避免不了会有自定义字段的写入。
 
 还是以上文中的news资源为例，创建一个news资源的代码如下：
 
-    $obj = new stdClass();
-    $obj->title = '新闻标题‘;
-    $obj->status = 1;  //1 published
-    $obj->comment = 2; //1 close, 2 open
-    $obj->type = 'news';
-    $obj->language = 'zh-hans';
-    $obj->date = date('Y-m-d H:i:s +0000', mktime());
+``` php
+$obj = new stdClass();
+$obj->title = '新闻标题‘;
+$obj->status = 1;  //1 published
+$obj->comment = 2; //1 close, 2 open
+$obj->type = 'news';
+$obj->language = 'zh-hans';
+$obj->date = date('Y-m-d H:i:s +0000', mktime());
 
-    $body = new stdClass();
-    $body->value = '新闻内容';
+$body = new stdClass();
+$body->value = '新闻内容';
 
-    $obj->body = new stdClass();
-    $obj->body->und[] = $body;
+$obj->body = new stdClass();
+$obj->body->und[] = $body;
 
-    $obj->field_category = new stdClass();
-    $category = array(
-        '7351' => '7351',
-        '7352' => '7352',
-    );
-    $obj->field_category->und =  $category;
+$obj->field_category = new stdClass();
+$category = array(
+    '7351' => '7351',
+    '7352' => '7352',
+);
+$obj->field_category->und =  $category;
 
-    $obj->field_format = new stdClass();
-    $obj->field_format->und = new stdClass();
-    $obj->field_format->und->value = 'bold';
-    Requests::post('http://avnpc.com/apiv1/node', array(
-        'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
-        'X-CSRF-Token' => $loginRes->token,
-        'Content-type' => 'application/json'
-    ), json_encode($obj));
+$obj->field_format = new stdClass();
+$obj->field_format->und = new stdClass();
+$obj->field_format->und->value = 'bold';
+Requests::post('http://avnpc.com/apiv1/node', array(
+    'Cookie' => $loginRes->session_name . '=' . $loginRes->sessid,
+    'X-CSRF-Token' => $loginRes->token,
+    'Content-type' => 'application/json'
+), json_encode($obj));
+```
 
 可能最重要的部分就是让POST提交的数据结构保持与自定义node字段的结构完全一致。那么如何获得一个完整的Node创建时所需要的数据结构？一个非常简单的办法是找到node模块下的node.module。对`node_submit($node)`的`$node`设置断点，然后进入后台创建一个node，就可以看到node创建所需要的完整数据结构了。
+
 
 ## 参考
 

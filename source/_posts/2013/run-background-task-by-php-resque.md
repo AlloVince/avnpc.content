@@ -11,8 +11,7 @@ tags:
   - php-resque
 ---
 
-消息队列处理后台任务带来的问题
-=============================
+## 消息队列处理后台任务带来的问题
 
 项目中经常会有后台运行任务的需求，比如发送邮件时，因为要连接邮件服务器，往往需要5-10秒甚至更长时间，如果能先给用户一个成功的提示信息，然后在后台慢慢处理发送邮件的操作，显然会有更好的用户体验。
 
@@ -26,17 +25,13 @@ tags:
 4. 一般的Web应用PHP都以cgi方式运行，无法常驻内存。我们知道php还有[cli模式](http://www.php-cli.com/)，那么守护进程是否能以php cli来实现，效率如何？
 5. 当守护进程运行时，Web应用能否与后台守护进程交互，实现开启/杀死进程的功能以及获得进程的运行状态？
 
-Resque对后台任务的设计与角色划分
-===============================
+## Resque对后台任务的设计与角色划分
 
 对以上这些问题，目前为止我能找到的最好答案，并不是来自php，而是来自Ruby的项目[Resque](https://github.com/defunkt/resque)，正是由于Resque清晰简单的解决了后台任务带来的一系列问题，Resque的设计也被Clone到Python、php、NodeJs等语言：比如Python下的[pyres](https://github.com/binarydud/pyres)以及PHP下的[php-resque](https://github.com/chrisboulton/php-resque)等等，这里有[各种语言版本的Resque实现](https://github.com/defunkt/resque/wiki/Alternate-Implementations)，而在本篇日志里，我们当然要以PHP版本为例来说明[如何用php-resque运行一个后台任务](http://avnpc.com/pages/run-background-task-by-php-resque)，可能一些细节方面会与Ruby版有出入，但是本文中以php版为准。
 
-
-
 Resque是这样解决这些问题的：
 
-后台任务的角色划分
-----------
+### 后台任务的角色划分
 
 其实从上面的问题已经可以看出，只靠一个消息队列是无法解决所有问题的，需要新的角色介入。在Resque中，一个后台任务被抽象为由三种角色共同完成：
 
@@ -56,40 +51,43 @@ Resque是这样解决这些问题的：
 
 在Resque中，还有一个很重要的设计：一个Worker，可以处理一个队列，也可以处理很多个队列，并且可以通过增加Worker的进程/线程数来加快队列的执行速度。
 
-php-resque的安装
------------------
+### php-resque的安装
 
 需要提前说明的是，由于涉及到进程的开辟与管理，php-resque使用了php的[PCNTL函数](http://php.net/manual/zh/ref.pcntl.php)，所以只能在Linux下运行，并且需要php编译PCNTL函数。如果希望用Windows做同样的工作，那么可以去找找Resque的其他语言版本，php在Windows下非常不适合做后台任务。
 
 以Ubuntu12.04LTS为例，Ubuntu用apt安装的php已经默认编译了PCNTL函数，无需任何配置，以下指令均为root帐号
 
-###安装Redis
+### 安装Redis
 
-    apt-get install redis-server
+``` shell
+apt-get install redis-server
+```
 
 ###安装Composer
 
-    apt-get install curl
-    cd /usr/local/bin
-    curl -s http://getcomposer.org/installer | php
-    chmod a+x composer.phar
-    alias composer='/usr/local/bin/composer.phar'
+``` shell
+apt-get install curl
+cd /usr/local/bin
+curl -s http://getcomposer.org/installer | php
+chmod a+x composer.phar
+alias composer='/usr/local/bin/composer.phar'
+```
 
-###使用Composer安装php-resque
+### 使用Composer安装php-resque
 
 假设web目录在/opt/htdocs
 
-    apt-get install git git-core
-    cd /opt/htdocs
-    git clone git://github.com/chrisboulton/php-resque.git
-    cd php-resque
-    composer install
+``` shell
+apt-get install git git-core
+cd /opt/htdocs
+git clone git://github.com/chrisboulton/php-resque.git
+cd php-resque
+composer install
+```
 
+## php-resque的使用
 
-php-resque的使用
------------------
-
-###编写一个Worker
+### 编写一个Worker
 
 其实php-resque已经给出了简单的例子， demo/job.php文件就是一个最简单的Job：
 
@@ -108,7 +106,7 @@ class PHP_Job
 
 在Resque的设计中，一个Job必须存在一个perform方法，Worker则会自动运行这个方法。
 
-###将Job插入队列
+### 将Job插入队列
 
 php-resque也给出了最简单的插入队列实现 demo/queue.php：
 
@@ -134,24 +132,32 @@ echo "Queued job ".$jobId."\n\n";
 
 在这个例子中，queue.php需要以cli方式运行，将cli接收到的第一个参数作为Job名称，插入名为'default'的队列，同时向屏幕输出刚才插入队列的Job Id。在终端输入：
 
-    php demo/queue.php PHP_Job
+```
+php demo/queue.php PHP_Job
+```
 
 结果可以看到屏幕上输出：
 
-    Queued job b1f01038e5e833d24b46271a0e31f6d6
+```
+Queued job b1f01038e5e833d24b46271a0e31f6d6
+```
 
 即Job已经添加成功。注意这里的Job名称与我们编写的Job Class名称保持一致：PHP_Job
 
-###查看Job运行情况
+### 查看Job运行情况
 
 php-resque同样提供了查看Job运行状态的例子，直接运行：
 
-    php demo/check_status.php b1f01038e5e833d24b46271a0e31f6d6
+```
+php demo/check_status.php b1f01038e5e833d24b46271a0e31f6d6
+```
 
 可以看到输出为：
 
-    Tracking status of b1f01038e5e833d24b46271a0e31f6d6. Press [break] to stop. 
-    Status of b1f01038e5e833d24b46271a0e31f6d6 is: 1
+```
+Tracking status of b1f01038e5e833d24b46271a0e31f6d6. Press [break] to stop.
+Status of b1f01038e5e833d24b46271a0e31f6d6 is: 1
+```
 
 我们刚才创建的Job状态为1。在Resque中，一个Job有以下4种状态：
 
@@ -180,34 +186,48 @@ require '../bin/resque';
 
 在终端中运行：
 
-    QUEUE=default php demo/resque.php
+```
+QUEUE=default php demo/resque.php
+```
 
 前面的QUEUE部分是设置环境变量，我们指定当前的Worker只负责处理default队列。也可以使用
 
-    QUEUE=* php demo/resque.php
+```
+QUEUE=* php demo/resque.php
+```
 
 来处理所有队列。
 
 运行后输出为
 
-    #!/usr/bin/env php
-    *** Starting worker
+```
+#!/usr/bin/env php
+*** Starting worker
+```
 
 用ps指令检查一下：
 
-    ps aux | grep resque
+```
+ps aux | grep resque
+```
 
 可以看到有一个php的守护进程已经在运行了
 
-    1000      4607  0.0  0.1  74816 11612 pts/3    S+   14:52   0:00 php demo/resque.php
+```
+1000      4607  0.0  0.1  74816 11612 pts/3    S+   14:52   0:00 php demo/resque.php
+```
 
 再使用之前的检查Job指令
 
-    php demo/check_status.php b1f01038e5e833d24b46271a0e31f6d6
+```
+php demo/check_status.php b1f01038e5e833d24b46271a0e31f6d6
+```
 
 2分钟后可以看到
 
-    Status of b1f01038e5e833d24b46271a0e31f6d6 is: 4
+```
+Status of b1f01038e5e833d24b46271a0e31f6d6 is: 4
+```
 
 任务已经运行完毕，同时屏幕上应该可以看到输出的Hello!
 
