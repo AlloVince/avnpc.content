@@ -11,7 +11,7 @@ tags:
 之前一直使用[基于Xdebug进行PHP的性能分析](http://avnpc.com/pages/how-to-debug-under-zf2)，对于本地开发环境来说是够用了，但如果是线上环境的话，xdebug消耗较大，配置也不够灵活，因此线上环境建议使用[xhprof进行PHP性能追踪及分析](http://avnpc.com/pages/profiler-php-performance-online-by-xhprof)。
 
 
-##xhprof的安装与简易用法
+## xhprof的安装与简易用法
 
 [xhprof](https://github.com/phacility/xhprof)是Facebook开源的轻量级PHP性能分析工具，Linux环境下可以通过pecl直接安装，比如在Ubuntu下仅需3行指令
 

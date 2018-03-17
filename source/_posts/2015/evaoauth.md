@@ -34,7 +34,7 @@ EvaOAuth可以通过[Packagist](https://packagist.org/packages/evaengine/eva-oau
 
 编辑composer.json文件为：
 
-~~~ json
+``` json
 {
     "require": {
         "evaengine/eva-oauth": "~1.0"
@@ -44,14 +44,14 @@ EvaOAuth可以通过[Packagist](https://packagist.org/packages/evaengine/eva-oau
 
 然后通过Composer进行安装。
 
-~~~ shell
+``` shell
 curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ```
 
 下面通过一个实例演示如何集成豆瓣登录功能。假设已经在[豆瓣开发者](http://developers.douban.com)创建好一个应用。准备一个request.php如下：
 
-~~~ php
+``` php
 require_once './vendor/autoload.php'; //加载Composer自动生成的autoload
 $service = new Eva\EvaOAuth\Service('Douban', [
     'key' => 'You Douban App ID',  //对应豆瓣应用的API Key
@@ -63,13 +63,13 @@ $service->requestAuthorize();
 
 在浏览器中运行request.php，如果参数正确则会被重定向到豆瓣授权页面，登录授权后会再次重定向回我们设置的`callback`。因此再准备好access.php文件：
 
-~~~ php
+``` php
 $token = $service->getAccessToken();
 ```
 
 这样就拿到了豆瓣的Access Token，接下来可以使用Token去访问受保护的资源：
 
-~~~ php
+``` php
 $httpClient = new Eva\EvaOAuth\AuthorizedHttpClient($token);
 $response = $httpClient->get('https://api.douban.com/v2/user/~me');
 ```
@@ -91,7 +91,7 @@ EvaOAuth将一个OAuth网站称为一个Provider。目前支持的Provider有：
 新增一个Provider仅需数行代码，下面演示如何集成Foursquare网站：
 
 
-~~~ php
+``` php
 namespace YourNamespace;
 
 class Foursquare extends \Eva\EvaOAuth\OAuth2\Providers\AbstractProvider
@@ -103,7 +103,7 @@ class Foursquare extends \Eva\EvaOAuth\OAuth2\Providers\AbstractProvider
 
 然后将Provider注册到EvaOAuth就可以使用了。
 
-~~~ php
+``` php
 use Eva\EvaOAuth\Service;
 Service::registerProvider('foursquare', 'YourNamespace\Foursquare');
 $service = new Service('foursquare', [
@@ -121,13 +121,13 @@ EvaOAuth的数据存储通过[Doctrine\Cache](https://github.com/doctrine/cache)
 
 可以在EvaOAuth初始化前任意更改存储方式及存储位置，例如将文件保存位置更改为`/tmp`：
 
-~~~ php
+``` php
 Service::setStorage(new Doctrine\Common\Cache\FilesystemCache('/tmp'));
 ```
 
 或者使用Memcache保存：
 
-~~~ php
+``` php
 $storage = new \Doctrine\Common\Cache\MemcacheCache();
 $storage->setMemcache(new \Memcache());
 Service::setStorage($storage);
@@ -143,7 +143,7 @@ EvaOAuth 定义了若干事件方面更容易的注入逻辑
 
 比如我们希望在获取Access Token前向HTTP请求中加一个自定义Header，可以通过以下方式实现：
 
-~~~ php
+``` php
 $service->getEmitter()->on('beforeGetAccessToken', function(\Eva\EvaOAuth\Events\BeforeGetAccessToken $event) {
     $event->getRequest()->addHeader('foo', 'bar');
 });
@@ -166,7 +166,7 @@ EvaOAuth 基于强大的HTTP客户端库[Guzzle](https://github.com/guzzle/guzzl
 
 开启Debug模式将在Log中记录所有的请求与响应。
 
-~~~ php
+``` php
 $service->debug('/tmp/access.log');
 ```
 

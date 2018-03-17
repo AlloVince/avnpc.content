@@ -21,7 +21,7 @@ tags:
 
 因此团队的开发环境部署随之暴露出若干问题：
 
-1. 依赖服务很多，本地搭建一套环境成本越来越高，初级人员很难解决环境部署中的一些问题
+1. 依赖服务很多，本地搭建一套环境成本越来越高，初级人员很难解决环境部署中的一些问题
 2. 服务的版本差异及OS的差异都可能导致线上环境BUG
 3. 项目引入新的服务时所有人的环境需要重新配置
 
@@ -36,7 +36,7 @@ Docker的出现让上面的问题有了更好的解决方案，虽然个人对�
 
 首先还是从一个PHP在Docker容器下的Hello World实例开始。我们准备这样一个PHP文件`index.php`：
 
-```
+``` php
 <?php
 echo "PHP in Docker";
 ```
@@ -62,19 +62,19 @@ ENTRYPOINT ["php", "-S", "0.0.0.0:8080"]
 
 构建这个容器：
 
-```
+``` shell
 docker build -t allovince/php-helloworld .
 ```
 
 运行这个容器
 
-```
+``` shell
 docker run -d -p 8080:8080 allovince/php-helloworld
 ```
 
 查看结果：
 
-```
+``` shell
 curl localhost:8080
 PHP in Docker
 ```

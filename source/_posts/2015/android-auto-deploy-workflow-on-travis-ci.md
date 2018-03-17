@@ -35,7 +35,7 @@ Tag提交后Travis CI会自动编译代码，生成APK文件并分发到Github�
 
 首先准备一个`.travis.yml`文件放在安卓项目根目录下，`.travis.yml`中记录了Travis CI所需的基础信息：
 
-```
+``` yaml
 language: android
 
 sudo: false
@@ -258,7 +258,7 @@ after_deploy:- curl -d "appid=10948&to=allo.vince@gmail.com&subject=[自动通�
 
 提交代码：
 
-```
+``` shell
 git add .
 git commit -m "这里是注释"
 git push origin
@@ -266,7 +266,7 @@ git push origin
 
 打Tag
 
-```
+``` shell
 git tag -a v0.0.1-alpha.1 -m "这里是Tag注释，说清楚这个版本的主要改动，也可以省略-m参数直接写长文本"
 git push origin --tags
 ```
@@ -285,3 +285,6 @@ git push origin --delete tag v0.0.1-alpha.1
 - [Travis CI User Documentation](https://docs.travis-ci.com/)
 - [用Travis CI给Android项目部署Github Release](http://kescoode.com/travis-ci-android-github-release/)
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjgyODc0MDg4XX0=
+-->

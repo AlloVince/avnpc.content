@@ -23,7 +23,7 @@ Phalcon环境配置安装后，可以通过命令行生成一个标准的Phalcon
 
 入口文件为`public/index.php`，简化后一共5行，包含了整个Phalcon的启动流程，以下将按顺序说明
 
-~~~ php
+``` php
 require __DIR__ . '/../config/services.php';
 $application = new Phalcon\Mvc\Application();
 $application->setDI($di);
@@ -35,7 +35,7 @@ echo $application->handle()->getContent();
 
 Phalcon的所有组件服务都是通过[DI（依赖注入）](http://docs.phalconphp.com/en/latest/api/Phalcon_DI.html)进行组织的，这也是目前大部分主流框架所使用的方法。通过DI，可以灵活的控制框架中的服务：哪些需要启用，哪些不启用，组件的内部细节等等，因此Phalcon是一个松耦合可替换的框架，完全可以通过DI替换MVC中任何一个组件。
 
-~~~ php
+``` php
 require __DIR__ . '/../config/services.php';
 ```
 
@@ -218,7 +218,7 @@ echo $application->handle()->getContent();
 
 按照上面的流程，我们其实完全可以自己实现`$application->handle()->getContent()`这一流程，下面就是一个简单的替代方案，代码中暂时没有考虑事件的触发。
 
-~~~ php
+``` php
 //Roter
 $router = $di['router'];
 $router->handle();

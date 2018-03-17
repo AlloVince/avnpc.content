@@ -49,9 +49,11 @@ brew（意为酿酒）的命名很有意思，全部都使用了酿酒过程中�
 首先加入Homebrew官方的几个软件源
 
 
-    brew tap homebrew/dupes
-    brew tap homebrew/versions
-    brew tap homebrew/php
+```
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/php
+```
 
 PHP如果采用默认配置安装，会编译`mod_php`模块并只运行在Apache环境下，为了使用Nginx，这里需要编译php-fpm并且禁用apache，主要通过参数`--without-fpm --without-apache`来实现。完整的安装指令为
 
@@ -190,7 +192,7 @@ location ~ \.php$ {
 
     vim /usr/local/etc/nginx/sites-enabled/default
 
-~~~    
+```    
 server {
     listen       80;
     server_name  localhost;
