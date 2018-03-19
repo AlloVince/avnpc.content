@@ -1,11 +1,12 @@
 ---
 slug: add-nginx-to-xampp
+published: true
 date: '2013-01-01 00:03:21'
-title: 在windows环境下让XAMPP使用Nginx作为Web服务器
-id: 171
 tags:
   - XAMPP
   - nginx
+author: AlloVince
+title: 在windows环境下让XAMPP使用Nginx作为Web服务器
 ---
 
 之前已经介绍过[Windows环境下ZF2环境搭建的方法](http://avnpc.com/pages/zend-framework-2-installation-for-windows)，使用了XAMPP这个一键式安装环境，默认集成的Web服务器是Apache，比较方便进行开发。不过由于产品环境往往部署在Nginx下，有时候我们也希望测试Nginx，那么可以通过非常简单的方法[将Nginx加入XAMPP](http://avnpc.com/pages/add-nginx-to-xampp)，并可以使Nginx与Apache并存。
@@ -222,5 +223,6 @@ taskkill /F /IM nginx.exe > nul
 taskkill /F /IM php-cgi.exe > nul
 exit
 ```
+
 
 

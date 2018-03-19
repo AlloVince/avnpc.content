@@ -1,12 +1,13 @@
 ---
 slug: php-open-source-project-plus-travis-ci
+published: true
 date: '2013-03-06 21:32:47'
-title: PHP开源项目使用Travis CI进行持续集成
-id: 179
 tags:
   - php
   - CI
   - PHPUnit
+author: AlloVince
+title: PHP开源项目使用Travis CI进行持续集成
 ---
 
 一个项目如何保证代码质量是开发中非常重要的环节，对于开源项目来说更是如此，因为开源项目要面对的是来自不同水平开发者提交的代码。所以围绕开源做持续集成（Continuous Integration）变得越来越重要，而目前使用最广泛的免费CI工具当数[Travis CI](https://travis-ci.org/)，以我的项目[EvaThumber](http://avnpc.com/pages/evathumber)为例，来介绍一下如何在[PHP开源项目中配合Travis CI进行持续集成](http://avnpc.com/pages/php-open-source-project-plus-travis-ci)
@@ -165,5 +166,6 @@ Travis CI会自动完成Git Clone的工作，`before_script`很好理解，一�
 如果其他人Fork了EvaThumber并发起了Pull Request，同样会触发Travis CI自动运行，如果提交进来的代码无法通过单元测试，Travis CI会自动回复Pull Request并显示测试报告，这样就能保证已有代码的API不会被破坏。
 
 而如果是Bug Fix或者新功能的添加，那么可以要求提交者配套对应的单元测试，否则不予以Merge。
+
 
 

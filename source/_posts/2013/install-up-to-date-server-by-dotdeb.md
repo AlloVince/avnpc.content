@@ -1,13 +1,14 @@
 ---
 slug: install-up-to-date-server-by-dotdeb
+published: true
 date: '2013-08-19 14:13:00'
-title: Ubuntu12.04使用Dotdeb安装PHP5.4 / Nginx1.4/Redis2.6等新版本
-id: 188
 tags:
   - php
   - Ubuntu
   - Debian
   - Apt-get
+author: AlloVince
+title: Ubuntu12.04使用Dotdeb安装PHP5.4 / Nginx1.4/Redis2.6等新版本
 ---
 
 众所周知，Ubuntu使用apt-get默认安装的软件版本都偏低，目前Ubuntu12.04安装的PHP版本为PHP Version 5.3.10-1ubuntu3.7，Nginx、Redis等常用软件版本也都非常保守。而这对于个人开发而言，要尝试新版本特性还需要编译安装解决依赖问题，实在不够方便。
@@ -51,6 +52,7 @@ sudo dpkg -i libmysqlclient16_5.1.58-1ubuntu5_amd64.deb
 ```
 
 目前使用Dotdeb在Ubuntu12.04安装的PHP版本为PHP Version 5.4.17-1~dotdeb.0
+
 
 
 

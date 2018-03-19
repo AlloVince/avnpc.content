@@ -1,12 +1,13 @@
 ---
 slug: photoshop-layer-blending-algorithm
+published: true
 date: '2013-04-18 20:57:20'
-title: Photoshop图层混合(Layer Blending)模式的算法实现
-id: 181
 tags:
   - php
   - Photoshop
   - 图形
+author: AlloVince
+title: Photoshop图层混合(Layer Blending)模式的算法实现
 ---
 
 Photoshop的图层混合(Layer Blending)是实现各种特效的基础之一，在Photoshop新版中已经提供了接近30种图层混合模式，而运用这些图层混合模式则可以将两个图层叠加并且通过一些算法使叠加后的图层呈现新的效果，比如可以通过“变暗”、“正片叠底”使底层图像变暗，通过“叠加”、“柔光”增强底层图片对比度等。
@@ -542,4 +543,5 @@ public static function layerExclusion($A, $B)
 
 - [http://jswidget.com/blog/category/photoshop/](http://jswidget.com/blog/category/photoshop/)
 - [http://illusions.hu/effectwiki/doku.php?id=list_of_blendings](http://illusions.hu/effectwiki/doku.php?id=list_of_blendings)
+
 

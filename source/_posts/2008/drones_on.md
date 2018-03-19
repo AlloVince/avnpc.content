@@ -1,11 +1,12 @@
 ---
 slug: drones_on
+published: true
 date: '2008-07-31 13:41:19'
-title: 非定期唠叨
-id: 107
 tags:
   - YY的每一天
   - 志方あきこ
+author: AlloVince
+title: 非定期唠叨
 ---
 
 <span style="color:#FF6600;">◎</span> 用Wiki方式写博客实在是很享受的事情，将以前的很多老文也用Wiki语法重新整理过，清爽许多。每次打开Blog总要满足的检查一下华丽的[W3C Strict](http://validator.w3.org/check?uri=referer)认证，以及[Web developer](http://chrispederick.com/work/web-developer/)三个绿油油的对钩，PageRank在blog正式启用3个月后也由0直接跳为了3。YD的程序员葛阁总是不自觉的想让自己的眼前的东西变得顺眼，这是职业病，得治！

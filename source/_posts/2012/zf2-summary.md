@@ -1,12 +1,13 @@
 ---
 slug: zf2-summary
+published: true
 date: '2012-05-01 00:02:40'
-title: Zend Framework 2.0资料汇总
-id: 137
 tags:
   - ZF2
   - Zend Framework 2
   - 资源
+author: AlloVince
+title: Zend Framework 2.0资料汇总
 ---
 
 本日志整理并[汇总Zend Framework 2.0（下称ZF2）相关资料](http://avnpc.com/pages/zf2-summary)，不断更新中，欢迎补充：

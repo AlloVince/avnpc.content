@@ -1,14 +1,15 @@
 ---
 slug: evaoauth-old
+published: true
 date: '2012-11-30 01:03:49'
-title: EvaOAuth0.1文档
-id: 169
 tags:
   - ZF2
   - Zend Framework 2
   - OAuth
   - EvaEngine
   - Project
+author: AlloVince
+title: EvaOAuth0.1文档
 ---
 
 ### EvaOAuth1.0已经发布，请去[新版本页面](http://avnpc.com/pages/evaoauth)查看内容，本页内容不再维护

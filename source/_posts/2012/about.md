@@ -1,9 +1,10 @@
 ---
 slug: about
+published: true
 date: '2012-04-26 11:35:01'
-title: 关于我
-id: 1
 tags: []
+author: AlloVince
+title: 关于我
 ---
 
 徐谦（AlloVince）， 又名Allo / 某A / AV / 艾鲁， 网名源自“艾鲁维斯”。
@@ -78,3 +79,4 @@ tags: []
 [Allo的豆瓣]: http://www.douban.com/people/AlloVince/
 [微博 @Allo]: http://weibo.com/avnpc
 [Allo的技术文摘]: https://www.evernote.com/pub/allovince/Tech
+

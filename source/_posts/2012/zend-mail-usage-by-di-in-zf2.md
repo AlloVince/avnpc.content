@@ -1,13 +1,14 @@
 ---
 slug: zend-mail-usage-by-di-in-zf2
+published: true
 date: '2012-11-14 23:57:50'
-title: 使用ZF2的DI操作Zend\Mail发送邮件
-id: 167
 tags:
   - ZF2
   - Zend Framework 2
   - Email
   - DI
+author: AlloVince
+title: 使用ZF2的DI操作Zend\Mail发送邮件
 ---
 
 Zend Framework 2完整的实现了[DI](http://framework.zend.com/manual/2.0/en/modules/zend.di.introduction.html)，也就是依赖注入功能，但是在正式发行的ZF2中，DI已经基本被ServiceManager所取代，一个ZF2项目几乎可以不接触DI这一层。

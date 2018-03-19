@@ -1,11 +1,12 @@
 ---
 slug: best-wheels-for-php
+published: true
 date: '2013-02-04 21:08:16'
-title: 那些最好的轮子 - PHP篇
-id: 177
 tags:
   - php
   - 开源
+author: AlloVince
+title: 那些最好的轮子 - PHP篇
 ---
 
 在[关于不要重复造轮子的二三事](http://avnpc.com/pages/howto-find-best-wheel-for-programming)一文中，交代了一些背景和想法。本篇则完全是一些干货，列举一些我用过或者即将会用的PHP轮子，基本都符合我对好轮子的定义：[开源、许可证宽松、容易集成的PHP项目](http://avnpc.com/pages/best-wheels-for-php)，目有些已经集成在[EvaEngine](http://avnpc.com/pages/eva-engine)里面，希望能帮助别人少走弯路。
@@ -194,4 +195,5 @@ tags:
 - [Source Code](https://github.com/fabpot/Twig)
 - Allo点评：如果说对模板引擎的印象还停留在Smarty的阶段，那么你真的已经落后于时代了。Twig是目前关注度最高的PHP模板引擎，比Smarty提供了更简约和易懂的语法。当然如果项目没有主题切换这样的需求，php本身就是最好的模板引擎。
 - 应用范围：有皮肤、主题切换需求的项目，可以避免php模板带来的安全问题
+
 

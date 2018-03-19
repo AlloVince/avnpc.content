@@ -1,9 +1,10 @@
 ---
 slug: fought-side-by-side-with-me-in-wallstreetcn
+published: true
 date: '2013-08-12 08:19:40'
-title: 招聘PHP程序员与我一起战斗
-id: 187
 tags: []
+author: AlloVince
+title: 招聘PHP程序员与我一起战斗
 ---
 
 2015最新更新
@@ -101,3 +102,4 @@ tags: []
 工作地点： 上海闵行区七莘路
 
 通过我的Blog投递的朋友，可以直接发简历至 xuqian@wallstreetcn.com
+

@@ -1,11 +1,12 @@
 ---
 slug: evaoauth
+published: true
 date: '2015-05-01 17:21:07'
-title: EvaOAuth 1.0：统一接口的OAuth登录PHP类库
-id: 194
 tags:
   - php
   - OAuth
+author: AlloVince
+title: EvaOAuth 1.0：统一接口的OAuth登录PHP类库
 ---
 
 [![Latest Stable Version](https://poser.pugx.org/evaengine/eva-oauth/v/stable.svg)](https://packagist.org/packages/evaengine/eva-oauth)
@@ -181,5 +182,6 @@ $service->debug('/tmp/access.log');
 项目代码托管在 [https://github.com/AlloVince/EvaOAuth](https://github.com/AlloVince/EvaOAuth) ，欢迎Star及Fork贡献代码。
 
 有问题欢迎在[EvaOAuth Issue](https://github.com/AlloVince/EvaOAuth/issues)提出。
+
 
 

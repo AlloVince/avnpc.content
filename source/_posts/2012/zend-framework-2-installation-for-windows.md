@@ -1,14 +1,15 @@
 ---
 slug: zend-framework-2-installation-for-windows
+published: true
 date: '2012-10-06 17:16:05'
-title: ZF2入门：Windows环境下从零开始Zend Framework 2.0 (ZF2)环境搭建
-id: 159
 tags:
   - Apache
   - ZF2
   - Zend Framework 2
   - XAMPP
   - Windows
+author: AlloVince
+title: ZF2入门：Windows环境下从零开始Zend Framework 2.0 (ZF2)环境搭建
 ---
 
 [Zend Framework 2.0 (ZF2)正式发布](http://avnpc.com/pages/zend-framework-2-0-released)之后不少朋友都进行了尝试，可能由于ZF2涉及到的新特性比较多，有朋友希望能有一篇从零开始Zend Framework 2.0 (ZF2)的教程，于是就有了本篇日志。

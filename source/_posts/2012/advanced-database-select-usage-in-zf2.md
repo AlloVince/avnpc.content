@@ -1,13 +1,14 @@
 ---
 slug: advanced-database-select-usage-in-zf2
+published: true
 date: '2012-06-08 17:07:27'
-title: Zend Framework 2.0 (zf2) 进阶数据库操作
-id: 148
 tags:
   - SQL
   - ZF2
   - Zend Framework 2
   - DB
+author: AlloVince
+title: Zend Framework 2.0 (zf2) 进阶数据库操作
 ---
 
 [Zend Framework 2](http://avnpc.com/pages/zf2-summary)完全重写了Zend1的数据库组件，但是目前手册给的例子都弱爆了，只能自己整理一些[Zend\Db\TableGateway用例](http://avnpc.com/pages/advanced-database-select-usage-in-zf2)，详见下文。

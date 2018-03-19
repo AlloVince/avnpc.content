@@ -1,12 +1,13 @@
 ---
 slug: social-networking-font-face-icon-sets
+published: true
 date: '2013-01-14 15:25:12'
-title: Font-face社交网络图标集，覆盖绝大多数Web服务及少量国内服务（QQ、人人、微博等）
-id: 173
 tags:
   - font-face
   - icon
   - Project
+author: AlloVince
+title: Font-face社交网络图标集，覆盖绝大多数Web服务及少量国内服务（QQ、人人、微博等）
 ---
 
 基于@font-face的图标已经非常流行了，但是一套font-face图标总是有这样那样的小问题，所以之前有想法想做[一个能自由组合font-face的在线服务](https://plus.google.com/104171418568283484752/posts/YAxJqBswLw7)，结果最近发现已经有人做出了成品[Fontello](http://fontello.com/)。

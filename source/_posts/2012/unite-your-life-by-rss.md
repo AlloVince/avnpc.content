@@ -1,9 +1,10 @@
 ---
 slug: unite-your-life-by-rss
+published: true
 date: '2012-06-04 13:57:41'
-title: 通过RSS聚合你的生活
-id: 147
 tags: []
+author: AlloVince
+title: 通过RSS聚合你的生活
 ---
 
 一直以来都想做一个聚合类的服务，能将我在各种网站上的信息汇聚起来，形成专属于我自己的，独一无二的个人生活记录。我想我的核心需求应该可以归结为三个：

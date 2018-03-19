@@ -1,13 +1,14 @@
 ---
 slug: autoloader-third-part-libs-without-psr0
+published: true
 date: '2013-01-11 15:56:07'
-title: ZF2自动加载非PSR-0标准库及实例（GeoIP地理位置查询）
-id: 172
 tags:
   - ZF2
   - Zend Framework 2
   - GeoIP
   - PSR-0
+author: AlloVince
+title: ZF2自动加载非PSR-0标准库及实例（GeoIP地理位置查询）
 ---
 
 Zend Framework 2.0的自动加载机制主要基于[PSR-0标准](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)，引入新的第三方库只需要注册新的命名空间即可。
@@ -136,4 +137,5 @@ return array(
 ```
 
 即可。
+
 

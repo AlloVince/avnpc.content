@@ -1,13 +1,14 @@
 ---
 slug: evathumber
+published: true
 date: '2013-03-04 14:49:42'
-title: 'EvaThumber : 基于URL的图片处理库 (可实现缩略图 | 二维码 | 水印 | 面部识别等,基于PHP)'
-id: 178
 tags:
   - php
   - Thumbnail
   - Project
   - OpenSource
+author: AlloVince
+title: 'EvaThumber : 基于URL的图片处理库 (可实现缩略图 | 二维码 | 水印 | 面部识别等,基于PHP)'
 ---
 
 [EvaThumber](http://avnpc.com/pages/evathumber) 是一个基于URL的轻量级图片处理库，支持缩放/旋转/截取/滤镜等多种常用图片处理，支持设置水印/二维码，并且可以进行面部识别以及PNG优化压缩，所有处理仅仅需要通过更改图片的URL。
@@ -901,5 +902,6 @@ EvaThumber 是 [EvaEngine](https://github.com/AlloVince/eva-engine)项目的一�
 ## 旧版本
 
 EvaThumber由[EvaCloudImage](http://avnpc.com/pages/evacloudimage)更名而来，基本兼容旧版的API并作了完全的重构。旧版本代码[在此](https://github.com/AlloVince/EvaThumber/tree/42941a86af2b5fe92a5a3376010cfad607cce555)
+
 
 

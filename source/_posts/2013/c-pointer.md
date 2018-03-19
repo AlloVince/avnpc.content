@@ -1,9 +1,10 @@
 ---
 slug: c-pointer
+published: true
 date: '2013-08-30 14:53:57'
-title: 《征服C指针》Web版
-id: 190
 tags: []
+author: AlloVince
+title: 《征服C指针》Web版
 ---
 
 声明：本文是配合[《自制编程语言》](http://www.ituring.com.cn/book/1159)一书出版，对[书中所引用Web内容](http://avnpc.com/pages/devlang)的整理及翻译，由[北京图灵文化发展有限公司](http://www.ituring.com.cn/)授权刊载，未经许可请勿转载。
@@ -411,4 +412,5 @@ hoge原本的类型为“int的数组(元素数10)”，但并不妨碍将其类
 ## 数组和指针相关的运算符
 
 本节内容请[下载PDF](http://avnpc.com/devlang/pointer.pdf)查看。
+
 

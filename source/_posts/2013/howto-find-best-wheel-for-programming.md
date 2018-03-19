@@ -1,9 +1,10 @@
 ---
 slug: howto-find-best-wheel-for-programming
+published: true
 date: '2013-01-28 15:59:46'
-title: 关于不要重复造轮子的二三事
-id: 176
 tags: []
+author: AlloVince
+title: 关于不要重复造轮子的二三事
 ---
 
 “不要重复造轮子 Stop Trying to Reinvent the Wheel”， 可能是每个程序员入行被告知的第一条准则。我自己也会对新人反复灌输这个概念，写程序其实是一个最能“偷懒”的工作：你现在费力实现的每一个功能，可能早已经有极好的解决方法贡献在开源社区，如果可以直接用现成的，那节省下来的时间是不是可以用来偷懒呢？极端的说法，哪怕是[那位把所有开发外包给沈阳一家公司的哥们](http://www.huffingtonpost.com/2013/01/16/developer-outsourced-entire-job-china-busted-employee-cat-videos_n_2489122.html)，如果撇开道德以及商业安全，只要能贡献优质的代码和健壮的功能，对于一个项目来说，这样做其实没任何问题。
@@ -63,5 +64,6 @@ tags: []
 我的另一个做法是查看知名PHP框架，看看他们用了哪些轮子，比如在[Symfony Reference](http://symfony.com/doc/current/reference/index.html)中，你就能淘到[Assetic](https://github.com/kriswallsmith/assetic)、[monolog](https://github.com/Seldaek/monolog) 这样的好货。
 
 最后一个办法是在Github上Follow一些活跃的作者，比如我的[Following](https://github.com/AlloVince/following)中就会显示我的Stars和Forks，里面自然也是我认为值得收藏关注的项目。
+
 
 

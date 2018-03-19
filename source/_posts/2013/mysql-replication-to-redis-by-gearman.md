@@ -1,13 +1,14 @@
 ---
 slug: mysql-replication-to-redis-by-gearman
+published: true
 date: '2013-07-30 17:30:41'
-title: 通过Gearman实现MySQL到Redis的数据复制
-id: 186
 tags:
   - php
   - Redis
   - Gearman
   - MySQL UDF
+author: AlloVince
+title: 通过Gearman实现MySQL到Redis的数据复制
 ---
 
 对于变化频率非常快的数据来说，如果还选择传统的静态缓存方式（File System等）展示数据，可能在缓存的存取上会有很大的开销，并不能很好的满足需要，而Redis这样基于内存的NoSQL数据库，就非常适合担任实时数据的容器。
@@ -307,6 +308,7 @@ init-file=/var/lib/mysql/init_file.sql
 
 - [MySQL replication to Redis cache server via Ruby, Gearman, triggers, and MySQL UDF (Ubuntu version)](http://ericlondon.com/posts/254-mysql-replication-to-redis-cache-server-via-ruby-gearman-triggers-and-mysql-udf-ubuntu-version)
 - [管理Gearman](http://huoding.com/2012/10/30/196)
+
 
 
 

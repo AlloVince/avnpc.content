@@ -1,9 +1,10 @@
 ---
 slug: recovery-data-from-corrupted-sd-card
+published: true
 date: '2012-10-16 23:16:28'
-title: 记一次乱码SD卡损坏数据的恢复过程
-id: 161
 tags: []
+author: AlloVince
+title: 记一次乱码SD卡损坏数据的恢复过程
 ---
 
 记录一次[SD卡乱码的数据恢复](http://avnpc.com/pages/recovery-data-from-corrupted-sd-card)的过程，起因大概是不靠谱的读卡器+没有正确的拔SD卡，再次读SD卡发现里面的文件和文件夹已经都变成了乱码，文件夹无法打开，重命名则提示拒绝访问。在磁盘驱动器界面仍然能显示出容量被占用。

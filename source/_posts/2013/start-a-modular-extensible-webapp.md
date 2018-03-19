@@ -1,12 +1,13 @@
 ---
 slug: start-a-modular-extensible-webapp
+published: true
 date: '2013-04-04 19:44:47'
-title: 如何开始一个模块化可扩展的Web App
-id: 180
 tags:
   - javascript
   - requireJS
   - 前端
+author: AlloVince
+title: 如何开始一个模块化可扩展的Web App
 ---
 
 虽然从没有认为自己是一个前端开发者，但不知不觉中也积累下了一些前端开发的经验。正巧之前碰到一道面试题，于是就顺便梳理了一下自己关于Web App的一些思路并整理为本文。
@@ -460,4 +461,5 @@ var order = new foodOrder({
 ```
 
 将页面的UI元素以及配置项目抽象出来，在实际构造对象时则可以通过入口参数复写，可以分离整个项目的逻辑与UI，使处理的方式更加灵活。
+
 

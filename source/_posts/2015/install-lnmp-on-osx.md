@@ -1,14 +1,15 @@
 ---
 slug: install-lnmp-on-osx
+published: true
 date: '2015-01-21 01:55:48'
-title: Mac下安装LNMP(Nginx+PHP5.6)环境
-id: 193
 tags:
   - php
   - nginx
   - osx
   - homebrew
   - mysql
+author: AlloVince
+title: Mac下安装LNMP(Nginx+PHP5.6)环境
 ---
 
 ## 安装Homebrew
@@ -328,5 +329,6 @@ alias memcached.restart='memcached.stop && memcached.start'
 ## 参考
 
 - [全新安装Mac OSX 开发者环境](http://segmentfault.com/blog/fish/1190000000606752)
+
 
 

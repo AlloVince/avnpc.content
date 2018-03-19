@@ -1,13 +1,14 @@
 ---
 slug: single-file-upload-component-by-jquery-file-upload
+published: true
 date: '2012-10-19 23:04:34'
-title: 定制jQuery File Upload为微博式单文件上传
-id: 162
 tags:
   - jQuery
   - 上传
   - jQuery File Upload
   - 插件
+author: AlloVince
+title: 定制jQuery File Upload为微博式单文件上传
 ---
 
 [jQuery File Upload](https://github.com/blueimp/jQuery-File-Upload)是一个非常优秀的上传组件，主要使用了[XHR](http://en.wikipedia.org/wiki/XMLHttpRequest)作为上传方式，并且利用了相当多的现代浏览器功能，所以可以实现诸如批量上传、超大文件上传、图片预览、拖拽上传、上传进度显示、跨域上传等功能。

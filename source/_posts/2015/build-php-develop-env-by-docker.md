@@ -1,11 +1,12 @@
 ---
 slug: build-php-develop-env-by-docker
+published: true
 date: '2015-06-30 17:19:40'
-title: Docker在PHP项目开发环境中的应用
-id: 196
 tags:
   - php
   - Docker
+author: AlloVince
+title: Docker在PHP项目开发环境中的应用
 ---
 
 环境部署是所有团队都必须面对的问题，随着系统越来越大，依赖的服务也越来越多，比如我们目前的一个项目就会用到：
@@ -351,5 +352,6 @@ redis:
 
 
 本文首发于我在[卧龙阁](http://www.wolonge.com/zhuanlan/detail/117441)的专栏[PHP与创业的那些事儿](http://www.wolonge.com/zhuanlan/user/1002562)，转载请保留。
+
 
 

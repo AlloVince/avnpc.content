@@ -1,12 +1,13 @@
 ---
 slug: writing-best-documentation-by-sphinx-github-readthedocs
+published: true
 date: '2012-12-05 22:53:17'
-title: 写最好的文档：Sphinx + Read the Docs
-id: 170
 tags:
   - Python
   - Sphinx
   - Read the Docs
+author: AlloVince
+title: 写最好的文档：Sphinx + Read the Docs
 ---
 
 写文档一向是个苦差事，但只有写出好的文档，才能有资格霸气十足的对别人淡淡道出:RTFD(Read the Fuck Document)。为了这一崇高目标，经过一些比较和调查，最终锁定[Sphinx + ReadTheDocs作为文档写作工具](http://avnpc.com/pages/writing-best-documentation-by-sphinx-github-readthedocs)，以下逐一道来：

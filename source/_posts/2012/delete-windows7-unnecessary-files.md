@@ -1,10 +1,11 @@
 ---
 slug: delete-windows7-unnecessary-files
+published: true
 date: '2012-10-22 12:24:40'
-title: 记录Windows7减肥瘦身过程
-id: 163
 tags:
   - Windows7
+author: AlloVince
+title: 记录Windows7减肥瘦身过程
 ---
 
 周末重装了一次系统，在我的Thinkpad T420s下 Window7 Professional + SP1补丁 + Thinkpad驱动更新至最新。还没有装任何软件，磁盘占用已经30G+了。简直是叔叔可忍婶婶也不能忍啊！

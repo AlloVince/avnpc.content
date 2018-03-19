@@ -1,9 +1,10 @@
 ---
 slug: uupdate
+published: true
 date: '2007-03-30 00:31:00'
-title: 站、站住，更、更新……
-id: 70
 tags: []
+author: AlloVince
+title: 站、站住，更、更新……
 ---
 
 Tech preview:

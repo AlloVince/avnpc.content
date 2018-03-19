@@ -1,12 +1,13 @@
 ---
 slug: vim-of-allovince
+published: true
 date: '2012-06-15 14:20:17'
-title: Vim of AlloVince
-id: 149
 tags:
   - Vim
   - Git
   - Vundle
+author: AlloVince
+title: Vim of AlloVince
 ---
 
 工欲善其事，必先利其器。Vim就是这样一把利器，而只有通过不断的锤炼Vim才可以得到更快的开发效率。
