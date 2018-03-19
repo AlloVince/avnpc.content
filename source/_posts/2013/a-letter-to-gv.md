@@ -1,9 +1,10 @@
 ---
 slug: a-letter-to-gv
+published: true
 date: '2013-01-22 00:48:01'
-title: 向工信部投诉Github无法访问信件全文
-id: 174
 tags: []
+author: AlloVince
+title: 向工信部投诉Github无法访问信件全文
 ---
 
 我知道不会有作用，不过还是忍不住[在这个页面](http://gzly.miit.gov.cn:8080/consult/index3.jsp?category=7)写了一些语句，即便是徒劳的，也算是自言自语一下吧。

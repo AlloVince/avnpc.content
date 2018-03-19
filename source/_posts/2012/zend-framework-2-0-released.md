@@ -1,11 +1,12 @@
 ---
 slug: zend-framework-2-0-released
+published: true
 date: '2012-09-06 18:23:55'
-title: Zend Framework 2.0 (zf2) 正式版发布及新功能介绍
-id: 158
 tags:
   - ZF2
   - Zend Framework 2
+author: AlloVince
+title: Zend Framework 2.0 (zf2) 正式版发布及新功能介绍
 ---
 
 著名php开源框架Zend Framework经历了长达数年的开发，终于在2012年9月5日正式发布了[2.0版本](http://avnpc.com/pages/zend-framework-2-0-released)，下简称ZF2。时隔Zend 1.0版本的发布已经有5年之久。 

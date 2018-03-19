@@ -1,9 +1,10 @@
 ---
 slug: forward-looking-of-eva-engine
+published: true
 date: '2012-04-28 11:45:48'
-title: EvaEngine前瞻
-id: 136
 tags: []
+author: AlloVince
+title: EvaEngine前瞻
 ---
 
 EvaEngine即将启动，目前只能将尚存于想象中的EvaEngine描述一下，权当YY。等项目完成后再两相对照，也是一番乐事。

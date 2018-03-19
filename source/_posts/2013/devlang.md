@@ -1,9 +1,10 @@
 ---
 slug: devlang
+published: true
 date: '2013-08-24 18:15:38'
-title: 《自制编程语言》相关资料
-id: 189
 tags: []
+author: AlloVince
+title: 《自制编程语言》相关资料
 ---
 
 ![自制编程语言](http://ec4.images-amazon.com/images/I/61JwHQaIoZL._SL500_AA300_.jpg)
@@ -306,5 +307,6 @@ __原日文网页版“[配列とポインタの完全制覇](http://kmaebashi.c
 - 鬼车的安装：[鬼車のインストール](http://kmaebashi.com/programmer/devlang/book/oniguruma.html)
 - Hoge一词的由来：[ほげを考えるページ](http://kmaebashi.com/programmer/hoge.html)
 -  《征服C指针》Web版：[配列とポインタの完全制覇](http://kmaebashi.com/programmer/pointer.html)
+
 
 

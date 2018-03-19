@@ -1,13 +1,14 @@
 ---
 slug: zf2-change-layout-for-module-by-eventmanager
+published: true
 date: '2012-07-26 21:01:02'
-title: ZF2小TIP：使用事件驱动为模块快速设置模板
-id: 154
 tags:
   - ZF2
   - Zend Framework 2
   - EventManager
   - 事件驱动
+author: AlloVince
+title: ZF2小TIP：使用事件驱动为模块快速设置模板
 ---
 
 在ZF1中，对一部分页面设置一个不同的Layout可能需要在每一个Controller中单独设置。在ZF2中，事件驱动的支持让Layout的设置变得非常灵活。

@@ -1,14 +1,15 @@
 ---
 slug: run-background-task-by-php-resque
+published: true
 date: '2013-01-24 23:48:40'
-title: PHP的轻量消息队列php-resque使用说明
-id: 175
 tags:
   - php
   - resque
   - queue
   - Redis
   - php-resque
+author: AlloVince
+title: PHP的轻量消息队列php-resque使用说明
 ---
 
 ## 消息队列处理后台任务带来的问题
@@ -233,3 +234,4 @@ Status of b1f01038e5e833d24b46271a0e31f6d6 is: 4
 
 至此我们已经成功的完成了一个最简单的Resque实例的全部演示，更复杂的情况以及遗留的问题会在下一次的日志中说明。
     
+

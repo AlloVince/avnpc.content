@@ -1,13 +1,14 @@
 ---
 slug: zf2-mail-advanced-usage-for-template-multi-attachment
+published: true
 date: '2012-11-21 14:52:29'
-title: Zend\Mail进阶：在ZF2的邮件中使用模板、多个附件以及用DI整合
-id: 168
 tags:
   - ZF2
   - Zend Framework 2
   - Email
   - DI
+author: AlloVince
+title: Zend\Mail进阶：在ZF2的邮件中使用模板、多个附件以及用DI整合
 ---
 
 在解决了基础的[ZF2使用DI操作Zend\Mail发送邮件](http://avnpc.com/pages/zend-mail-usage-by-di-in-zf2)之后，可能我们关注的问题会转移到更加实际的方面，包括：

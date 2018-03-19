@@ -1,11 +1,12 @@
 ---
 slug: import-export-drupal-data-by-restful-service
+published: true
 date: '2013-07-19 15:41:39'
-title: 实战Drupal之通过RESTFul Service实现Drupal数据的导入与导出
-id: 185
 tags:
   - Drupal
   - RESTFul
+author: AlloVince
+title: 实战Drupal之通过RESTFul Service实现Drupal数据的导入与导出
 ---
 
 如果有第三方系统需要整合Drupal，或者用Drupal来整合其他系统，难以避免的会有数据的导入与导出。我们一般有两种实现方法：
@@ -277,4 +278,5 @@ Requests::post('http://avnpc.com/apiv1/node', array(
 ## 参考
 
 - [Services 3 - POST node.create with custom fields](https://drupal.org/node/1354202)
+
 

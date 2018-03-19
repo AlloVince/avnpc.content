@@ -1,12 +1,13 @@
 ---
 slug: evacloudimage
+published: true
 date: '2012-08-09 16:57:09'
-title: EvaCloudImage - 基于URL生成缩略图的轻量级PHP库
-id: 155
 tags:
   - EvaEngine
   - Thumbnail
   - GD
+author: AlloVince
+title: EvaCloudImage - 基于URL生成缩略图的轻量级PHP库
 ---
 
 EvaCloudImage已经更名为[EvaThumber](http://avnpc.com/pages/evathumber)，并且做了完全的重构，加入更多新功能

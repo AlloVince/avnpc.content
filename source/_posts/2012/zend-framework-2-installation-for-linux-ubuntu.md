@@ -1,14 +1,15 @@
 ---
 slug: zend-framework-2-installation-for-linux-ubuntu
+published: true
 date: '2012-10-10 10:46:16'
-title: ZF2入门：Ubuntu/Linux环境下从零开始Zend Framework 2.0 (ZF2)环境搭建
-id: 160
 tags:
   - ZF2
   - Zend Framework 2
   - nginx
   - Git
   - Ubuntu
+author: AlloVince
+title: ZF2入门：Ubuntu/Linux环境下从零开始Zend Framework 2.0 (ZF2)环境搭建
 ---
 
 紧接上一篇[ZF2入门：Windows环境下从零开始Zend Framework 2.0 (ZF2)环境搭建](http://avnpc.com/pages/zend-framework-2-installation-for-windows)，本次是[Linux/Ubuntu环境下从零开始搭建系统并运行一个ZF2项目的全过程](http://avnpc.com/pages/zend-framework-2-installation-for-windows)。

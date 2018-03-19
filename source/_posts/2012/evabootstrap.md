@@ -1,12 +1,13 @@
 ---
 slug: evabootstrap
+published: true
 date: '2012-11-12 22:29:26'
-title: EvaBootstrap - 无侵入的TwitterBootstrap定制版
-id: 166
 tags:
   - EvaEngine
   - Bootstrap
   - Project
+author: AlloVince
+title: EvaBootstrap - 无侵入的TwitterBootstrap定制版
 ---
 
 [EvaBootstrap](https://github.com/AlloVince/EvaBootstrap)是一个基于[Twitter Bootstrap](http://twitter.github.com/bootstrap/)（下简称TB）的修改定制版，主要解决了TB的侵入性问题，能使TB更好的与其他前端项目并存。简言之，EvaBootstrap提供TB的所有特性，并且不会修改你的CSS默认样式。

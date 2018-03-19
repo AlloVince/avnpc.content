@@ -1,13 +1,14 @@
 ---
 slug: tree-routing-example-in-zf2
+published: true
 date: '2012-11-05 18:45:40'
-title: ZF2多级树形路由Route配置实例
-id: 165
 tags:
   - ZF2
   - Zend Framework 2
   - Router
   - 路由
+author: AlloVince
+title: ZF2多级树形路由Route配置实例
 ---
 
 Zend Framework 2的路由设置非常灵活，每一个路由都可以呈现树形结构，同时还可以为一个路由及其子路由设置不同的Controller与Action。在此之上又提供了非常丰富的路由种类，查阅[ZF2路由相关文档](http://framework.zend.com/manual/2.0/en/modules/zend.mvc.routing.html)可以了解到路由的常用方法。

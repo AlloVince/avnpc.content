@@ -1,10 +1,11 @@
 ---
 slug: eva-engine
+published: true
 date: '2012-05-14 17:02:35'
-title: EvaEngine Project
-id: 143
 tags:
   - EvaEngine
+author: AlloVince
+title: EvaEngine Project
 ---
 
 什么是EvaEngine

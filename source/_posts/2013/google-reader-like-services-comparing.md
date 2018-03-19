@@ -1,11 +1,12 @@
 ---
 slug: google-reader-like-services-comparing
+published: true
 date: '2013-06-28 13:12:32'
-title: Google Reader替代服务简单横向评测
-id: 183
 tags:
   - Google Reader
   - RSS
+author: AlloVince
+title: Google Reader替代服务简单横向评测
 ---
 
 距离Google Reader关闭只有几天时间了，自从Google铁了心要关闭这样一个优秀的产品后，我对现在的Google也失望了很多。Google的基因和Facebook完全不一样，这种处处Google+的强制营销手段反而招人反感。
@@ -136,3 +137,4 @@ InoReader和The Old Reader非常相似，令我印象深刻的是他对于冷门
 在被Google Reader惯坏了之后，才发现找一个替代服务竟然是如此之难，你总会不自觉的和Google强大的服务器群集，快速的抓取速度，精准的分类搜索，易用的API去比较。而比较的结果总是对Google的又一次失望。
 
 作为个人的选择，我最终没有迁移到某一个服务，而是决定将数据分别导出至[The Old Reader](http://theoldreader.com/)、[InoReader](https://www.inoreader.com/)、[鲜果阅读器](http://xianguo.com/reader)。一边深入使用做进一步选择，一边继续对新进的Reader服务进行观望，比如[AOL Reader](http://reader.aol.com/)等，也许真的有一天RSS这种传统的聚合阅读会被淘汰，但还不是今天。
+

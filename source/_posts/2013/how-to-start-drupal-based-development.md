@@ -1,10 +1,11 @@
 ---
 slug: how-to-start-drupal-based-development
+published: true
 date: '2013-05-10 20:18:01'
-title: 实战Drupal之总览篇
-id: 182
 tags:
   - Drupal
+author: AlloVince
+title: 实战Drupal之总览篇
 ---
 
 因为工作的原因，需要基于Drupal做开发，因此不得不从零开始系统的了解Drupal以及尝试完成以下的一系列工作，包括：
@@ -99,5 +100,6 @@ drupal_theme_rebuild();
 但如果有时候发生了更恶劣的情况，比如安装了某些模块，可能会报出上述错误并且连后台都无法进入。
 
 那么此时可以去数据库查看watchdog数据表，variables字段保存了错误信息，可以用编辑器打开查看错误明细（这需要启用Database logging模块）。
+
 
 

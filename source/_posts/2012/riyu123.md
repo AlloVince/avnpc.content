@@ -1,11 +1,12 @@
 ---
 slug: riyu123
+published: true
 date: '2012-05-07 23:06:20'
-title: 日语123 - 整合假名、罗马字标注、日语发音、日中词典的日语学习工具
-id: 139
 tags:
   - 日语
   - Project
+author: AlloVince
+title: 日语123 - 整合假名、罗马字标注、日语发音、日中词典的日语学习工具
 ---
 
 新项目上线测试了

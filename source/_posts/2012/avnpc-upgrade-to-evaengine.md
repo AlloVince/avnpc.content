@@ -1,9 +1,10 @@
 ---
 slug: avnpc-upgrade-to-evaengine
+published: true
 date: '2012-08-25 17:36:54'
-title: AVNPC迁移至EvaEngine
-id: 157
 tags: []
+author: AlloVince
+title: AVNPC迁移至EvaEngine
 ---
 
 [EvaEngine](http://avnpc.com/pages/eva-engine)虽然还处于原始的构架阶段，但并不妨碍用她做出简单的产品。最好开刀的当然是自己的Blog了。

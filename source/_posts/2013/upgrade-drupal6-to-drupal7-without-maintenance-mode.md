@@ -1,10 +1,11 @@
 ---
 slug: upgrade-drupal6-to-drupal7-without-maintenance-mode
+published: true
 date: '2013-07-01 16:17:13'
-title: 实战Drupal之Drupal6到Drupal7的免停机平滑升级
-id: 184
 tags:
   - Drupal
+author: AlloVince
+title: 实战Drupal之Drupal6到Drupal7的免停机平滑升级
 ---
 
 近期的工作中，Drupal的升级与数据迁移占了很大比重。按照[Drupal官方的升级指南](https://drupal.org/documentation/upgrade/6/7)，建议停站并进入维护模式，但是由于手头的数据量非常大，并且伴随有数据导入等过程，直接在服务器上操作未免存在风险，因此通过一台过渡服务器的方式实现了更加稳妥的[Drupal6到Drupal7的平滑升级](http://avnpc.com/pages/upgrade-drupal6-to-drupal7-without-maintenance-mode)，特记录于此。
@@ -107,3 +108,4 @@ http://drupal.local/update.php
 几乎和开始的操作一样，不再赘述。
 
 最后将DNS解析切换至新服务器IP，就完成了一次Drupal无停机的平滑升级。
+

@@ -1,14 +1,15 @@
 ---
 slug: controller-init-predispath-postdispath-in-zf2
+published: true
 date: '2012-10-29 22:32:18'
-title: 在ZF2中实现Zend Framework的Controller init/preDispatch/postDispatch方法
-id: 164
 tags:
   - ZF2
   - Zend Framework 2
   - EventManager
   - 事件驱动
   - MVC
+author: AlloVince
+title: 在ZF2中实现Zend Framework的Controller init/preDispatch/postDispatch方法
 ---
 
 在Zend Framework 1中，Controller里约定了一些默认的方法来实现钩子，包括
