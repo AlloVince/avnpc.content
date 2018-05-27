@@ -1,5 +1,4 @@
 ---
-slug: start-a-modular-extensible-webapp
 published: true
 date: '2013-04-04 19:44:47'
 tags:

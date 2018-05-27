@@ -1,5 +1,4 @@
 ---
-slug: photoshop-layer-blending-algorithm
 published: true
 date: '2013-04-18 20:57:20'
 tags:

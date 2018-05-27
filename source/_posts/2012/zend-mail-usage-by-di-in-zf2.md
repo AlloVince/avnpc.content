@@ -1,5 +1,4 @@
 ---
-slug: zend-mail-usage-by-di-in-zf2
 published: true
 date: '2012-11-14 23:57:50'
 tags:

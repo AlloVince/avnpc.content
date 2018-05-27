@@ -1,5 +1,4 @@
 ---
-slug: c-pointer
 published: true
 date: '2013-08-30 14:53:57'
 tags: []

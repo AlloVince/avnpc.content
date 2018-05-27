@@ -1,5 +1,4 @@
 ---
-slug: zf2-change-layout-for-module-by-eventmanager
 published: true
 date: '2012-07-26 21:01:02'
 tags:

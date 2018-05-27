@@ -1,5 +1,4 @@
 ---
-slug: profiler-php-performance-online-by-xhprof
 published: true
 date: '2014-12-26 23:40:08'
 tags:

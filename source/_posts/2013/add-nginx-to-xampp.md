@@ -1,5 +1,4 @@
 ---
-slug: add-nginx-to-xampp
 published: true
 date: '2013-01-01 00:03:21'
 tags:

@@ -1,5 +1,4 @@
 ---
-slug: riyu123
 published: true
 date: '2012-05-07 23:06:20'
 tags:

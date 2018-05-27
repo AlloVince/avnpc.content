@@ -1,5 +1,4 @@
 ---
-slug: vim-of-allovince
 published: true
 date: '2012-06-15 14:20:17'
 tags:

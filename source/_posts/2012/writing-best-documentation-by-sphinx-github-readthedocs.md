@@ -1,5 +1,4 @@
 ---
-slug: writing-best-documentation-by-sphinx-github-readthedocs
 published: true
 date: '2012-12-05 22:53:17'
 tags:

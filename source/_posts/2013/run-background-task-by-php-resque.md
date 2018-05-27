@@ -1,5 +1,4 @@
 ---
-slug: run-background-task-by-php-resque
 published: true
 date: '2013-01-24 23:48:40'
 tags:

@@ -1,5 +1,4 @@
 ---
-slug: evathumber
 published: true
 date: '2013-03-04 14:49:42'
 tags:

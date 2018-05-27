@@ -1,5 +1,4 @@
 ---
-slug: google-reader-like-services-comparing
 published: true
 date: '2013-06-28 13:12:32'
 tags:

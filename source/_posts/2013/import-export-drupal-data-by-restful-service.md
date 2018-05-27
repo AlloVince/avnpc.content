@@ -1,5 +1,4 @@
 ---
-slug: import-export-drupal-data-by-restful-service
 published: true
 date: '2013-07-19 15:41:39'
 tags:

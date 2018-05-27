@@ -1,5 +1,4 @@
 ---
-slug: howto-find-best-wheel-for-programming
 published: true
 date: '2013-01-28 15:59:46'
 tags: []

@@ -1,5 +1,4 @@
 ---
-slug: upgrade-drupal6-to-drupal7-without-maintenance-mode
 published: true
 date: '2013-07-01 16:17:13'
 tags:

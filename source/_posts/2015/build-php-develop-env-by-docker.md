@@ -1,5 +1,4 @@
 ---
-slug: build-php-develop-env-by-docker
 published: true
 date: '2015-06-30 17:19:40'
 tags:

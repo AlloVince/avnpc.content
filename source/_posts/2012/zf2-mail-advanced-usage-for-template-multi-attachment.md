@@ -1,5 +1,4 @@
 ---
-slug: zf2-mail-advanced-usage-for-template-multi-attachment
 published: true
 date: '2012-11-21 14:52:29'
 tags:

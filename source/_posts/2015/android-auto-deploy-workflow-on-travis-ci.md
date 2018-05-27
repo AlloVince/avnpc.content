@@ -1,5 +1,4 @@
 ---
-slug: android-auto-deploy-workflow-on-travis-ci
 published: true
 date: '2015-12-15 00:47:35'
 tags:

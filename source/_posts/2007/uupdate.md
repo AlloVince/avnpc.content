@@ -1,5 +1,4 @@
 ---
-slug: uupdate
 published: true
 date: '2007-03-30 00:31:00'
 tags: []

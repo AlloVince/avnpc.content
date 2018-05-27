@@ -1,5 +1,4 @@
 ---
-slug: single-file-upload-component-by-jquery-file-upload
 published: true
 date: '2012-10-19 23:04:34'
 tags:

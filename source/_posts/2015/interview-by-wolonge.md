@@ -1,5 +1,4 @@
 ---
-slug: interview-by-wolonge
 published: true
 date: '2015-06-04 22:11:13'
 tags: []

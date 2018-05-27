@@ -1,5 +1,4 @@
 ---
-slug: mysql-replication-to-redis-by-gearman
 published: true
 date: '2013-07-30 17:30:41'
 tags:

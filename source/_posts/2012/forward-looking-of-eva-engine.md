@@ -1,5 +1,4 @@
 ---
-slug: forward-looking-of-eva-engine
 published: true
 date: '2012-04-28 11:45:48'
 tags: []

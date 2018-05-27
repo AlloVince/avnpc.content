@@ -1,5 +1,4 @@
 ---
-slug: zend-framework-2-installation-for-linux-ubuntu
 published: true
 date: '2012-10-10 10:46:16'
 tags:

@@ -1,5 +1,4 @@
 ---
-slug: advanced-database-select-usage-in-zf2
 published: true
 date: '2012-06-08 17:07:27'
 tags:

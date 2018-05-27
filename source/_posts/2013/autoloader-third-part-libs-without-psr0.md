@@ -1,5 +1,4 @@
 ---
-slug: autoloader-third-part-libs-without-psr0
 published: true
 date: '2013-01-11 15:56:07'
 tags:

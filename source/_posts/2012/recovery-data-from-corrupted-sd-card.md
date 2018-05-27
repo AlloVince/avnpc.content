@@ -1,5 +1,4 @@
 ---
-slug: recovery-data-from-corrupted-sd-card
 published: true
 date: '2012-10-16 23:16:28'
 tags: []

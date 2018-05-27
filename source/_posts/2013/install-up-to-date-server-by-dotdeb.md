@@ -1,5 +1,4 @@
 ---
-slug: install-up-to-date-server-by-dotdeb
 published: true
 date: '2013-08-19 14:13:00'
 tags:

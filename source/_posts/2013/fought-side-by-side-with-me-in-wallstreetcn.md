@@ -1,5 +1,4 @@
 ---
-slug: fought-side-by-side-with-me-in-wallstreetcn
 published: true
 date: '2013-08-12 08:19:40'
 tags: []

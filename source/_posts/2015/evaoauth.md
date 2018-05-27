@@ -1,5 +1,4 @@
 ---
-slug: evaoauth
 published: true
 date: '2015-05-01 17:21:07'
 tags:

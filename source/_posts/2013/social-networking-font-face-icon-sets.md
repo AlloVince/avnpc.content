@@ -1,5 +1,4 @@
 ---
-slug: social-networking-font-face-icon-sets
 published: true
 date: '2013-01-14 15:25:12'
 tags:

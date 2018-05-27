@@ -1,5 +1,4 @@
 ---
-slug: eva-engine
 published: true
 date: '2012-05-14 17:02:35'
 tags:

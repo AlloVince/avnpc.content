@@ -1,5 +1,4 @@
 ---
-slug: avnpc-upgrade-to-evaengine
 published: true
 date: '2012-08-25 17:36:54'
 tags: []

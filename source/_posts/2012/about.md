@@ -1,5 +1,4 @@
 ---
-slug: about
 published: true
 date: '2012-04-26 11:35:01'
 tags: []

@@ -1,5 +1,4 @@
 ---
-slug: controller-init-predispath-postdispath-in-zf2
 published: true
 date: '2012-10-29 22:32:18'
 tags:

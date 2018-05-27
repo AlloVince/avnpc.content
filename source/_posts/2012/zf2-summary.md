@@ -1,5 +1,4 @@
 ---
-slug: zf2-summary
 published: true
 date: '2012-05-01 00:02:40'
 tags:

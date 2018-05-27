@@ -1,5 +1,4 @@
 ---
-slug: zend-framework-2-0-released
 published: true
 date: '2012-09-06 18:23:55'
 tags:

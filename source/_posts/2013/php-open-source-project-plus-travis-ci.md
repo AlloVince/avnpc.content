@@ -1,5 +1,4 @@
 ---
-slug: php-open-source-project-plus-travis-ci
 published: true
 date: '2013-03-06 21:32:47'
 tags:

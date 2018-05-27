@@ -1,5 +1,4 @@
 ---
-slug: unite-your-life-by-rss
 published: true
 date: '2012-06-04 13:57:41'
 tags: []

@@ -1,5 +1,4 @@
 ---
-slug: delete-windows7-unnecessary-files
 published: true
 date: '2012-10-22 12:24:40'
 tags:

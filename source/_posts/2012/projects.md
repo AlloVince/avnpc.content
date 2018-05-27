@@ -1,5 +1,4 @@
 ---
-slug: projects
 published: true
 date: '2012-04-26 11:53:35'
 tags: []

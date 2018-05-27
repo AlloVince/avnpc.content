@@ -1,5 +1,4 @@
 ---
-slug: drones_on
 published: true
 date: '2008-07-31 13:41:19'
 tags:

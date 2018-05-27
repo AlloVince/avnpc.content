@@ -1,5 +1,4 @@
 ---
-slug: a-letter-to-gv
 published: true
 date: '2013-01-22 00:48:01'
 tags: []

@@ -1,5 +1,4 @@
 ---
-slug: tree-routing-example-in-zf2
 published: true
 date: '2012-11-05 18:45:40'
 tags:

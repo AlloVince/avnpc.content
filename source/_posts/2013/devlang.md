@@ -1,5 +1,4 @@
 ---
-slug: devlang
 published: true
 date: '2013-08-24 18:15:38'
 tags: []

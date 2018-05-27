@@ -1,5 +1,4 @@
 ---
-slug: evabootstrap
 published: true
 date: '2012-11-12 22:29:26'
 tags:

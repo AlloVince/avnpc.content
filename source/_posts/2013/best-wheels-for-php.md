@@ -1,5 +1,4 @@
 ---
-slug: best-wheels-for-php
 published: true
 date: '2013-02-04 21:08:16'
 tags:

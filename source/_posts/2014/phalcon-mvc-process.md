@@ -1,5 +1,4 @@
 ---
-slug: phalcon-mvc-process
 published: true
 date: '2014-05-30 23:29:41'
 tags:

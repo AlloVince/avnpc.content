@@ -1,5 +1,4 @@
 ---
-slug: how-to-start-drupal-based-development
 published: true
 date: '2013-05-10 20:18:01'
 tags:

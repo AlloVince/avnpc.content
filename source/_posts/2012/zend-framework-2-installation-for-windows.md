@@ -1,5 +1,4 @@
 ---
-slug: zend-framework-2-installation-for-windows
 published: true
 date: '2012-10-06 17:16:05'
 tags:

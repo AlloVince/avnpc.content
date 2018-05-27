@@ -1,5 +1,4 @@
 ---
-slug: evacloudimage
 published: true
 date: '2012-08-09 16:57:09'
 tags:

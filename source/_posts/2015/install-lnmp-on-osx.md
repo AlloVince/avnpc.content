@@ -1,5 +1,4 @@
 ---
-slug: install-lnmp-on-osx
 published: true
 date: '2015-01-21 01:55:48'
 tags:
