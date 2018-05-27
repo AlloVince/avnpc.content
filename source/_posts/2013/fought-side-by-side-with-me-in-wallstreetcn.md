@@ -6,13 +6,9 @@ author: AlloVince
 title: 招聘PHP程序员与我一起战斗
 ---
 
-2015最新更新
+我目前已经不在华尔街见闻，如想与我一起工作，仍然欢迎投递简历到我的工作邮箱[xuqian@bmqb.com](xuqian@bmqb.com)
 
-随着业务高速发展，本文内容已经过期，目前的招聘职位和薪酬统一以网站的招聘页面为准：
-
-[http://wallstreetcn.com/joinus](http://wallstreetcn.com/joinus)
-
-从Blog投递的朋友还是可以通过我的邮箱直投： [xuqian@wallstreetcn.com](xuqian@wallstreetcn.com)
+以下为原文存档
 
 -----
 

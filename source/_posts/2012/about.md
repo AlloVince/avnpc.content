@@ -6,42 +6,59 @@ author: AlloVince
 title: 关于我
 ---
 
-徐谦（AlloVince）， 又名Allo / 某A / AV / 艾鲁， 网名源自“艾鲁维斯”。
+徐谦 (AlloVince)， 又名 Allo / 某A / AV / 艾鲁， 网名源自“艾鲁维斯”。
 
 西历1984年生人，已婚，经历过80后的典型童年、
-[做过宅男](http://avnpc.com/pages/OX)、
-[打过游戏](http://avnpc.com/pages/Farland_Series)、
-[看过YY小说](http://avnpc.com/pages/memorialize_of_chinese_net_novels)、
-[搞过ACG](http://avnpc.com/pages/Memories_Off_2nd_ost_review)、
-[听过同人音乐](http://avnpc.com/pages/shikata_akiko)、
-[出过国](http://avnpc.com/pages/akihabara)、
-[创过业](http://avnpc.com/pages/projects)。
+[做过宅男](https://avnpc.com/pages/OX)、
+[打过游戏](https://avnpc.com/pages/Farland_Series)、
+[看过YY小说](https://avnpc.com/pages/memorialize_of_chinese_net_novels)、
+[搞过ACG](https://avnpc.com/pages/Memories_Off_2nd_ost_review)、
+[听过同人音乐](https://avnpc.com/pages/shikata_akiko)、
+[出过国](https://avnpc.com/pages/akihabara)、
+[创过业](https://avnpc.com/pages/projects)。
 
-八年Web开发：两年于日本工作，三年于家乡兰州联合创办公司失败，后入职[华尔街见闻](http://wallstreetcn.com/)继续创业。目前仍然以互联网做为谋生的行业，仍然在不断的尝试作出能改变人们生活的产品，仍然在努力让自己能有时间做爱做的事。
+07年毕业后赴日本工作两年，主要负责某(大法)公司社内ERP系统，并在职场一线亲历了07-08年金融危机；
 
-对任何技术不追捧，不贬低。关注PHP、互联网项目、Web快速开发、前端、W3C标准等。
+09-12年于家乡兰州联合创办公司失败，但有幸认识了妻子；
 
-这个Blog从内容到设计、开发都是完全原创的，Blog的源代码[在此](https://github.com/AlloVince/eva-engine/tree/avnpc)。
+13-15年担任[华尔街见闻](https://wallstreetcn.com/)技术负责人开始第二次创业，帮助见闻从天使轮成长到B轮融资，技术团队从自己1人到离职前近50人。
 
-* * * * *
+16年至今负责[贝米钱包](https://www.bmqb.com/)技术，希望能在互联网金融前线让技术发挥更大价值。
 
 ## 出版作品
 
 - [自制编程语言](http://book.douban.com/subject/25735333/) 2013
 - [游戏开发的数学和物理](http://book.douban.com/subject/26274169/) 2014
 
-* * * * *
-
 ## 开源项目
 
-- [EveEngine](http://avnpc.com/pages/eva-engine) 基于Phalcon框架的PHP快速开发引擎，同时也是华尔街见闻所有项目的底层，功能完备，性能优异，经实际项目考验，能以个位数台VPS支持数亿级别日请求并保持较低负载。
+- [EveEngine.js](https://github.com/EvaEngine/EvaEngine.js) Node.js的微服务开发引擎，帮助Node.js更快更规范的开始后端项目,也是贝米钱包很多业务的底层。
+- [EveEngine](http://avnpc.com/pages/eva-engine) 基于Phalcon框架的PHP快速开发引擎，同时也是华尔街见闻在职期间所有项目的底层，功能完备，性能优异，经实际项目考验，能以个位数台VPS支持数亿级别日请求并保持较低负载。
 - [EvaOAuth](http://avnpc.com/pages/evaoauth) 统一接口设计的OAuth Client，可以用相同的代码支持OAuth1.0/OAuth2.0网站，快速集成第三方用户体系。
 - [EvaThumber](http://avnpc.com/pages/evathumber) 基于URL对图片进行缩放、水印、剪裁等常规操作。
 
-* * * * *
+## 关于 avnpc.com
+
+avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内容都托管在Github, 使用的主要技术包括：
+
+- [API](https://github.com/AlloVince/avnpc.js)
+  - [EveEngine.js](https://github.com/EvaEngine/EvaEngine.js) Node.js的微服务开发引擎
+  - [GraphQL-Boot](https://github.com/AlloVince/graphql-boot) 可能是GraphQL在Node.js下的最佳实践
+- [FrontEnd](https://github.com/AlloVince/avnpc.front)
+  - [Next.js](https://github.com/zeit/next.js) 服务端渲染(SSR)框架
+  - [markdown-it](https://github.com/markdown-it/markdown-it) 可能是JS最好的Markdown渲染
+  - [mermaid](https://mermaidjs.github.io/) 很方便的代码->图形的转换工具
+  - [Ant Design](https://ant.design/) 阿里出品的React为主的UI解决方案
+  - [gitalk](https://github.com/gitalk/gitalk) 使用Github Issue作为评论
+- CI/Deployment
+  - [semantic-release](https://github.com/semantic-release/semantic-release) 语义化发布, 适用于npm生态
+  - [Travis CI](https://travis-ci.org/) CI及自动构建打包发布
+  - [Docker Hub](https://hub.docker.com/) 构建后的Docker镜像存储于此
+  - [Docker Compose](https://docs.docker.com/compose/) Docker编排工具
+  - [Caddy](https://caddyserver.com/) 能自动更新ssl证书的Web服务器
+- [Content](https://github.com/AlloVince/avnpc.content)
 
 ## 关于提问
-
 
 老实说能在Blog上提问的朋友是出于信任我，我首先表示感谢，但事实上很多朋友并不懂得如何提问，主要症状包括：
 
@@ -58,7 +75,7 @@ title: 关于我
     - [Allo@StackOverflow](http://stackoverflow.com/users/1445934/allovince)
     - [Allo@SegmentFault](http://segmentfault.com/u/allovince)
 
-* * * * *
+## 联系方式
 
 - 联系我： i@av2.me
 - 关注我：
