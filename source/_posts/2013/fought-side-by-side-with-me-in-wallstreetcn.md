@@ -6,7 +6,7 @@ author: AlloVince
 title: 招聘PHP程序员与我一起战斗
 ---
 
-我目前已经不在华尔街见闻，如想与我一起工作，仍然欢迎投递简历到我的工作邮箱[xuqian@bmqb.com](xuqian@bmqb.com)
+我目前已经不在华尔街见闻，现在公司的招聘信息请参考[这里](https://www.bmqb.com/a/jobs)。如想与我一起工作，仍然欢迎投递简历到我的工作邮箱[xuqian@bmqb.com](xuqian@bmqb.com)
 
 以下为原文存档
 
