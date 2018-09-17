@@ -40,6 +40,7 @@ http://evathumber.avnpc.com/thumb/d/demo,c_fill,f_gray,h_100,w_100.png
 
 ```
 http://evathumber.avnpc.com/thumb/watermark/demo,q_60,r_180,w_150.jpg
+```
 
 ![EvaThumber Image Demo](http://evathumber.avnpc.com/thumb/watermark/demo,q_60,r_180,w_150.jpg)
 
@@ -901,6 +902,3 @@ EvaThumber 是 [EvaEngine](https://github.com/AlloVince/eva-engine)项目的一�
 ## 旧版本
 
 EvaThumber由[EvaCloudImage](http://avnpc.com/pages/evacloudimage)更名而来，基本兼容旧版的API并作了完全的重构。旧版本代码[在此](https://github.com/AlloVince/EvaThumber/tree/42941a86af2b5fe92a5a3376010cfad607cce555)
-
-
-

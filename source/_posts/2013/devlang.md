@@ -20,7 +20,7 @@ title: 《自制编程语言》相关资料
 - [互动出版社](http://product.china-pub.com/3768792)
 
 
-## 源代码下载 {#download}
+## 源代码下载 
 
 作者提供的源代码中，错误信息全部为日文，给许多读者的学习带来了一些不便。
 
@@ -71,7 +71,7 @@ Linux运行目录下的make.sh，Windows运行目录下的make.bat即可。
 对于diksam_book_0_3及diksam_book_0_4，解压后进入文件夹下的main目录，运行make/gmake即可。
 
 
-## MinGW, bison, flex安装说明  {#installation}
+## MinGW, bison, flex安装说明
 
 下文介绍的所有安装文件均以2013/8/23的最新版本为准。
 
@@ -206,7 +206,7 @@ flex最新版可以在下面的页面下载：
 一般选择Complete package, except sources一栏的下载即可，下载后为exe格式安装文件，一路next安装后即可运行。
 
 
-## 鬼车的安装 {#oniguruma}
+## 鬼车的安装 
 
 鬼车是一个正则表达式程序库，官方主页为：
 
@@ -260,7 +260,7 @@ make install
 ```
 
 
-## Hoge一词的由来  {#hoge}
+## Hoge一词的由来
 
 在《自制编程语言》一书中，示例程序中经常使用`hoge`作为无意义字符串输出，而在英语程序则惯用`foobar`。
 
@@ -288,7 +288,7 @@ Hoge是日本自古以来就口口相传的词汇，在为难、困惑、或者�
 - 新潟县的方言中一直有Hogeru的说法
 
 
-## 《征服C指针》Web版   {#pointer}
+## 《征服C指针》Web版
 
 
 请点击查看[《征服C指针》Web版](http://avnpc.com/pages/c-pointer)

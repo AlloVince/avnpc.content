@@ -16,7 +16,7 @@ title: Zend\Mail进阶：在ZF2的邮件中使用模板、多个附件以及用D
 - [如何在ZF2中发送带有附件(Attachment)的邮件](http://avnpc.com/pages/zf2-mail-advanced-usage-for-template-multi-attachment#attachment)
 - [如何更好地使用DI来完成这一切](http://avnpc.com/pages/zf2-mail-advanced-usage-for-template-multi-attachment#di)
 
-在Zend\Mail中使用模板 {#template}
+在Zend\Mail中使用模板
 --------------------
 
 首先想到的自然是使用Zend\View作为邮件的模板引擎，这样不但可以使用Zend\View的所有Helper，稍加改进还可以传入整个系统的ServiceLocator让应用范围更广。
@@ -77,7 +77,7 @@ title: Zend\Mail进阶：在ZF2的邮件中使用模板、多个附件以及用D
 	$viewModel->setTemplate('mail/template');
 
 
-使用Zend\Mail发送附件 {#attachment}
+使用Zend\Mail发送附件 
 --------------------
 
 与Zend Framework 1最大的不同，可能就是ZF2中移除了添加附件的方法，改为自己构建一个Zend\Mime\Message然后传入Zend\Mail\Message。笔者以为这个改动不够友好，不过好在[MIME规范](http://en.wikipedia.org/wiki/MIME)整体并不复杂。而通过MIME构建邮件内容更加灵活一些。
@@ -154,7 +154,7 @@ ZF2对于附件的默认编码是8bit，实测发现8bit编码的附件无法被
 
 就可以同时发送两个附件了。
 
-用DI整合ZF2的邮件模板与附件发送   {#di}
+用DI整合ZF2的邮件模板与附件发送 
 --------------------------------
 
 所有的功能，最终可以用DI整合，方便在系统中复用，有特殊需求的地方复写DI配置文件即可。下面是一个最终完整的例子：
