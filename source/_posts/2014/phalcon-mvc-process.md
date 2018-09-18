@@ -343,5 +343,3 @@ Phalcon作为C扩展型的框架，其优势就在于高性能，虽然我们可
 - 发送响应
    - `application:beforeSendResponse`  最终响应发送前
 
-
-
