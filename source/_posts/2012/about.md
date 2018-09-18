@@ -6,7 +6,7 @@ author: AlloVince
 title: 关于我
 ---
 
-徐谦 (AlloVince)， 又名 Allo / 某A / AV / 艾鲁， 网名源自“艾鲁维斯”。
+AlloVince， 又名 Allo / 某A / AV / 艾鲁， 网名源自“艾鲁维斯”。
 
 西历1984年生人，已婚，经历过80后的典型童年、
 [做过宅男](https://avnpc.com/pages/OX)、
@@ -30,7 +30,7 @@ title: 关于我
 
 ## 开源项目
 
-- [EveEngine.js](https://github.com/EvaEngine/EvaEngine.js) Node.js的微服务开发引擎，帮助Node.js更快更规范的开始后端项目,也是贝米钱包很多业务的底层。
+- [EveEngine.js](https://github.com/EvaEngine/EvaEngine.js) Node.js的微服务开发引擎，帮助Node.js更快更规范的开始后端项目
 - [EveEngine](http://avnpc.com/pages/eva-engine) 基于Phalcon框架的PHP快速开发引擎，同时也是华尔街见闻在职期间所有项目的底层，功能完备，性能优异，经实际项目考验，能以个位数台VPS支持数亿级别日请求并保持较低负载。
 - [EvaOAuth](http://avnpc.com/pages/evaoauth) 统一接口设计的OAuth Client，可以用相同的代码支持OAuth1.0/OAuth2.0网站，快速集成第三方用户体系。
 - [EvaThumber](http://avnpc.com/pages/evathumber) 基于URL对图片进行缩放、水印、剪裁等常规操作。
@@ -77,19 +77,9 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
 
 - 联系我： i@av2.me
 - 关注我：
-	-   [Allo的兴趣爱好][]
-	-   [Allo的开源项目][]：欢迎Follow / Fork
-	-   [Twiter @AlloVince][] 技术分享为主。
-	-   [Allo的Google+][] 比较随意的地方，放送福利为主。
-	-   [Allo的豆瓣][] 记录看过的电影。
-	-   [微博 @Allo][]，朋友多在此
-	-   [Allo的技术文摘][]
+  - [Allo的兴趣爱好][]
+  - [Allo的开源项目][]：欢迎Follow / Fork
 
 
 [Allo的兴趣爱好]: http://zh.wikipedia.org/wiki/User:AlloVince
 [Allo的开源项目]: https://github.com/AlloVince
-[Twiter @AlloVince]: https://twitter.com/AlloVince
-[Allo的Google+]: https://plus.google.com/u/0/104171418568283484752
-[Allo的豆瓣]: http://www.douban.com/people/AlloVince/
-[微博 @Allo]: http://weibo.com/avnpc
-[Allo的技术文摘]: https://www.evernote.com/pub/allovince/Tech
