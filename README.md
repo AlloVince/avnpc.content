@@ -2,12 +2,10 @@
 
 Avnpc posts content remote storage, compatible with hexo
 
-
 ```
 npm install -g hexo-cli
 hexo init avnpc.content
 cd avnpc.content
-npm install --save hexo-server hexo-migrator-rss
-hexo migrate rss https://avnpc.com/feed
 ```
+Write blog posts as markdown files under `source/posts`
 
