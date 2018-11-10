@@ -53,8 +53,10 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
   - [Travis CI](https://travis-ci.org/) CI及自动构建打包发布
   - [Docker Hub](https://hub.docker.com/) 构建后的Docker镜像存储于此
   - [Docker Compose](https://docs.docker.com/compose/) Docker编排工具
-  - [Caddy](https://caddyserver.com/) 能自动更新ssl证书的Web服务器
+  - [Traefik](https://github.com/containous/traefik/) Docker环境下好用的反向代理
 - [Content](https://github.com/AlloVince/avnpc.content)
+
+服务目前托管于[Linode](https://www.linode.com/)， 如果你也有意购买，可以使用我的[Referral](https://www.linode.com/?r=a33af5735a21b63c784f7cd2cf87dba00fd319a2)
 
 ## 关于提问
 
