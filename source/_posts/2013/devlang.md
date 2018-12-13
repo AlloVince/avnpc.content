@@ -28,8 +28,8 @@ title: 《自制编程语言》相关资料
 
 本书所涉及到的所有源代码：
 
-- [中文版源代码ZIP压缩包，最后修订时间：20131212](http://avnpc.com/devlang/win_sjis_zh_20131212.zip)
-- [日文版源代码ZIP压缩包，最后修订时间：20091228](http://avnpc.com/devlang/win_sjis_20091228.zip)
+- [中文版源代码ZIP压缩包，最后修订时间：20131212](https://static.avnpc.com/devlang/win_sjis_zh_20131212.zip)
+- [日文版源代码ZIP压缩包，最后修订时间：20091228](https://static.avnpc.com/devlang/win_sjis_20091228.zip)
 
 
 ### 包含文件
@@ -84,24 +84,24 @@ MinGW的官方网站如下：
 
 首先进入MinGW的[下载页面](http://www.mingw.org/download.shtml)，会跳转到[MinGW在sourceforge的项目页](http://sourceforge.net/projects/mingw/files/)，Windows用户可以点击Installer，然后在列表中继续点击mingw-get-setup.exe。
 
-![MinGW](http://avnpc.com/devlang/devlang001.png)
-![MinGW](http://avnpc.com/devlang/devlang002.png)
+![MinGW](https://static.avnpc.com/devlang/devlang001.png)
+![MinGW](https://static.avnpc.com/devlang/devlang002.png)
 
 mingw-get-setup.exe并不包含实际的安装文件，而是通过网络下载MinGW的程序文件。请参考下面步骤安装：
 
-![MinGW](http://avnpc.com/devlang/devlang003.png)
+![MinGW](https://static.avnpc.com/devlang/devlang003.png)
 
 点击`Install`。
 
-![MinGW](http://avnpc.com/devlang/devlang004.png)
+![MinGW](https://static.avnpc.com/devlang/devlang004.png)
 
 可在Installation Directory处点击Change修改安装路径，然后点击Continue。
 
-![MinGW](http://avnpc.com/devlang/devlang005.png)
+![MinGW](https://static.avnpc.com/devlang/devlang005.png)
 
 MinGW会下载初始安装文件，下载完成后点击Continue。
 
-![MinGW](http://avnpc.com/devlang/devlang006.png)
+![MinGW](https://static.avnpc.com/devlang/devlang006.png)
 
 安装界面会切换为MinGW Installation Manager，MinGW包含了多个编译组件，选择想要安装的组件，在弹出的菜单中选择`Mark for Installation`。
 
@@ -109,7 +109,7 @@ MinGW会下载初始安装文件，下载完成后点击Continue。
 
 选择完毕后点击窗口菜单的Installation，选择Apply
 
-![MinGW](http://avnpc.com/devlang/devlang007.png)
+![MinGW](https://static.avnpc.com/devlang/devlang007.png)
 
 在弹出的确认框中点击Apply，MinGW会开始下载选择的安装包，整个下载过程视网速会占用数分钟的时间。下载完成即可以开始使用MinGW。
 
@@ -147,41 +147,41 @@ Cygwin的官方主页为：
 
 下载后按以下方法操作（以64bit为例）
 
-![Cygwin](http://avnpc.com/devlang/devlang008.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang008.png)
 
 点击下一步
 
 
-![Cygwin](http://avnpc.com/devlang/devlang009.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang009.png)
 
 选择Install from Internet，点击下一步
 
 
-![Cygwin](http://avnpc.com/devlang/devlang010.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang010.png)
 
 在Root Directory中选择安装路径，点击下一步
 
 
-![Cygwin](http://avnpc.com/devlang/devlang011.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang011.png)
 
 在Local Package Directory中选择安装包的下载路径，以后卸载或重新安装时可以从安装包直接获取，无需重新下载。点击下一步
 
 
-![Cygwin](http://avnpc.com/devlang/devlang012.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang012.png)
 
 一般选择Direct Connection，如果网络环境特殊可根据具体情况设置代理。点击下一步
 
-![Cygwin](http://avnpc.com/devlang/devlang013.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang013.png)
 
 选择下载节点，国内一般选择163节点即可。Cygwin会首先下载所有安装包信息。
 
 
-![Cygwin](http://avnpc.com/devlang/devlang014.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang014.png)
 
 选择要下载的模块安装包，Cygwin已经为我们默认选择了一部分基础功能
 
 
-![Cygwin](http://avnpc.com/devlang/devlang015.png)
+![Cygwin](https://static.avnpc.com/devlang/devlang015.png)
 
 这里我们为了使用bison，需要在Interpreters下勾选m4。而为了编译鬼车，需要勾选Devel下的make。
 
