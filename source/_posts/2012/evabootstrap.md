@@ -28,13 +28,17 @@ EvaBootstrap将作为[EvaEngine](https://github.com/AlloVince/eva-engine)项目�
 
 在Twitter Bootstrap中:
 
-    <p><small>This line of text is meant to be treated as fine print.</small></p>
+```html
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+```
 
 在EvaBootstrap中:
 
-    <div class="typo">
-    <p><small>This line of text is meant to be treated as fine print.</small></p>
-    </div>
+```html
+<div class="typo">
+<p><small>This line of text is meant to be treated as fine print.</small></p>
+</div>
+```
 
 ###表单
 
@@ -42,19 +46,23 @@ EvaBootstrap将作为[EvaEngine](https://github.com/AlloVince/eva-engine)项目�
 
 在Twitter Bootstrap中:
 
-    <form>
-    <fieldset>
-    ...
-    </fieldset>
-    </form>
+```html
+<form>
+<fieldset>
+...
+</fieldset>
+</form>
+```
 
 在EvaBootstrap中:
 
-    <form class="form">
-    <fieldset>
-    ...
-    </fieldset>
-    </form>
+```html
+<form class="form">
+<fieldset>
+...
+</fieldset>
+</form>
+```
 
 
 ###移除TB font-face图标

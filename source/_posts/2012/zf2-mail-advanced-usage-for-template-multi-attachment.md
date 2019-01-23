@@ -39,42 +39,50 @@ title: Zend\Mail进阶：在ZF2的邮件中使用模板、多个附件以及用D
 
 以TemplateMapResolver为例，Message与Transport则继续使用[ZF2使用DI操作Zend\Mail发送邮件](http://avnpc.com/pages/zend-mail-usage-by-di-in-zf2)文中的部分：
 
-    $view = new Zend\View\Renderer\PhpRenderer();
-	$resolver = new Zend\View\Resolver\TemplateMapResolver();
-	$resolver->setMap(array(
-	    'mailTemplate' => __DIR__ . '/mail/template.phtml'
-	));
-	$view->setResolver($resolver);
-	$viewModel = new Zend\View\Model\ViewModel();
-	$viewModel->setTemplate('mailTemplate')
-	->setVariables(array(
-	    'user' => 'AlloVince'
-	));
+```php
+$view = new Zend\View\Renderer\PhpRenderer();
+$resolver = new Zend\View\Resolver\TemplateMapResolver();
+$resolver->setMap(array(
+    'mailTemplate' => __DIR__ . '/mail/template.phtml'
+));
+$view->setResolver($resolver);
+$viewModel = new Zend\View\Model\ViewModel();
+$viewModel->setTemplate('mailTemplate')
+->setVariables(array(
+    'user' => 'AlloVince'
+));
 
-	$message->setSubject("Zend Mail with Template")
-	->setBody($view->render($viewModel));
-	$transport->send($message);
+$message->setSubject("Zend Mail with Template")
+->setBody($view->render($viewModel));
+$transport->send($message);
+```
 
 在同一目录下放置模板文件mail/template.phtml。模板的内容为
 
+```
     User : <?=$this->user?> | Url : <?=$this->serverUrl()?>
+```
 
 可以简单的测试变量置入以及Helper的调用。
 
 最后生成邮件：
 
+```
     From: EvaEngine <info@evaengine.com>
 	To: EvaEngine <allo.vince@gmail.com>
 	Subject: Zend Mail with Template
 	User : AlloVince | Url : http://zf2.local
+```
 
 同理如果采用TemplatePathStack，对应的地方修改为
 
-    $resolver = new Zend\View\Resolver\TemplatePathStack();
-	$resolver->setPaths(array(
-	    'mailTemplate' => __DIR__
-	));
-	$viewModel->setTemplate('mail/template');
+```php
+$resolver = new Zend\View\Resolver\TemplatePathStack();
+$resolver->setPaths(array(
+    'mailTemplate' => __DIR__
+));
+$viewModel->setTemplate('mail/template');
+```
 
 
 使用Zend\Mail发送附件 
@@ -86,71 +94,77 @@ ZF2对于附件的默认编码是8bit，实测发现8bit编码的附件无法被
 
 比较保险的做法是对附件采用base64编码，参考下例，附件为同目录下的attachment.jpg：
 
-    use Zend\Mime\Message as MimeMessage;
-	use Zend\Mime\Part;
-    
-	$mimeMessage = new MimeMessage();
-	$messageText = new Part('Mail Content');
-	$messageText->type = 'text/html';
+```php
+use Zend\Mime\Message as MimeMessage;
+use Zend\Mime\Part;
 
-	$data = fopen('attachment.jpg', 'r');
-	$messageAttachment = new Part($data);
-	$messageAttachment->type = 'image/jpg';
-	$messageAttachment->filename = 'attachment.jpg';
-	$messageAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
-	$messageAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+$mimeMessage = new MimeMessage();
+$messageText = new Part('Mail Content');
+$messageText->type = 'text/html';
 
-	$mimeMessage->setParts(array(
-	    $messageText,
-	    $messageAttachment,
-	));
+$data = fopen('attachment.jpg', 'r');
+$messageAttachment = new Part($data);
+$messageAttachment->type = 'image/jpg';
+$messageAttachment->filename = 'attachment.jpg';
+$messageAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
+$messageAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
 
-	$message->setSubject("Mail Subject with Attachment")
-	        ->setBody($mimeMessage);
-	$transport->send($message);
+$mimeMessage->setParts(array(
+    $messageText,
+    $messageAttachment,
+));
+
+$message->setSubject("Mail Subject with Attachment")
+        ->setBody($mimeMessage);
+$transport->send($message);
+```
 
 发送的邮件为
 
-    From: =?utf-8?Q?EvaEngine?= <info@evaengine.com>
-	To: =?utf-8?Q?EvaEngine?= <allo.vince@gmail.com>
-	Subject: =?utf-8?Q?Mail=20Subject=20with=20Attachment?=
-	MIME-Version: 1.0
-	Content-Type: multipart/mixed;
-	 boundary="=_94a850a623ed49ae30132a639054f500"
+```
+From: =?utf-8?Q?EvaEngine?= <info@evaengine.com>
+To: =?utf-8?Q?EvaEngine?= <allo.vince@gmail.com>
+Subject: =?utf-8?Q?Mail=20Subject=20with=20Attachment?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="=_94a850a623ed49ae30132a639054f500"
 
-	This is a message in Mime Format.  If you see this, your mail reader does not support this format.
+This is a message in Mime Format.  If you see this, your mail reader does not support this format.
 
-	--=_94a850a623ed49ae30132a639054f500
-	Content-Type: text/html
-	Content-Transfer-Encoding: 8bit
+--=_94a850a623ed49ae30132a639054f500
+Content-Type: text/html
+Content-Transfer-Encoding: 8bit
 
-	Mail Content
-	--=_94a850a623ed49ae30132a639054f500
-	Content-Type: image/jpg
-	Content-Transfer-Encoding: base64
-	Content-Disposition: attachment; filename="attachment"
+Mail Content
+--=_94a850a623ed49ae30132a639054f500
+Content-Type: image/jpg
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="attachment"
 
-	base64code here
+base64code here
 
-	--=_94a850a623ed49ae30132a639054f500
+--=_94a850a623ed49ae30132a639054f500
+```
 
 
 ###多个附件与中文文件名
 
 在Windows下，处理文件名中含中文字符的文件需要转换一次编码，在上例中增加：
 
-    $file = iconv("UTF-8", "gb2312", '中文文件名.txt');
-	$data = fopen($file, 'r');
-	$messageTextAttachment = new Part($data);
-	$messageTextAttachment->filename = '中文文件名.txt';
-	$messageTextAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
-	$messageTextAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+```php
+$file = iconv("UTF-8", "gb2312", '中文文件名.txt');
+$data = fopen($file, 'r');
+$messageTextAttachment = new Part($data);
+$messageTextAttachment->filename = '中文文件名.txt';
+$messageTextAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
+$messageTextAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
 
-	$mimeMessage->setParts(array(
-	    $messageText,
-	    $messageAttachment,
-	    $messageTextAttachment,
-	));
+$mimeMessage->setParts(array(
+    $messageText,
+    $messageAttachment,
+    $messageTextAttachment,
+));
+```
 
 就可以同时发送两个附件了。
 
@@ -160,97 +174,99 @@ ZF2对于附件的默认编码是8bit，实测发现8bit编码的附件无法被
 所有的功能，最终可以用DI整合，方便在系统中复用，有特殊需求的地方复写DI配置文件即可。下面是一个最终完整的例子：
 
 
-    use Zend\Mail\Message;
-	use Zend\Mail\Transport;
-	use Zend\Di\Di;
-	use Zend\Di\Config as DiConfig;
-	use Zend\Mime\Message as MimeMessage;
-	use Zend\Mime\Part;
+```php
+use Zend\Mail\Message;
+use Zend\Mail\Transport;
+use Zend\Di\Di;
+use Zend\Di\Config as DiConfig;
+use Zend\Mime\Message as MimeMessage;
+use Zend\Mime\Part;
 
-	$diConfig = array('instance' => array(
-	    'Zend\View\Resolver\TemplatePathStack' => array(
-	        'parameters' => array(
-	            'paths'  => array(
-	                'mailTemplate' => __DIR__ . '/',
-	            ),
-	        ),
-	    ),
-	    'Zend\View\Renderer\PhpRenderer' => array(
-	        'parameters' => array(
-	            'resolver' => 'Zend\View\Resolver\TemplatePathStack',
-	        ),
-	    ),
-	    'Zend\View\Model\ViewModel' => array(
-	        'parameters' => array(
-	            'template' => 'mail/template',
-	        ),
-	    ),
-	    'Zend\Mail\Transport\FileOptions' => array(
-	        'parameters' => array(
-	            'path' => __DIR__,
-	        )
-	    ),
-	    'Zend\Mail\Transport\File' => array(
-	        'injections' => array(
-	            'Zend\Mail\Transport\FileOptions'
-	        )
-	    ),
-	    'Zend\Mail\Transport\SmtpOptions' => array(
-	        'parameters' => array(
-	            'name'              => 'sendgrid',
-	            'host'              => 'smtp.sendgrid.net',
-	            'port' => 25,
-	            'connectionClass'  => 'login',
-	            'connectionConfig' => array(
-	                'username' => 'username',
-	                'password' => 'password',
-	            ),
-	        )
-	    ),
-	    'Zend\Mail\Message' => array(
-	        'parameters' => array(
-	            'headers' => 'Zend\Mail\Headers',
-	            'Zend\Mail\Message::setTo:emailOrAddressList' => 'allo.vince@gmail.com',
-	            'Zend\Mail\Message::setTo:name' => 'EvaEngine',
-	            'Zend\Mail\Message::setFrom:emailOrAddressList' => 'info@evaengine.com',
-	            'Zend\Mail\Message::setFrom:name' => 'EvaEngine',
-	        )
-	    ),
-	    'Zend\Mail\Transport\Smtp' => array(
-	        'injections' => array(
-	            'Zend\Mail\Transport\SmtpOptions'
-	        )
-	    ),
-	));
+$diConfig = array('instance' => array(
+    'Zend\View\Resolver\TemplatePathStack' => array(
+        'parameters' => array(
+            'paths'  => array(
+                'mailTemplate' => __DIR__ . '/',
+            ),
+        ),
+    ),
+    'Zend\View\Renderer\PhpRenderer' => array(
+        'parameters' => array(
+            'resolver' => 'Zend\View\Resolver\TemplatePathStack',
+        ),
+    ),
+    'Zend\View\Model\ViewModel' => array(
+        'parameters' => array(
+            'template' => 'mail/template',
+        ),
+    ),
+    'Zend\Mail\Transport\FileOptions' => array(
+        'parameters' => array(
+            'path' => __DIR__,
+        )
+    ),
+    'Zend\Mail\Transport\File' => array(
+        'injections' => array(
+            'Zend\Mail\Transport\FileOptions'
+        )
+    ),
+    'Zend\Mail\Transport\SmtpOptions' => array(
+        'parameters' => array(
+            'name'              => 'sendgrid',
+            'host'              => 'smtp.sendgrid.net',
+            'port' => 25,
+            'connectionClass'  => 'login',
+            'connectionConfig' => array(
+                'username' => 'username',
+                'password' => 'password',
+            ),
+        )
+    ),
+    'Zend\Mail\Message' => array(
+        'parameters' => array(
+            'headers' => 'Zend\Mail\Headers',
+            'Zend\Mail\Message::setTo:emailOrAddressList' => 'allo.vince@gmail.com',
+            'Zend\Mail\Message::setTo:name' => 'EvaEngine',
+            'Zend\Mail\Message::setFrom:emailOrAddressList' => 'info@evaengine.com',
+            'Zend\Mail\Message::setFrom:name' => 'EvaEngine',
+        )
+    ),
+    'Zend\Mail\Transport\Smtp' => array(
+        'injections' => array(
+            'Zend\Mail\Transport\SmtpOptions'
+        )
+    ),
+));
 
-	$di = new Di();
-	$di->configure(new DiConfig($diConfig));
+$di = new Di();
+$di->configure(new DiConfig($diConfig));
 
-	$transport = $di->get('Zend\Mail\Transport\Smtp');
-	$view = $di->get('Zend\View\Renderer\PhpRenderer');
-	$viewModel = $di->get('Zend\View\Model\ViewModel');
-	$message = $di->get('Zend\Mail\Message');
+$transport = $di->get('Zend\Mail\Transport\Smtp');
+$view = $di->get('Zend\View\Renderer\PhpRenderer');
+$viewModel = $di->get('Zend\View\Model\ViewModel');
+$message = $di->get('Zend\Mail\Message');
 
-	$viewModel->setVariables(array(
-	    'user' => 'AlloVince'
-	));
+$viewModel->setVariables(array(
+    'user' => 'AlloVince'
+));
 
-	$mimeMessage = new MimeMessage();
-	$messageText = new Part($view->render($viewModel));
-	$messageText->type = 'text/plain';
+$mimeMessage = new MimeMessage();
+$messageText = new Part($view->render($viewModel));
+$messageText->type = 'text/plain';
 
-	$messageAttachment = new Part(fopen('attachment.jpg', 'r'));
-	$messageAttachment->type = 'image/jpg';
-	$messageAttachment->filename = 'attachment.jpg';
-	$messageAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
-	$messageAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
+$messageAttachment = new Part(fopen('attachment.jpg', 'r'));
+$messageAttachment->type = 'image/jpg';
+$messageAttachment->filename = 'attachment.jpg';
+$messageAttachment->encoding = Zend\Mime\Mime::ENCODING_BASE64;
+$messageAttachment->disposition = Zend\Mime\Mime::DISPOSITION_ATTACHMENT;
 
-	$mimeMessage->setParts(array(
-	    $messageText,
-	    $messageAttachment,
-	));
+$mimeMessage->setParts(array(
+    $messageText,
+    $messageAttachment,
+));
 
 
-	$message->setSubject("Mail Subject")
-	->setBody($mimeMessage);
-	$transport->send($message);
+$message->setSubject("Mail Subject")
+->setBody($mimeMessage);
+$transport->send($message);
+```

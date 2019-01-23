@@ -18,57 +18,59 @@ Zend Framework 2完整的实现了[DI](http://framework.zend.com/manual/2.0/en/m
 
 同样的功能如果使用DI，就变成了下面这样：
 
-    use Zend\Mail\Message;
-	use Zend\Mail\Transport;
-	use Zend\Di\Di;
-	use Zend\Di\Config as DiConfig;
-    
-	$diConfig = array('instance' => array(
-	    'Zend\Mail\Transport\FileOptions' => array(
-	        'parameters' => array(
-	            'path' => __DIR__,
-	        )
-	    ),
-	    'Zend\Mail\Transport\File' => array(
-	        'injections' => array(
-	            'Zend\Mail\Transport\FileOptions'
-	        )
-	    ),
-	    'Zend\Mail\Transport\SmtpOptions' => array(
-	        'parameters' => array(
-	            'name'              => 'sendgrid',
-	            'host'              => 'smtp.sendgrid.net',
-	            'port' => 25,
-	            'connectionClass'  => 'login',
-	            'connectionConfig' => array(
-	                'username' => 'username',
-	                'password' => 'password',
-	            ),
-	        )
-	    ),
-	    'Zend\Mail\Message' => array(
-	        'parameters' => array(
-	            'headers' => 'Zend\Mail\Headers',
-	            'Zend\Mail\Message::setTo:emailOrAddressList' => 'allo.vince@gmail.com',
-	            'Zend\Mail\Message::setTo:name' => 'AlloVince',
-	            'Zend\Mail\Message::setFrom:emailOrAddressList' => 'info@evaengine.com',
-	            'Zend\Mail\Message::setFrom:name' => 'EvaEngine',
-	        )
-	    ),
-	    'Zend\Mail\Transport\Smtp' => array(
-	        'injections' => array(
-	            'Zend\Mail\Transport\SmtpOptions'
-	        )
-	    ),
-	));
+```php
+use Zend\Mail\Message;
+use Zend\Mail\Transport;
+use Zend\Di\Di;
+use Zend\Di\Config as DiConfig;
 
-	$di = new Di();
-	$di->configure(new DiConfig($diConfig));
+$diConfig = array('instance' => array(
+    'Zend\Mail\Transport\FileOptions' => array(
+        'parameters' => array(
+            'path' => __DIR__,
+        )
+    ),
+    'Zend\Mail\Transport\File' => array(
+        'injections' => array(
+            'Zend\Mail\Transport\FileOptions'
+        )
+    ),
+    'Zend\Mail\Transport\SmtpOptions' => array(
+        'parameters' => array(
+            'name'              => 'sendgrid',
+            'host'              => 'smtp.sendgrid.net',
+            'port' => 25,
+            'connectionClass'  => 'login',
+            'connectionConfig' => array(
+                'username' => 'username',
+                'password' => 'password',
+            ),
+        )
+    ),
+    'Zend\Mail\Message' => array(
+        'parameters' => array(
+            'headers' => 'Zend\Mail\Headers',
+            'Zend\Mail\Message::setTo:emailOrAddressList' => 'allo.vince@gmail.com',
+            'Zend\Mail\Message::setTo:name' => 'AlloVince',
+            'Zend\Mail\Message::setFrom:emailOrAddressList' => 'info@evaengine.com',
+            'Zend\Mail\Message::setFrom:name' => 'EvaEngine',
+        )
+    ),
+    'Zend\Mail\Transport\Smtp' => array(
+        'injections' => array(
+            'Zend\Mail\Transport\SmtpOptions'
+        )
+    ),
+));
 
-	$transport = $di->get('Zend\Mail\Transport\Smtp');
-	$message = $di->get('Zend\Mail\Message');
-	$message->setSubject("Mail Subject")->setBody('Mail Content');
-	$transport->send($message);
+$di = new Di();
+$di->configure(new DiConfig($diConfig));
+
+$transport = $di->get('Zend\Mail\Transport\Smtp');
+$message = $di->get('Zend\Mail\Message');
+$message->setSubject("Mail Subject")->setBody('Mail Content');
+$transport->send($message);
+```
 
 我们通过一个庞大的数组，配置了Zend\Mail初始化所需要的所有细节。包括两种Transport\File的保存路径，SMTP的服务器/用户名/密码/端口，默认的收件人及发件人等等。所以可以看到最终通过DI实例化Transport和Message时，用法是极简的，无需再指定发件人/收件人/邮件服务器等，因为所有的细节都已经封装在DI的配置里了。
 
@@ -76,7 +78,9 @@ Zend Framework 2完整的实现了[DI](http://framework.zend.com/manual/2.0/en/m
 
 如果想使用其他Transport发信，只需要简单更改为：
 
-    $transport = $di->get('Zend\Mail\Transport\File');
+```php
+$transport = $di->get('Zend\Mail\Transport\File');
+```
 
 运行就会在当前目录下生成邮件Log。
 

@@ -3,7 +3,7 @@ published: true
 date: '2007-03-30 00:31:00'
 tags: []
 author: AlloVince
-title: 站、站住，更、更新……
+title: 站、站住，更、更新
 ---
 
 Tech preview:

@@ -24,8 +24,10 @@ Vim安装与设置
 
 首先下载vim73-x64.zip解压到D:\Vim。运行cmd
 
+```
     cd D:\Vim\vim73
     install
+```
 
 输入d执行安装即可。
 
@@ -37,90 +39,126 @@ Vim安装与设置
  
 设置工作目录为当前编辑文件的目录
 
+```
     set bsdir=buffer
     set autochdir
+```
 
 编码设置
 
+```
     set enc=utf-8
     set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+```
 
 语言设置
 
+```
     set langmenu=zh_CN.UTF-8
     language message zh_CN.UTF-8
     set helplang=cn
     source $VIMRUNTIME/delmenu.vim
     source $VIMRUNTIME/menu.vim
+```
 
 禁止生成备份文件
 
+```
     set nobackup
+```
 
 搜索忽略大小写
 
+```
     set ignorecase 
+```
 
 搜索逐字符高亮
 
+```
     set incsearch
+```
 
 行内替换
 
+```
     set gdefault
+```
 
 始终显示行号
 
+```
     set nu!
+```
 
 显示光标的坐标
 
+```
     set ruler
+```
 
 设置Tab键的宽度
 
+```
     set shiftwidth=4
     set tabstop=4
+```
 
 将Tab键更改为四个空格
 
+```
     set expandtab
+```
 
 这里是为了php的编码规范需求，所以也可以将文件只限定为php生效
 
+```
     autocmd FileType php set expandtab
+```
 
 根据编辑模式更改输入法光标颜色，同时禁用IME自动切换
 
+```
     if has('multi_byte_ime')
         hi Cursor guifg=bg guibg=Orange gui=NONE
         hi CursorIM guifg=NONE guibg=Skyblue gui=NONE
         set iminsert=0 imsearch=0
     endif
+```
 
 禁用自动缩进
 
+```
     set noautoindent
+```
 
 与Windows共享剪贴板
 
+```
     set clipboard+=unnamed
+```
 
 编辑vimrc之后，重新加载
 
+```
     autocmd! bufwritepost _vimrc source $VIM/_vimrc
+```
 
 设置配色方案
 
 最后选择一个自己喜欢的配色方案，可以通过
 
+```
     :color 方案名
+```
 
 来切换尝试。如果仍然没有满意的，那么可以去官网下载更多Vim配色方案。下载后放在”D:\Vim\vimfiles\colors”。
 
 然后可以在配置文件中写入
 
+```
     colorscheme 方案名
+```
 
 来指定一套方案作为默认的配色方案。
 
@@ -149,18 +187,25 @@ Vundle在Linux非常容易安装，在Windows下首先需要安装Git。
 
 Git安装后将Git的路径加入系统环境变量，win7下Git的路径为
 
+```
     C:\Program Files (x86)\Git\cmd
+```
 
 然后运行cmd，输入
 
+```
     git --version
+```
 
 如果能显示Git版本信息，说明安装成功
 
+```
     git version 1.7.10.msysgit.1
+```
 
 在Win32下还需要建立一个Curl脚本用于Vundle的远程链接。在Git的路径下新建一个空文本文件，改名为curl.cmd，编辑内容为
 
+```
     @rem Do not use "echo off" to not affect any child calls.
     @setlocal
 
@@ -173,10 +218,13 @@ Git安装后将Git的路径加入系统环境变量，win7下Git的路径为
     @if not exist "%HOME%" @set HOME=%USERPROFILE%
 
     @curl.exe %*
+```
 
 保存后在cmd中输入
 
+```
     curl --version
+```
 
 如果可以看到版本信息说明运行成功。
 
@@ -184,12 +232,14 @@ Git安装后将Git的路径加入系统环境变量，win7下Git的路径为
 
 Git安装完毕后，Clone Vundle到”D:\Vim\vimfiles\bundle”下，此时目录结构应该如下
 
-    D:\vim
-    +---vim73
-    +---vimfiles
-        +---bundle
-        |   +---vundle
-        +---colors
+```
+D:\vim
++---vim73
++---vimfiles
+    +---bundle
+    |   +---vundle
+    +---colors
+```
 
 ####配置Vundle
 
@@ -198,38 +248,50 @@ Git安装完毕后，Clone Vundle到”D:\Vim\vimfiles\bundle”下，此时目�
 
 编辑_vimrc加入
 
-    filetype off
+```
+filetype off
 
-    "此处规定Vundle的路径
-    set rtp+=$VIM/vimfiles/bundle/vundle/
+"此处规定Vundle的路径
+set rtp+=$VIM/vimfiles/bundle/vundle/
 
-    "此处规定插件的安装路径
-    call vundle#rc('$VIM/vimfiles/bundle/')
+"此处规定插件的安装路径
+call vundle#rc('$VIM/vimfiles/bundle/')
 
-    Bundle 'gmarik/vundle'
-    filetype plugin indent on
+Bundle 'gmarik/vundle'
+filetype plugin indent on
+```
 
 ####通过Vundle安装插件
 
 Vundle安装插件有三种形式，一种是一个从官方移植的Vim Script,只需要在配置中写脚本的名字，比如
 
+```
     Bundle 'neocomplcache'
+```
 
 第二种是指定一个github上的项目名，以作者/项目的形式
 
+```
     Bundle 'gmarik/vundle'
+```
 
 最后还可以指定一个完整的git repos地址
 
+```
     Bundle 'git://git.wincent.com/command-t.git'
+```
 
 将要安装的插件在配置文件中写好，最后执行
 
+```
     :BundleInstall
+```
 
 就可以一键安装了。安装有问题可以按l键查看log。我在第一次安装时出现了“can't resolve proxy 'null' for https”的报警，调查发现是因为git启用了代理的原因，可以运行cmd
 
+```
     git config --global --unset http.proxy
+```
 
 解决。
 
@@ -247,6 +309,7 @@ Vundle安装插件有三种形式，一种是一个从官方移植的Vim Script,
 
 我选择的插件有
 
+```
     Bundle 'JavaScript-syntax'
     Bundle 'jQuery'
     Bundle 'othree/html5.vim'
@@ -254,12 +317,15 @@ Vundle安装插件有三种形式，一种是一个从官方移植的Vim Script,
     Bundle 'Markdown'
     Bundle 'Markdown-syntax'
     Bundle 'php.vim-html-enhanced'
+```
 
 主要支持了JavaScript/jQuery/HTML5/LESS/Markdown
 
 ####HTML/JS混排缩进改善
 
+```
     Bundle "pangloss/vim-javascript"
+```
 
 ####代码自动补全
 
@@ -275,21 +341,26 @@ neocomplcache可以做到：
 
 另外一个非常有助于提高效率的插件是snipMate，可以根据不同语言自动补全代码段，比如在php下写for+Tab键，就会自动生成这样一段代码
 
+```
     for ($i = 0; $i < count; $i++) {
         // code...
     }
+```
 
 注意这里使用的snipMate和neocomplcache都是官方版本的修改版。
 
+```
     Bundle "MarcWeber/vim-addon-mw-utils"
     Bundle "tomtom/tlib_vim"
     Bundle "snipmate-snippets"
     Bundle "garbas/vim-snipmate"
+```
 
 ###Vim插件配置
 
 安装完上述插件后还需要做一些小的配置
 
+```
     "自定义关联文件类型
     au BufNewFile,BufRead *.less set filetype=css
     au BufNewFile,BufRead *.phtml set filetype=php
@@ -297,6 +368,7 @@ neocomplcache可以做到：
 
     "---NeoComplCache 启动
     let g:neocomplcache_enable_at_startup = 1 
+```
 
 编程字体
 --------
@@ -310,18 +382,22 @@ neocomplcache可以做到：
 
 安装字体后自行选择以下的配置
 
+```
     "set guifont=Monaco:h9
     "set gfw=YaHei\ Consolas\ Hybrid:h9
     "set guifont=Consolas:h12
     "set guifont=YaHei\ Consolas\ Hybrid:h12
     "set guifont=Yahei\ Mono:h12
+```
 
 自定义指令
 ---------
 
 常用自定义指令就一条：
 
+```
     nmap mm :%s/\r//g<cr>
+```
 
 用于删除win32下难看的蓝色^M（其实是换行符\r）
 

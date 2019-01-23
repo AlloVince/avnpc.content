@@ -53,13 +53,17 @@ EvaOAuth统一接口规范，上面的任何一个第三方网站，在使用Eva
 
 请编辑composer.json，加入
 
+```json
     "require": {
         "AlloVince/EvaOAuth": "dev-master"
     },
+```
 
 然后运行
 
+```shell
     php composer.phar install
+```
 
 即可。
 
@@ -77,25 +81,32 @@ EvaOAuth要求PHP版本必须高于5.3.3，并主要依赖以下几个ZF2模块�
 
 参考之前的[ZF2在Windows下的环境搭建](http://avnpc.com/pages/zend-framework-2-installation-for-windows)，假设我们的php.exe目录在d:\xampp\php，那么首先将php目录加入windows环境变量。
 
+```
     cd d:\xampp\php
     php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
+```
 
 
 同目录下编辑文件 composer.bat，内容为
 
+```
     @ECHO OFF
     SET composerScript=composer.phar
     php "%~dp0%composerScript%" %*
+```
 
 运行
 
+```
     composer -V
-    
+```
 检查composer安装是否成功。
 
 进入EvaOAuth目录下运行：
 
+```
     php D:\xampp\php\composer.phar install
+```
 
 
 申请应用
@@ -117,25 +128,29 @@ EvaOAuth要求PHP版本必须高于5.3.3，并主要依赖以下几个ZF2模块�
 
 首先编写一个文件request.php，内容如下：
 
-    require_once './vendor/autoload.php';
-    use EvaOAuth\Service as OAuthService;
+```php
+require_once './vendor/autoload.php';
+use EvaOAuth\Service as OAuthService;
 
-    $oauth = new OAuthService();
-    $oauth->setOptions(array(
-        'callbackUrl' => 'http://localhost/EvaOAuth/examples/access.php',
-        'consumerKey' => 'XXX',
-        'consumerSecret' => 'YYY',
-    ));
-    $oauth->initAdapter('Douban', 'OAuth2');
-    
-    $requestToken = $oauth->getAdapter()->getRequestToken();
-    $oauth->getStorage()->saveRequestToken($requestToken);
-    $requestTokenUrl = $oauth->getAdapter()->getRequestTokenUrl();
-    header("location: $requestTokenUrl");
+$oauth = new OAuthService();
+$oauth->setOptions(array(
+    'callbackUrl' => 'http://localhost/EvaOAuth/examples/access.php',
+    'consumerKey' => 'XXX',
+    'consumerSecret' => 'YYY',
+));
+$oauth->initAdapter('Douban', 'OAuth2');
+
+$requestToken = $oauth->getAdapter()->getRequestToken();
+$oauth->getStorage()->saveRequestToken($requestToken);
+$requestTokenUrl = $oauth->getAdapter()->getRequestTokenUrl();
+header("location: $requestTokenUrl");
+```
 
 将consumerKey和consumerSecret替换为在豆瓣申请应用的API Key与Secret，然后访问
 
-    http://localhost/EvaOAuth/examples/request.php
+```
+http://localhost/EvaOAuth/examples/request.php
+```
 
 不出意外的话会被引导向豆瓣进行授权。
 
@@ -150,27 +165,30 @@ EvaOAuth要求PHP版本必须高于5.3.3，并主要依赖以下几个ZF2模块�
 
 继续编写另一个文件access.php
 
-    require_once './vendor/autoload.php';
-    use EvaOAuth\Service as OAuthService;
+```php
+require_once './vendor/autoload.php';
+use EvaOAuth\Service as OAuthService;
 
-    $oauth = new OAuthService();
-    $oauth->setOptions(array(
-        'callbackUrl' => 'http://localhost/EvaOAuth/examples/access.php',
-        'consumerKey' => 'XXX',
-        'consumerSecret' => 'YYY',
-    ));
-    $oauth->initAdapter('Douban', 'OAuth2');
+$oauth = new OAuthService();
+$oauth->setOptions(array(
+    'callbackUrl' => 'http://localhost/EvaOAuth/examples/access.php',
+    'consumerKey' => 'XXX',
+    'consumerSecret' => 'YYY',
+));
+$oauth->initAdapter('Douban', 'OAuth2');
 
-    $requestToken = $oauth->getStorage()->getRequestToken();
-    $accessToken = $oauth->getAdapter()->getAccessToken($_GET, $requestToken);
-    $accessTokenArray = $oauth->getAdapter()->accessTokenToArray($accessToken);
-    $oauth->getStorage()->saveAccessToken($accessTokenArray);
-    $oauth->getStorage()->clearRequestToken();
+$requestToken = $oauth->getStorage()->getRequestToken();
+$accessToken = $oauth->getAdapter()->getAccessToken($_GET, $requestToken);
+$accessTokenArray = $oauth->getAdapter()->accessTokenToArray($accessToken);
+$oauth->getStorage()->saveAccessToken($accessTokenArray);
+$oauth->getStorage()->clearRequestToken();
 
-    print_r($accessTokenArray);
+print_r($accessTokenArray);
+```
 
 在这一步中，从Session中取出上一步获得的Request Token，配合CallbackUrl中携带的参数，最终会换取一个授权的Access Token。上例中我们会看到最终获得的Access Token信息：
 
+```
     Array (
     [adapterKey] => douban
     [token] => tokenXXXXXXX
@@ -179,24 +197,27 @@ EvaOAuth要求PHP版本必须高于5.3.3，并主要依赖以下几个ZF2模块�
     [version] => OAuth2
     [remoteUserId] => 1291360
     )
+```
 
 ###使用Access Token访问API
 
 取得Access Token后，我们可以根据需求将其存入数据库或以其他方式存放。如果需要携带Access Token访问API也很简单，比如使用上例中的$accessTokenArray：
 
 
-    $oauth = new OAuthService();
-    $oauth->setOptions(array(
-        'consumerKey' => 'XXX',
-        'consumerSecret' => 'YYY',
-    ));
-    $oauth->initByAccessToken($accessTokenArray);
-    $adapter = $oauth->getAdapter();
+```php
+$oauth = new OAuthService();
+$oauth->setOptions(array(
+    'consumerKey' => 'XXX',
+    'consumerSecret' => 'YYY',
+));
+$oauth->initByAccessToken($accessTokenArray);
+$adapter = $oauth->getAdapter();
 
-    $client = $adapter->getHttpClient();
-    $client->setUri('https://api.douban.com/v2/user/~me');
-    $response = $client->send();
-    print_r($response->getBody());
+$client = $adapter->getHttpClient();
+$client->setUri('https://api.douban.com/v2/user/~me');
+$response = $client->send();
+print_r($response->getBody());
+```
 
 
 Access Token格式参考
@@ -230,11 +251,15 @@ Yahoo OAuth必须在App Permissions栏选择并设定至少一项权限，否则
 
 由于Zend Http新版本存在Bug，可能会引起
 
+```
     Fatal error: Call to a member function connect() on a non-object in Zend/Http/Client.php 
+```
 
 这样的报错，目前修复的方法是强制使用旧版本的Zend Http，项目composer.json中指定：
 
+```
     "allovince/evaoauth": "dev-master",
     "zendframework/zend-http": "2.2.3",
+```
 
 重新运行composer即可

@@ -42,7 +42,9 @@ title: 通过RSS聚合你的生活
 
 上面的Twitter的RSS获得方法已经失效，新的地址可以使用：
 
+```
     https://search.twitter.com/search.atom?q=from:UserName
+```
 
 将UserName替换为你的Twitter ID
 
@@ -55,8 +57,9 @@ title: 通过RSS聚合你的生活
     Reader加星条目的RSS很隐蔽，格式如下。其中user\_id部分是一串数字，在Google
     Reader点击加星号的条目后URL里即可看到。为了和谐，建议用https订阅
 
-
+```
     http://www.google.com/reader/public/atom/user/{user_id}/state/com.google/starred。 
+```
 
 其他的信息需要借助一些第三方服务实现：
 

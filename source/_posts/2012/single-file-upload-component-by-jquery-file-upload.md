@@ -32,11 +32,15 @@ jQuery File Upload包含了一堆文件，首先需要弄清楚的是最核心�
 
 此时只需要加载一个上传按钮
 
-    <input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+```html
+<input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+```
 
 以及一行代码
 
-    $('#fileupload').fileupload();
+```js
+$('#fileupload').fileupload();
+```
 
 就完成了一个最基本的上传组件。这个最简单的上传组件可以将选中的文件以表单形式提交到data-url约定的URL，同时提供了足够多的[设置和基础事件](https://github.com/blueimp/jQuery-File-Upload/wiki/Options)可供扩展。
 
@@ -45,23 +49,27 @@ jQuery File Upload的简单扩展
 
 对于最简模型，稍加扩展就可以实现一些比较常用的功能，比如可以在上传完毕后可以显示一个简单的结果：
 
-    $('#fileupload').fileupload({
-        done: function (e, data) {
-            $.each(data.result, function (index, file) {
-                $('<p/>').text(file.name + ' uploaded').appendTo($("body"));
-            });
-        }
-    });
+```js
+$('#fileupload').fileupload({
+    done: function (e, data) {
+        $.each(data.result, function (index, file) {
+            $('<p/>').text(file.name + ' uploaded').appendTo($("body"));
+        });
+    }
+});
+```
 
 或者显示上传进度，配合一些进度条组件就可以构成一个上传进度条
 
-    $('#fileupload').fileupload('option', {
-        progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            console.log(progress + '%');
-        }
-    });
-    
+```js
+$('#fileupload').fileupload('option', {
+    progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        console.log(progress + '%');
+    }
+});
+```
+
 等等。只要多阅读[手册](https://github.com/blueimp/jQuery-File-Upload/wiki/Options)就可以配合项目做更具体的扩展开发。
 
 XHR响应为Json时IE的下载BUG
@@ -71,17 +79,23 @@ XHR响应为Json时IE的下载BUG
 
 解决这个问题的方法是必须将相应的Http Head从
 
+```
     Content-Type: application/json
+```
 
 更改为
 
+```
     Content-Type: text/plain
+```
 
 具体的实现根据服务端不同有所区别，比如[ZF2](http://avnpc.com/pages/zf2-summary)中可以在Controller中这样写：
 
-     $this->getServiceLocator()->get('Application')->getEventManager()->attach(\Zend\Mvc\MvcEvent::EVENT_RENDER, function($event){
-	     $event->getResponse()->getHeaders()->addHeaderLine('Content-Type', 'text/plain');
-	 }, -10000);
+```php
+$this->getServiceLocator()->get('Application')->getEventManager()->attach(\Zend\Mvc\MvcEvent::EVENT_RENDER, function($event){
+ $event->getResponse()->getHeaders()->addHeaderLine('Content-Type', 'text/plain');
+}, -10000);
+```
 
 这也是我在stackoverflow上的对[ZF2更改最终响应类型的一个回答](http://stackoverflow.com/questions/12820415/how-to-tell-zf2s-jsonmodel-to-return-text-plain-instead-of-application-json)
 
@@ -124,13 +138,15 @@ UI的部件都是硬编码的HTML class，无法更改。核心的几个部件�
 
 ###全局控制按钮 (必须)
 
-        <div class="fileupload-buttonbar">
-                <span class="fileinput-button"><input type="file" name="files[]" multiple></span>
-                <button type="submit" class="start">Start upload</button>
-                <button type="reset" class="cancel">Cancel upload</button>
-                <button type="button" class="delete">Delete</button>
-                <input type="checkbox" class="toggle">
-        </div>
+```html
+<div class="fileupload-buttonbar">
+        <span class="fileinput-button"><input type="file" name="files[]" multiple></span>
+        <button type="submit" class="start">Start upload</button>
+        <button type="reset" class="cancel">Cancel upload</button>
+        <button type="button" class="delete">Delete</button>
+        <input type="checkbox" class="toggle">
+</div>
+```
 
 
 最外层容器为.fileupload-buttonbar，内部包含
@@ -143,12 +159,14 @@ UI的部件都是硬编码的HTML class，无法更改。核心的几个部件�
 
 ###整体上传进度 (可选)
 
-    <div class="fileupload-progress">
-        <div class="progress">
-            <div class="bar" style="width:0%;"></div>
-        </div>
-        <div class="progress-extended"></div>
+```html
+<div class="fileupload-progress">
+    <div class="progress">
+        <div class="bar" style="width:0%;"></div>
     </div>
+    <div class="progress-extended"></div>
+</div>
+```
 
 最外层容器为.fileupload-progress，内部包含
 
@@ -158,32 +176,36 @@ UI的部件都是硬编码的HTML class，无法更改。核心的几个部件�
 
 ###文件显示容器 (必须)
 
+```
     <div class="files"></div>
+```
 
 .file容器是最重要的UI部件，上传时的文件预览模板以及上传完毕后的文件显示模板都将显示在这里。
 
 ###文件预览模板 (必须)
 
-    <script id="template-upload" type="text/x-tmpl">
-	{% for (var i=0, file; file=o.files[i]; i++) { %}
-	<div class="template-upload">
-	    {% if (file.error) { %}
-	        <div class="error">{%=file.error%}</div>
-	    {% } else { %}
-	    <div class="preview"><span class="fade"></span></div>
-	    <div class="name"><span>{%=file.name%}</span></div>
-	    <div class="size"><span>{%=o.formatFileSize(file.size)%}</span></div>
-	    <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height:5px;"><div class="bar" style="width:0%;"></div></div>
-	    <span class="start">
-	        {% if (!o.options.autoUpload) { %}
-	            <button>Start Upload</button>
-	        {% } %}
-	    </span>
-	    {% } %}
-	    <span class="cancel"><button>Cancel</button></span>
-	</div>
-	{% } %}
-	</script>
+```php
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+<div class="template-upload">
+    {% if (file.error) { %}
+        <div class="error">{%=file.error%}</div>
+    {% } else { %}
+    <div class="preview"><span class="fade"></span></div>
+    <div class="name"><span>{%=file.name%}</span></div>
+    <div class="size"><span>{%=o.formatFileSize(file.size)%}</span></div>
+    <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="height:5px;"><div class="bar" style="width:0%;"></div></div>
+    <span class="start">
+        {% if (!o.options.autoUpload) { %}
+            <button>Start Upload</button>
+        {% } %}
+    </span>
+    {% } %}
+    <span class="cancel"><button>Cancel</button></span>
+</div>
+{% } %}
+</script>
+```
 
 这部分逻辑不难读懂，由于文件选择是多选的，所以被选择文件一开始以数组方式存放，循环输出。即使我们加入最大文件只能上传一个，这里得到的仍然是数组形式。
 
@@ -196,30 +218,36 @@ UI的部件都是硬编码的HTML class，无法更改。核心的几个部件�
 
 ###上传后文件回调显示模板 (必须)
 
-    <script id="template-download" type="text/x-tmpl">
-	{% for (var i=0, file; file=o.files[i]; i++) { %}
-	<div class="template-download">
-	    {% if (file.error) { %}
-	        <div class="error">{%=file.error%}</div>
-	        <span class="cancel"><button class="btn btn-block"><i class="icon-ban-circle"></i>Cancel</span>
-	    {% } else { %}
-	    <div class="preview"><img src="{%=file.thumbnail_url%}"></div>
-	    <div class="name"><span>{%=file.name%}</span></div>
-	    <div class="size"><span>{%=o.formatFileSize(file.size)%}</span></div>
-	    <div class="delete"><button data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">Delete</button>
-	    </div>
-	    {% } %}
-	</div>
-	{% } %}
-	</script>
+```php
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+<div class="template-download">
+    {% if (file.error) { %}
+        <div class="error">{%=file.error%}</div>
+        <span class="cancel"><button class="btn btn-block"><i class="icon-ban-circle"></i>Cancel</span>
+    {% } else { %}
+    <div class="preview"><img src="{%=file.thumbnail_url%}"></div>
+    <div class="name"><span>{%=file.name%}</span></div>
+    <div class="size"><span>{%=o.formatFileSize(file.size)%}</span></div>
+    <div class="delete"><button data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">Delete</button>
+    </div>
+    {% } %}
+</div>
+{% } %}
+</script>
+```
 
 这一部分的o.files完全来自服务器端的json响应，所以模板内容可以自由发挥。唯一被定制的元素为删除按钮.delete。 点击这个按钮会向按钮中指定的url发送请求，比如
 
-    <div class="delete"><button data-type="DELETE" data-url="/file/1">Delete</button></div>
+```html
+<div class="delete"><button data-type="DELETE" data-url="/file/1">Delete</button></div>
+```
 
 点击后则会用DELETE方式发送HTTP请求
 
+```
     DELETE /file/1
+```
 
 jQuery File Upload UI工作流程
 -------------------
@@ -247,13 +275,17 @@ jQuery File Upload UI工作流程
 
 由于没有使用Flash空间，上传的文件选择框是无法限制文件类型的，所以所谓的限制文件类型，只能让用户选择文件之后，用file.error显示一个错误信息。例如本次需要限定可上传的文件为图片，那么Options指定：
 
+```
     acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i
+```
 
 即可。
 
 在Google Chrome浏览器中，可以用input:file原生支持文件类型限定，可以配合使用：
 
+```
     <input type="file" name="upload[]"  accept="image/png, image/gif, image/jpg, image/jpeg">
+```
 
 不过在客户端做再多的限定也只是提升用户体验，不能真正保证安全性，所以不要忘记了在服务器端做同样的类型检测。
 
@@ -262,7 +294,9 @@ jQuery File Upload UI工作流程
 
 只需在Options指定
 
+```
     maxNumberOfFiles : 1
+```
 
 即可。jQuery File Upload UI的处理方式是当用户上传一个文件后，文件选择按钮被置为Disabled。
 
@@ -273,7 +307,9 @@ jQuery File Upload UI工作流程
 
 Options中指定
 
+```
     maxFileSize: 5000000
+```
 
 即只允许单文件最大5MB。
 
@@ -284,15 +320,17 @@ Firefox disable bug
 在Firefox环境下测试是，发现如果将文件数量限制为1，选择一次文件，刷新页面之后文件选择按钮会莫名其妙的被加上一个Disabled属性，导致无法点击。所以最终我们的初始化代码为：
 
 
-    var uploader = $("#fileupload");
-    uploader.fileupload({
-        dataType: 'json',
-        autoUpload: false,
-        acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i,
-        maxNumberOfFiles : 1,
-        maxFileSize: 5000000 
-    });
-    uploader.find("input:file").removeAttr('disabled');
+```js
+var uploader = $("#fileupload");
+uploader.fileupload({
+    dataType: 'json',
+    autoUpload: false,
+    acceptFileTypes:  /(\.|\/)(gif|jpe?g|png)$/i,
+    maxNumberOfFiles : 1,
+    maxFileSize: 5000000 
+});
+uploader.find("input:file").removeAttr('disabled');
+```
 
 
 最后就是界面的一些调整，完整代码在[EvaEngine](http://avnpc.com/pages/eva-engine)的File模块下，[点击查看](https://github.com/AlloVince/eva-engine/blob/master/module/File/view/file/index.phtml).

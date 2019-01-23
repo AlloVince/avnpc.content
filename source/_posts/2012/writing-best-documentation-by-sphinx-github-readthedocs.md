@@ -31,11 +31,15 @@ title: 写最好的文档：Sphinx + Read the Docs
 
 首先安装好Python环境，建议选择Pyhon2.7.3,并且把Python及Python/Scripts目录加入环境变量，然后只需要一行命令即可
 
+```
     easy_install -U Sphinx
+```
 
 安装完毕之后，进入任意目录，运行
 
+```
     sphinx-quickstart
+```
 
 会进入一个设置向导，根据向导一步一步设置文档项目，其实必填项只有项目名称，作者和版本，其他设置都可以一路回车：
 
@@ -54,6 +58,7 @@ title: 写最好的文档：Sphinx + Read the Docs
 
 最后会生成Sphinx一个文档项目必需的核心文件，包括：
 
+```
     readthedocs
 	│ make.bat
 	│ Makefile
@@ -63,6 +68,7 @@ title: 写最好的文档：Sphinx + Read the Docs
 	　　│ index.rst
 	　　├─_static
 	　　└─_templates
+```
 
 如果向导中的所有设置都保存在conf.py中，可以随时调整。
 
@@ -73,19 +79,25 @@ source目录就是存放文档源代码的目录，默认的索引页面为index
 
 我们尝试来写作第一篇文档，在source目录下建立helloworld.rst，内容为：
 
+```
    Hello World
    ===========
+```
 
 同时编辑index.rst对应部分为
 
+```
     .. toctree::
        :maxdepth: 1
 
        helloworld
+```
 
 然后在当前目录下运行
 
+```
     make html
+```
 
 会看到build目录下会生成HTML格式的文档。同理我们可以make letex生成LeTex以及其他格式。
 

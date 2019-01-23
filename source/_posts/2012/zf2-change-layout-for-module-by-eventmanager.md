@@ -14,7 +14,7 @@ title: ZF2小TIP：使用事件驱动为模块快速设置模板
 
 比如要对Admin模块单独设置一个admin模板，只需要短短5行代码
 
-```
+```php
 <?php
 namespace Admin;
  

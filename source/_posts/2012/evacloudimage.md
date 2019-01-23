@@ -35,7 +35,9 @@ EvaCloudImage的功能包括：
 
 这里是[原图](http://evacloudimage.avnpc.com/upload/demo.jpg): 
 
-    http://evacloudimage.avnpc.com/upload/demo.jpg
+```
+http://evacloudimage.avnpc.com/upload/demo.jpg
+```
 
 EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图片的文件名末尾加入以逗号分隔的参数即可：
 
@@ -43,7 +45,9 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 '*w*'参数是Width的缩写，可以控制图片按宽度缩放。下面的URL会生成一张300px宽的图片：
 
-    http://evacloudimage.avnpc.com/thumb/demo,w_300.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,w_300.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,w_300.jpg)
 
@@ -51,7 +55,9 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 同理通过更改'*h*'（Height），根据高度缩放图片：
 
-    http://evacloudimage.avnpc.com/thumb/demo,h_150.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,h_150.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,h_150.jpg)
 
@@ -59,7 +65,9 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 当w或h为小数时，图片会按照百分比缩放，比如w_0.4会将图片缩放至原尺寸的40%：
 
-    http://evacloudimage.avnpc.com/thumb/demo,w_0.4.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,w_0.4.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,w_0.4.jpg)
 
@@ -73,25 +81,33 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 使用'*c*'参数（Crop）可以剪裁图片，比如c_100会从图片的中心位置截取出一张100px的缩略图。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_100.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_100.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_100.jpg)
 
 '*g*'参数（gravity）代表剪裁范围或高度，需要配合c参数一起使用。比如下例，代表从图片中心位置剪裁一张100px*200px的缩略图。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_200,g_100.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_200,g_100.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_200,g_100.jpg)
 
 如果想要指定剪裁的精确位置，需要用'x'和'y'参数指定起点坐标，比如下面的例子，代表以距离图片左边80px，上边10px为起点，剪裁一张100px*200px的图片。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,x_80,y_10.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,x_80,y_10.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,x_80,y_10.jpg)
 
 图片的剪裁与缩放可以混用，EvaCloudImage始终会先进行剪裁，然后再对剪裁后的图片缩放。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,w_50.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,w_50.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,w_50.jpg)
 
@@ -99,13 +115,17 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 在实际使用中，我们经常会遇到这样的场景：需要截取并缩放图片以适应网页布局，此时我们可以使用剪裁中的填充模式，在填充模式下，需要指定剪裁参数为c_fill，同时设定填充的宽度与高度，然后可以得到一张完全吻合设定尺寸，同时经过缩放与剪裁处理的图片。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_fill,w_250,h_50.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_fill,w_250,h_50.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_fill,w_250,h_50.jpg)
 
 在填充模式下还可以设定剪裁范围，允许的剪裁范围包括'top'（从上方）, 'bottom'（从下方）, 'left'（从左）， 'right'（从右）。
 
-    http://evacloudimage.avnpc.com/thumb/demo,c_fill,g_top,w_250,h_60.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,c_fill,g_top,w_250,h_60.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_fill,g_top,w_250,h_60.jpg)
 
@@ -114,7 +134,9 @@ EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图�
 
 旋转参数为'*r*' (rotate) ，传递一个数字作为图片旋转的角度，比如让图片按照逆时针旋转90度：
 
-    http://evacloudimage.avnpc.com/thumb/demo,h_200,r_90.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,h_200,r_90.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,h_200,r_90.jpg)
 
@@ -124,7 +146,9 @@ JPG图片压缩质量
 
 通过'*q*'(quality)可以指定jpg图片的压缩质量，默认为100:
 
-    http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
+```
+http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
+```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg)
 
@@ -156,6 +180,7 @@ JPG图片压缩质量
 
 请参考以下配置调整路径
 
+```
     server {
             listen   80;
             server_name  evacloudimage.avnpc.com;
@@ -173,18 +198,21 @@ JPG图片压缩质量
                     fastcgi_param  SCRIPT_FILENAME  /usr/www/EvaCloudImage/$fastcgi_script_name;
             }
     }
+```
 
 ###3. 配置文件
 
 编辑源代码中的config.inc.php文件：
 
-    array(
-        'libPath' => __DIR__ . '/lib',  //依赖库的存放路径，一般无需更改
-        'sourceRootPath' => __DIR__ . '/upload',  //原图片的存放路径，需要读取权限
-        'thumbFileRootPath' => __DIR__ . '/thumb', //缩略图的存放路径，需要读写权限
-        'thumbUrlRootPath' => __DIR__, //缩略域名绑定的根目录
-        'saveImage' => false,  //如果开启，所有缩略图会自动保存，在正式环境推荐打开。
-    );
+```php
+array(
+    'libPath' => __DIR__ . '/lib',  //依赖库的存放路径，一般无需更改
+    'sourceRootPath' => __DIR__ . '/upload',  //原图片的存放路径，需要读取权限
+    'thumbFileRootPath' => __DIR__ . '/thumb', //缩略图的存放路径，需要读写权限
+    'thumbUrlRootPath' => __DIR__, //缩略域名绑定的根目录
+    'saveImage' => false,  //如果开启，所有缩略图会自动保存，在正式环境推荐打开。
+);
+```
 
 
 相关技术
