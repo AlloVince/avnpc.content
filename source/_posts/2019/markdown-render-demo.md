@@ -8,9 +8,9 @@ tags:
   - Markdown
 ---
 
-这是一篇用于测试Markdown渲染的Demo示例。
+这是一篇用于测试 Markdown 渲染的 Demo 示例。
 
-所有使用到的Markdown相关开源项目包括:
+所有使用到的 Markdown 相关开源项目包括:
 
 - [markdown-it](https://github.com/markdown-it/markdown-it) [^1]
   - [markdown-it-abbr](https://github.com/markdown-it/markdown-it-abbr)
@@ -23,17 +23,17 @@ tags:
 
 [^1]: 可能是 JS 最好的 Markdown 渲染
 
-## 例1：中文排版
+## 例 1：中文排版
 
 ### 《论语学而篇第一》
 
 *[孔子]: 名丘，字仲尼
 
-**作者：** 孔子（<time>前551年9月28日－前479年4月11日</time>）
+**作者：** 孔子（<time>前 551 年 9 月 28 日－前 479 年 4 月 11 日</time>）
 
 #### 本篇引语
 
-《学而》是《论语》第一篇的篇名。《论语》中各篇一般都是以第一章的前二三个字作为该篇的篇名。《学而》一篇包括16章，内容涉及诸多方面。其中重点是「吾日三省吾身」；「节用而爱人，使民以时」；「礼之用，和为贵」以及仁、孝、信等道德范畴。
+《学而》是《论语》第一篇的篇名。《论语》中各篇一般都是以第一章的前二三个字作为该篇的篇名。《学而》一篇包括 16 章，内容涉及诸多方面。其中重点是「吾日三省吾身」；「节用而爱人，使民以时」；「礼之用，和为贵」以及仁、孝、信等道德范畴。
 
 #### 原文
 
@@ -45,7 +45,7 @@ tags:
 
 ---
 
-## 例2：英文排版
+## 例 2：英文排版
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
@@ -58,7 +58,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 2. Sometimes one pays most for the things one gets for nothing.
 3. Only those who have the patience to do simple things perfectly ever acquire the skill to do difficult things easily.
 
-## 例3: Markdown 增强扩展
+---
+
+## 例 3: Markdown 增强扩展
 
 ### SmartyPants
 
