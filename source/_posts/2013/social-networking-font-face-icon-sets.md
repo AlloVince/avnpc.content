@@ -6,14 +6,14 @@ tags:
   - icon
   - Project
 author: AlloVince
-title: Font-face社交网络图标集，覆盖绝大多数Web服务及少量国内服务（QQ、人人、微博等）
+title: Font-face 社交网络图标集，覆盖绝大多数 Web 服务及少量国内服务（QQ、人人、微博等）
 ---
 
-基于@font-face的图标已经非常流行了，但是一套font-face图标总是有这样那样的小问题，所以之前有想法想做[一个能自由组合font-face的在线服务](https://plus.google.com/104171418568283484752/posts/YAxJqBswLw7)，结果最近发现已经有人做出了成品[Fontello](http://fontello.com/)。
+基于@font-face 的图标已经非常流行了，但是一套 font-face 图标总是有这样那样的小问题，所以之前有想法想做[一个能自由组合 font-face 的在线服务](https://plus.google.com/104171418568283484752/posts/YAxJqBswLw7)，结果最近发现已经有人做出了成品[Fontello](http://fontello.com/)。
 
-赶紧试用了一下，组装了一套[覆盖绝大多数Web服务的Font-face社交网络图标集](http://avnpc.com/pages/social-networking-font-face-icon-sets)，把各家的相关图标挑出来然后去掉重复的，最终的成品整合的很好，甚至针对IE7也做了处理，不过Fontello的制作流程还有提高的余地。
+赶紧试用了一下，组装了一套[覆盖绝大多数 Web 服务的 Font-face 社交网络图标集](http://avnpc.com/pages/social-networking-font-face-icon-sets)，把各家的相关图标挑出来然后去掉重复的，最终的成品整合的很好，甚至针对 IE7 也做了处理，不过 Fontello 的制作流程还有提高的余地。
 
-图标来自以下几个免费的font-face集合：
+图标来自以下几个免费的 font-face 集合：
 
 - [Zocial](http://zocial.smcllns.com/) | MIT
 - Fontelico | SIL
@@ -21,7 +21,7 @@ title: Font-face社交网络图标集，覆盖绝大多数Web服务及少量国�
 - [Entypo](http://www.entypo.com) | SIL
 - Brandico | SIL
 
-如用于商业用途请自己查阅一下License的限制。另外为了可以同时加载Font Awesome，避免命名冲突，class的前缀为.icon-social。最终效果如下：
+如用于商业用途请自己查阅一下 License 的限制。另外为了可以同时加载 Font Awesome，避免命名冲突，class 的前缀为.icon-social。最终效果如下：
 
 <div class="row-fluid">
     <div class="span3">
@@ -196,6 +196,6 @@ title: Font-face社交网络图标集，覆盖绝大多数Web服务及少量国�
 
 
 
-放在Github上，可以[自行下载](https://github.com/AlloVince/evaengine-libs-front/tree/master/font-social)
+放在 Github 上，可以[自行下载](https://github.com/AlloVince/evaengine-libs-front/tree/master/font-social)
 
 

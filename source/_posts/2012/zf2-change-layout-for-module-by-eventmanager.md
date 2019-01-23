@@ -7,12 +7,12 @@ tags:
   - EventManager
   - 事件驱动
 author: AlloVince
-title: ZF2小TIP：使用事件驱动为模块快速设置模板
+title: ZF2 小 TIP：使用事件驱动为模块快速设置模板
 ---
 
-在ZF1中，对一部分页面设置一个不同的Layout可能需要在每一个Controller中单独设置。在ZF2中，事件驱动的支持让Layout的设置变得非常灵活。
+在 ZF1 中，对一部分页面设置一个不同的 Layout 可能需要在每一个 Controller 中单独设置。在 ZF2 中，事件驱动的支持让 Layout 的设置变得非常灵活。
 
-比如要对Admin模块单独设置一个admin模板，只需要短短5行代码
+比如要对 Admin 模块单独设置一个 admin 模板，只需要短短 5 行代码
 
 ```php
 <?php
@@ -33,4 +33,4 @@ class Module
 }
 ```
 
-上例中，对MVC的Dispath分发事件绑定了一个闭包，闭包中切换controller的Layout为Admin。同样的道理，可以通过事件驱动很简单的实现View根目录切换等原本非常繁琐的工作。只是这一切需要对[ZF2的MVC启动流程](/pages/zf2-mvc-process)有所了解。
+上例中，对 MVC 的 Dispath 分发事件绑定了一个闭包，闭包中切换 controller 的 Layout 为 Admin。同样的道理，可以通过事件驱动很简单的实现 View 根目录切换等原本非常繁琐的工作。只是这一切需要对[ZF2 的 MVC 启动流程](/pages/zf2-mvc-process)有所了解。

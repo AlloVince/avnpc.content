@@ -19,9 +19,9 @@ title: 关于不要重复造轮子的二三事
 
 所以现实情况往往是：新人不懂得检索方法，找不到轮子；好不容易找到一个轮子，学了半天不会用；好不容易能运行，很多地方与需求不一致，但是又不会改；一来二去，最后还是变成自己写轮子，同时还得出一个结论：别人的轮子都不好用，还是要坚持自己造轮子。
 
-这种情况的最佳体现，就是曾经有一段时间遍地开花的PHP框架。每一个写框架的人都认为自己写的框架才是最好的轮子，甚至是很多PHP新人，对几个成熟框架浅尝辄止后，也纷纷投身写框架的行列。成品大部分看过去却是大同小异，只是语法层面更符合作者本人的习惯，而缺乏大量的测试以及文档社区，最终的结果就是一个半成品然后无疾而终。
+这种情况的最佳体现，就是曾经有一段时间遍地开花的 PHP 框架。每一个写框架的人都认为自己写的框架才是最好的轮子，甚至是很多 PHP 新人，对几个成熟框架浅尝辄止后，也纷纷投身写框架的行列。成品大部分看过去却是大同小异，只是语法层面更符合作者本人的习惯，而缺乏大量的测试以及文档社区，最终的结果就是一个半成品然后无疾而终。
 
-这个例子可能有马后炮之嫌，毕竟PHP的造框架运动是由当时的背景和多方面的因素造成的，目前因为有了[PHP-FIG](http://www.php-fig.org/)制订的规范，PHP的框架的资源已经慢慢集中在[Zend Framework](http://www.zendframework.com/)、[Symfony](http://symfony.com/)、[CakePHP](http://cakephp.org/)、[Yii](http://www.yiiframework.com/)、[CodeIgniter](http://ellislab.com/codeigniter)这样少数几个成熟框架之下了。更多的符合PSR规范的模块类库在取代新框架不断涌现，这对整个PHP社区都是好事情。
+这个例子可能有马后炮之嫌，毕竟 PHP 的造框架运动是由当时的背景和多方面的因素造成的，目前因为有了[PHP-FIG](http://www.php-fig.org/)制订的规范，PHP 的框架的资源已经慢慢集中在[Zend Framework](http://www.zendframework.com/)、[Symfony](http://symfony.com/)、[CakePHP](http://cakephp.org/)、[Yii](http://www.yiiframework.com/)、[CodeIgniter](http://ellislab.com/codeigniter)这样少数几个成熟框架之下了。更多的符合 PSR 规范的模块类库在取代新框架不断涌现，这对整个 PHP 社区都是好事情。
 
 话题稍微扯的有点远，不过核心的意思还是为了说明，找轮子本身其实是一件不容易的事情。而我对上面问题的解决方法是：找轮子的任务不要交给新人，而是要由经验丰富，信息检索能力强的编程人员负责，最好是项目的构架人员。团队成员找到的轮子最好也由构架人员拍板，用还是不用。对于团队新人，最重要的任务还是编程基本功、文档阅读能力以及如何用好已经拍板的轮子。
 
@@ -30,7 +30,7 @@ title: 关于不要重复造轮子的二三事
 
 个人认为好轮子应该具备以下的特征：
 
-1. 开源，并且License宽松。
+1. 开源，并且 License 宽松。
 2. 有文档，代码规范，接口友好，最好有实际用例。
 3. 社区相对活跃。
 4. 松耦合，定制容易。
@@ -39,7 +39,7 @@ title: 关于不要重复造轮子的二三事
 
 我自己认可的一些好轮子列举在这里：
 
-- [最好的轮子之PHP篇](http://avnpc.com/pages/best-wheels-for-php)
+- [最好的轮子之 PHP 篇](http://avnpc.com/pages/best-wheels-for-php)
 
 
 ## 如何找到好轮子
@@ -54,15 +54,15 @@ title: 关于不要重复造轮子的二三事
 
 这里唯一需要说的是，如果想用百度那货去找技术资料的还是省省吧。
 
-外文资料阅读能力也非一日之功，不过个人倒是有个小窍门，如果想要获得一些项目的HelloWorld入门教程或者服务器的配置，可以将检索语言限定为日语，因为日文用户的教程往往秉承了日本细致入微的精神，包括项目背景、需要的环境安装等等一些对初学者才有用的知识，在日文的技术资料中往往也会写的很清楚。
+外文资料阅读能力也非一日之功，不过个人倒是有个小窍门，如果想要获得一些项目的 HelloWorld 入门教程或者服务器的配置，可以将检索语言限定为日语，因为日文用户的教程往往秉承了日本细致入微的精神，包括项目背景、需要的环境安装等等一些对初学者才有用的知识，在日文的技术资料中往往也会写的很清楚。
 
 至于平时的积累，可能程序员都知道[Github](https://github.com/)、[SourceForge](http://sourceforge.net/)、[Google Code](http://code.google.com/intl/zh-CN/)这些优秀的项目托管网站。但是积累的意思并不是说有时间上去看两眼或者随便收藏一下这么简单。
 
-比如我自己侧重PHP方面的项目，我的一个做法是找到[Github下所有Follower大于300的PHP项目](https://github.com/search?l=PHP&p=&q=stars%3A%3E300&ref=advsearch&type=Repositories)（其实一共不到200个其中很多还是php框架），然后一个一个像扫货一样，对其进行了解以及记录。
+比如我自己侧重 PHP 方面的项目，我的一个做法是找到[Github 下所有 Follower 大于 300 的 PHP 项目](https://github.com/search?l=PHP&p=&q=stars%3A%3E300&ref=advsearch&type=Repositories)（其实一共不到 200 个其中很多还是 php 框架），然后一个一个像扫货一样，对其进行了解以及记录。
 
-我的另一个做法是查看知名PHP框架，看看他们用了哪些轮子，比如在[Symfony Reference](http://symfony.com/doc/current/reference/index.html)中，你就能淘到[Assetic](https://github.com/kriswallsmith/assetic)、[monolog](https://github.com/Seldaek/monolog) 这样的好货。
+我的另一个做法是查看知名 PHP 框架，看看他们用了哪些轮子，比如在[Symfony Reference](http://symfony.com/doc/current/reference/index.html)中，你就能淘到[Assetic](https://github.com/kriswallsmith/assetic)、[monolog](https://github.com/Seldaek/monolog) 这样的好货。
 
-最后一个办法是在Github上Follow一些活跃的作者，比如我的[Following](https://github.com/AlloVince/following)中就会显示我的Stars和Forks，里面自然也是我认为值得收藏关注的项目。
+最后一个办法是在 Github 上 Follow 一些活跃的作者，比如我的[Following](https://github.com/AlloVince/following)中就会显示我的 Stars 和 Forks，里面自然也是我认为值得收藏关注的项目。
 
 
 

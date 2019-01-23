@@ -6,21 +6,21 @@ tags:
   - Photoshop
   - 图形
 author: AlloVince
-title: Photoshop图层混合(Layer Blending)模式的算法实现
+title: Photoshop 图层混合(Layer Blending)模式的算法实现
 ---
 
-Photoshop的图层混合(Layer Blending)是实现各种特效的基础之一，在Photoshop新版中已经提供了接近30种图层混合模式，而运用这些图层混合模式则可以将两个图层叠加并且通过一些算法使叠加后的图层呈现新的效果，比如可以通过“变暗”、“正片叠底”使底层图像变暗，通过“叠加”、“柔光”增强底层图片对比度等。
+Photoshop 的图层混合(Layer Blending)是实现各种特效的基础之一，在 Photoshop 新版中已经提供了接近 30 种图层混合模式，而运用这些图层混合模式则可以将两个图层叠加并且通过一些算法使叠加后的图层呈现新的效果，比如可以通过“变暗”、“正片叠底”使底层图像变暗，通过“叠加”、“柔光”增强底层图片对比度等。
 
-我之前以为这些特效一定经过了复杂的算法，但稍微了解之后才知道图层混合采用的算法其实都简单到难以置信，几乎全是加减乘除就可以搞定。来复习一下计算机图形的基础知识，一张位图由若干像素点组成，而每个像素点，都有自己的颜色与透明度，因此每一个像素都可以分拆为RGB与Alpha四个通道，一般可以采用0-255的值来表示单一通道的颜色值。比如在CSS中，就可以分别指定4个通道的值来定义一个颜色。
+我之前以为这些特效一定经过了复杂的算法，但稍微了解之后才知道图层混合采用的算法其实都简单到难以置信，几乎全是加减乘除就可以搞定。来复习一下计算机图形的基础知识，一张位图由若干像素点组成，而每个像素点，都有自己的颜色与透明度，因此每一个像素都可以分拆为 RGB 与 Alpha 四个通道，一般可以采用 0-255 的值来表示单一通道的颜色值。比如在 CSS 中，就可以分别指定 4 个通道的值来定义一个颜色。
 
 ``` css
 color:rgba(153, 134, 117, 0.2);
 ```
     
-而两个图层混合，本质上是将两个图层的同一位置的像素点取出，对其RGB通道的值分别进行某种运算，最终生成一个新的RGB值。
+而两个图层混合，本质上是将两个图层的同一位置的像素点取出，对其 RGB 通道的值分别进行某种运算，最终生成一个新的 RGB 值。
 
 
-来看一个最简单的例子，如果我们想将上层图片`top.png`与下层图片`bottom.png`采用PhotoShop中“正片叠底（Multiply）”模式混合，使用php+GD实现：
+来看一个最简单的例子，如果我们想将上层图片`top.png`与下层图片`bottom.png`采用 PhotoShop 中“正片叠底（Multiply）”模式混合，使用 php+GD 实现：
 
 ``` php
 $top = imagecreatefrompng('top.png');
@@ -46,7 +46,7 @@ header('Content-Type: image/png');
 imagepng($layer);
 ```
 
-程序做的事情其实非常简单，遍历图片的所有像素，取得上下图层的RGB值，分别进行`上*下/255`这样一个简单的运算，将新的颜色填充到原来的位置，就完成了一次“正片叠底”的混合。看看效果：
+程序做的事情其实非常简单，遍历图片的所有像素，取得上下图层的 RGB 值，分别进行`上*下/255`这样一个简单的运算，将新的颜色填充到原来的位置，就完成了一次“正片叠底”的混合。看看效果：
 
 ![原图](http://evathumber.avnpc.com/thumb/watermark/demo.jpg) + ![图层](http://evathumber.avnpc.com/thumb/watermark/blend.png) = ![Multiply](http://evathumber.avnpc.com/thumb/watermark/demo,l_Multiply.jpg)
 
@@ -94,20 +94,20 @@ function layerBlending($mode, $top = 'top.png', $bottom = 'bottom.png')
 }
 ```
 
-我们定义了一个混合模式的算法类Blending，Blending中会有一系列静态方法，方法中入口参数A为上图层，B为下图层，只记载最核心的颜色通道算法，就可以通过替换算法的名称来切换不同的混合模式，比如此时我们应用“正片叠底”只需要：
+我们定义了一个混合模式的算法类 Blending，Blending 中会有一系列静态方法，方法中入口参数 A 为上图层，B 为下图层，只记载最核心的颜色通道算法，就可以通过替换算法的名称来切换不同的混合模式，比如此时我们应用“正片叠底”只需要：
 
 ``` php
 layerBlending('Multiply');
 ```
 
-下面就实际[用PHP+GD来尝试实现Photoshop中所有的图层混合(Layer Blending)模式算法](http://avnpc.com/pages/photoshop-layer-blending-algorithm)吧。在下面所有示例中，A均代表上图层（混合层），B代表下图层（基层）。
+下面就实际[用 PHP+GD 来尝试实现 Photoshop 中所有的图层混合(Layer Blending)模式算法](http://avnpc.com/pages/photoshop-layer-blending-algorithm)吧。在下面所有示例中，A 均代表上图层（混合层），B 代表下图层（基层）。
 
 
 ### 1. 变暗 Darken
 
 > (B > A) ? A : B
 
-取A与B中当前通道颜色值较小的一个，整体会变暗。
+取 A 与 B 中当前通道颜色值较小的一个，整体会变暗。
 
 
 ``` php
@@ -211,7 +211,7 @@ public static function layerSubtract($A, $B)
 
 > (B > A) ? B : A
 
-取A与B中当前通道颜色值较大的一个，整体效果就会偏亮。
+取 A 与 B 中当前通道颜色值较大的一个，整体效果就会偏亮。
 
 ``` php
 public static function layerLighten($A, $B)
@@ -334,7 +334,7 @@ public static function layerOverlay($A, $B)
 
 > B < 128 ?  (2 * (( A >> 1) + 64)) * (B / 255) :  (255 - ( 2 * (255 - ( (A >> 1) + 64 ) )  *  ( 255 - B ) / 255 ));
 
-```
+```plain
 public static function layerSoftLight($A, $B)
 {
     return $B < 128 ?
@@ -361,7 +361,7 @@ public static function layerSoftLight($A, $B)
 > Overlay(B,A)
 > (A < 128) ? (2 * A * B / 255) : (255 - 2 * (255 - A) * (255 - B) / 255)
 
-```
+```plain
 public static function layerHardLight($A, $B)
 {
     return ($A < 128) ? (2 * $A * $B / 255) : (255 - 2 * (255 - $A) * (255 - $B) / 255);
@@ -494,7 +494,7 @@ public static function layerHardMix($A, $B)
 
 > abs(A - B)
 
-取A与B差值的绝对值，会得到一个与AB有色彩反差的颜色。
+取 A 与 B 差值的绝对值，会得到一个与 AB 有色彩反差的颜色。
 
 ``` php
 public static function layerDifference($A, $B)

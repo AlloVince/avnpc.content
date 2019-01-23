@@ -10,12 +10,12 @@ author: AlloVince
 title: Zend Framework 2.0 (zf2) 进阶数据库操作
 ---
 
-[Zend Framework 2](http://avnpc.com/pages/zf2-summary)完全重写了Zend1的数据库组件，但是目前手册给的例子都弱爆了，只能自己整理一些[Zend\Db\TableGateway用例](http://avnpc.com/pages/advanced-database-select-usage-in-zf2)，详见下文。
+[Zend Framework 2](http://avnpc.com/pages/zf2-summary)完全重写了 Zend1 的数据库组件，但是目前手册给的例子都弱爆了，只能自己整理一些[Zend\Db\TableGateway 用例](http://avnpc.com/pages/advanced-database-select-usage-in-zf2)，详见下文。
 
 连接数据库
 ===========
 
-首选的操作DB方式还是继承TableGateway，比如现在要操作的数据库为test，数据表为mydbtable，新建一个类如下
+首选的操作 DB 方式还是继承 TableGateway，比如现在要操作的数据库为 test，数据表为 mydbtable，新建一个类如下
 
 ```php
 class MyDbTable extends Zend\Db\TableGateway\TableGateway
@@ -23,7 +23,7 @@ class MyDbTable extends Zend\Db\TableGateway\TableGateway
 }
 ```
 
-连接数据库驱动推荐用pdo
+连接数据库驱动推荐用 pdo
 
 
 ```php
@@ -42,25 +42,25 @@ $myDbTable = new MyDbTable('mydbtable', $adapter);
 
 这样子数据库的连接就完成了。
 
-执行Transaction
+执行 Transaction
 ===========
 
 ```php
 $adapter->getDriver()->getConnection()->beginTransaction();
 ```
 
-数据库会执行SQL语句：
+数据库会执行 SQL 语句：
 
 ```sql
 START TRANSACTION
 ```
 
-不过不是所有的驱动都具备Transaction功能，还是推荐使用pdo
+不过不是所有的驱动都具备 Transaction 功能，还是推荐使用 pdo
 
 WHERE 链式操作
 ================
 
-ZF2推荐的查询方式为链式操作。
+ZF2 推荐的查询方式为链式操作。
 
 ```php
 $select = $myDbTable->getSql()->select();
@@ -69,7 +69,7 @@ $resultSet = $myDbTable->selectWith($select);
 $result = $resultSet->toArray();
 ```
     
-执行的SQL语句为：
+执行的 SQL 语句为：
 
 ```php
 SELECT `mydbtable`.* FROM `mydbtable` WHERE id > 1 ORDER BY `id` DESC LIMIT 10
@@ -78,7 +78,7 @@ SELECT `mydbtable`.* FROM `mydbtable` WHERE id > 1 ORDER BY `id` DESC LIMIT 10
 WHERE 闭包操作
 ==============
 
-zf2还支持闭包式的操作，上例可以以闭包方式改写成：
+zf2 还支持闭包式的操作，上例可以以闭包方式改写成：
 
 ```php
 $select->where(function($where){
@@ -97,7 +97,7 @@ SELECT `mydbtable`.* FROM `mydbtable` WHERE `id` < '10' AND `id` > '5' ORDER BY 
 WHERE 非闭包操作
 ==============
 
-如果不想用闭包，也可以在Zend\Db\Sql\Select中调用对象where从而在外部获得where的一个实例进行操作
+如果不想用闭包，也可以在 Zend\Db\Sql\Select 中调用对象 where 从而在外部获得 where 的一个实例进行操作
 
 ```php
 $select = $myDbTable->getSql()->select();
@@ -114,7 +114,7 @@ SQL:
 SELECT `mydbtable`.* FROM `mydbtable` WHERE `id` < '10' AND `id` > '5' ORDER BY `id` DESC LIMIT 10
 ```
 
-WHERE AND复合条件
+WHERE AND 复合条件
 ================
 
 ```php
@@ -185,7 +185,7 @@ $select->where(function($where){
 });
 ```
     
-等同于SQL：
+等同于 SQL：
 
 ```sql
 SELECT `mydbtable`.* FROM `mydbtable` WHERE (`id` < '10' OR `id` > '20') AND (`title` = 'a' OR `title` = 'b')
@@ -194,7 +194,7 @@ SELECT `mydbtable`.* FROM `mydbtable` WHERE (`id` < '10' OR `id` > '20') AND (`t
 表达式
 ===============
 
-当查询条件里有SQL函数时，需要使用Zend\Db\Sql\Expression生成SQL表达式。
+当查询条件里有 SQL 函数时，需要使用 Zend\Db\Sql\Expression 生成 SQL 表达式。
 
 例如
 
@@ -210,7 +210,7 @@ SQL：
 SELECT `mydbtable`.* FROM `mydbtable` WHERE `id` = NOW()
 ```
 
-下面这个例子是常用的操作，查询指定的ID并使用指定的顺序排序。综合使用了上面提到的知识。
+下面这个例子是常用的操作，查询指定的 ID 并使用指定的顺序排序。综合使用了上面提到的知识。
 
 ```php
 $idArray = array('2', '1');
@@ -227,10 +227,10 @@ SQL
 SELECT `mydbtable`.* FROM `mydbtable` WHERE `id` IN ('2', '1') ORDER BY FIELD(id, '2','1')
 ```
     
-EvaEngine的改进
+EvaEngine 的改进
 ================
 
-在[EvaEngine](http://avnpc.com/pages/eva-engine)中，可以使用完整的链操作，最开始的例子在EvaEngine里可以这样写：
+在[EvaEngine](http://avnpc.com/pages/eva-engine)中，可以使用完整的链操作，最开始的例子在 EvaEngine 里可以这样写：
 
 ```php
 $result = $myDbTable->where('id > 5')->order('id DESC')->limit(10)->find();

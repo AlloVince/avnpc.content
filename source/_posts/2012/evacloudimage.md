@@ -6,24 +6,24 @@ tags:
   - Thumbnail
   - GD
 author: AlloVince
-title: EvaCloudImage - 基于URL生成缩略图的轻量级PHP库
+title: EvaCloudImage - 基于 URL 生成缩略图的轻量级 PHP 库
 ---
 
-EvaCloudImage已经更名为[EvaThumber](http://avnpc.com/pages/evathumber)，并且做了完全的重构，加入更多新功能
+EvaCloudImage 已经更名为[EvaThumber](http://avnpc.com/pages/evathumber)，并且做了完全的重构，加入更多新功能
 
 
-[EvaCloudImage](http://avnpc.com/pages/evacloudimage) 是一个基于URL生成缩略图的轻量级PHP库，支持缩放/旋转/截取等多种缩略图生成方式，而仅仅需要通过简单更改图片的URL。
+[EvaCloudImage](http://avnpc.com/pages/evacloudimage) 是一个基于 URL 生成缩略图的轻量级 PHP 库，支持缩放/旋转/截取等多种缩略图生成方式，而仅仅需要通过简单更改图片的 URL。
 
 EvaCloudImage is a light-weight & opensource url based image transformation php library. See [English version document](https://github.com/AlloVince/EvaThumber).
 
-EvaCloudImage的源代码存放于[Github](https://github.com/AlloVince/EvaThumber)，完全开源，欢迎[Fork](https://github.com/AlloVince/EvaThumber)或[关注我](https://github.com/AlloVince)。
+EvaCloudImage 的源代码存放于[Github](https://github.com/AlloVince/EvaThumber)，完全开源，欢迎[Fork](https://github.com/AlloVince/EvaThumber)或[关注我](https://github.com/AlloVince)。
 
-EvaCloudImage的功能包括：
+EvaCloudImage 的功能包括：
 
 影子模式
 --------------
 
-很多时候我们不希望暴露原图片的地址，此时可以通过EvaCloudImage自动生成原图片的影子图片，保护原图片URL不被泄露，比如
+很多时候我们不希望暴露原图片的地址，此时可以通过 EvaCloudImage 自动生成原图片的影子图片，保护原图片 URL 不被泄露，比如
 
  - 原图片地址为 : [http://evacloudimage.avnpc.com/upload/demo.jpg](http://evacloudimage.avnpc.com/upload/demo.jpg)
  - 影子图片地址为 : [http://evacloudimage.avnpc.com/thumb/demo.jpg](http://evacloudimage.avnpc.com/thumb/demo.jpg)，在网站中只需要公布影子图片即可
@@ -35,17 +35,17 @@ EvaCloudImage的功能包括：
 
 这里是[原图](http://evacloudimage.avnpc.com/upload/demo.jpg): 
 
-```
+```plain
 http://evacloudimage.avnpc.com/upload/demo.jpg
 ```
 
-EvaCloudImage只需要更改影子图片的URL即可实现缩放，只需要图片的文件名末尾加入以逗号分隔的参数即可：
+EvaCloudImage 只需要更改影子图片的 URL 即可实现缩放，只需要图片的文件名末尾加入以逗号分隔的参数即可：
 
 ###根据宽度缩放:
 
-'*w*'参数是Width的缩写，可以控制图片按宽度缩放。下面的URL会生成一张300px宽的图片：
+'*w*'参数是 Width 的缩写，可以控制图片按宽度缩放。下面的 URL 会生成一张 300px 宽的图片：
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,w_300.jpg
 ```
 
@@ -55,7 +55,7 @@ http://evacloudimage.avnpc.com/thumb/demo,w_300.jpg
 
 同理通过更改'*h*'（Height），根据高度缩放图片：
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,h_150.jpg
 ```
 
@@ -63,9 +63,9 @@ http://evacloudimage.avnpc.com/thumb/demo,h_150.jpg
 
 ###按百分比缩放:
 
-当w或h为小数时，图片会按照百分比缩放，比如w_0.4会将图片缩放至原尺寸的40%：
+当 w 或 h 为小数时，图片会按照百分比缩放，比如 w_0.4 会将图片缩放至原尺寸的 40%：
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,w_0.4.jpg
 ```
 
@@ -73,39 +73,39 @@ http://evacloudimage.avnpc.com/thumb/demo,w_0.4.jpg
 
 注意：
 
- - 当w与h既有整数又有小数时，以整数为准
- - 当w与h同时为小数时，以w为准
+ - 当 w 与 h 既有整数又有小数时，以整数为准
+ - 当 w 与 h 同时为小数时，以 w 为准
 
 图片剪裁
 ----
 
-使用'*c*'参数（Crop）可以剪裁图片，比如c_100会从图片的中心位置截取出一张100px的缩略图。
+使用'*c*'参数（Crop）可以剪裁图片，比如 c_100 会从图片的中心位置截取出一张 100px 的缩略图。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_100.jpg
 ```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_100.jpg)
 
-'*g*'参数（gravity）代表剪裁范围或高度，需要配合c参数一起使用。比如下例，代表从图片中心位置剪裁一张100px*200px的缩略图。
+'*g*'参数（gravity）代表剪裁范围或高度，需要配合 c 参数一起使用。比如下例，代表从图片中心位置剪裁一张 100px*200px 的缩略图。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_200,g_100.jpg
 ```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_200,g_100.jpg)
 
-如果想要指定剪裁的精确位置，需要用'x'和'y'参数指定起点坐标，比如下面的例子，代表以距离图片左边80px，上边10px为起点，剪裁一张100px*200px的图片。
+如果想要指定剪裁的精确位置，需要用'x'和'y'参数指定起点坐标，比如下面的例子，代表以距离图片左边 80px，上边 10px 为起点，剪裁一张 100px*200px 的图片。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,x_80,y_10.jpg
 ```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,x_80,y_10.jpg)
 
-图片的剪裁与缩放可以混用，EvaCloudImage始终会先进行剪裁，然后再对剪裁后的图片缩放。
+图片的剪裁与缩放可以混用，EvaCloudImage 始终会先进行剪裁，然后再对剪裁后的图片缩放。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,w_50.jpg
 ```
 
@@ -113,9 +113,9 @@ http://evacloudimage.avnpc.com/thumb/demo,c_100,g_200,w_50.jpg
 
 ###填充模式
 
-在实际使用中，我们经常会遇到这样的场景：需要截取并缩放图片以适应网页布局，此时我们可以使用剪裁中的填充模式，在填充模式下，需要指定剪裁参数为c_fill，同时设定填充的宽度与高度，然后可以得到一张完全吻合设定尺寸，同时经过缩放与剪裁处理的图片。
+在实际使用中，我们经常会遇到这样的场景：需要截取并缩放图片以适应网页布局，此时我们可以使用剪裁中的填充模式，在填充模式下，需要指定剪裁参数为 c_fill，同时设定填充的宽度与高度，然后可以得到一张完全吻合设定尺寸，同时经过缩放与剪裁处理的图片。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_fill,w_250,h_50.jpg
 ```
 
@@ -123,7 +123,7 @@ http://evacloudimage.avnpc.com/thumb/demo,c_fill,w_250,h_50.jpg
 
 在填充模式下还可以设定剪裁范围，允许的剪裁范围包括'top'（从上方）, 'bottom'（从下方）, 'left'（从左）， 'right'（从右）。
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,c_fill,g_top,w_250,h_60.jpg
 ```
 
@@ -132,21 +132,21 @@ http://evacloudimage.avnpc.com/thumb/demo,c_fill,g_top,w_250,h_60.jpg
 旋转
 -----------------
 
-旋转参数为'*r*' (rotate) ，传递一个数字作为图片旋转的角度，比如让图片按照逆时针旋转90度：
+旋转参数为'*r*' (rotate) ，传递一个数字作为图片旋转的角度，比如让图片按照逆时针旋转 90 度：
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,h_200,r_90.jpg
 ```
 
 ![EvaCloudImage Resized Image](http://evacloudimage.avnpc.com/thumb/demo,h_200,r_90.jpg)
 
 
-JPG图片压缩质量
+JPG 图片压缩质量
 -----------------
 
-通过'*q*'(quality)可以指定jpg图片的压缩质量，默认为100:
+通过'*q*'(quality)可以指定 jpg 图片的压缩质量，默认为 100:
 
-```
+```plain
 http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
 ```
 
@@ -158,7 +158,7 @@ http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
 ------------
 
 
-下载 [最新版本的EvaCloudImage](https://github.com/AlloVince/EvaThumber/zipball/master)，解压即可使用。
+下载 [最新版本的 EvaCloudImage](https://github.com/AlloVince/EvaThumber/zipball/master)，解压即可使用。
 
 安装
 ------------
@@ -166,21 +166,21 @@ http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
 ###1. 环境需求
 
 1. PHP 版本大于 5.3.0
-2. 以安装GD 2.0+
-3. 服务器已经开启Url Re-write模块
+2. 以安装 GD 2.0+
+3. 服务器已经开启 Url Re-write 模块
 
 
-###2. 对安装目录开启Url Re-write
+###2. 对安装目录开启 Url Re-write
 
-####Apache设置：
+####Apache 设置：
 
-如果服务器为Apache并且已经开启[mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)模块，则无需任何设置，重写规则已经写入.htaccess文件。
+如果服务器为 Apache 并且已经开启[mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)模块，则无需任何设置，重写规则已经写入.htaccess 文件。
 
 ####Nginx
 
 请参考以下配置调整路径
 
-```
+```plain
     server {
             listen   80;
             server_name  evacloudimage.avnpc.com;
@@ -202,7 +202,7 @@ http://evacloudimage.avnpc.com/thumb/demo,h_200,q_10.jpg
 
 ###3. 配置文件
 
-编辑源代码中的config.inc.php文件：
+编辑源代码中的 config.inc.php 文件：
 
 ```php
 array(
@@ -221,12 +221,12 @@ array(
 EvaCloudImage 使用了以下的开源技术：
 
  - [PHP Thumb](https://github.com/masterexploder/PHPThumb) : 好用的缩略图生成库;
- - [Cloudinary](http://cloudinary.com/) : API设计参考了著名云服务Cloudinary;
+ - [Cloudinary](http://cloudinary.com/) : API 设计参考了著名云服务 Cloudinary;
 
 许可证
 -------
 
-EvaCloudImage 是 [EvaEngine](https://github.com/AlloVince/eva-engine)项目的一个前端组件，基于[New BSD License](http://framework.zend.com/license/new-bsd)发布，简单说，你可以将EvaCloudImage用与任何商业或非商业项目中，可以自由更改EvaCloudImage的源代码，惟一做的是保留源代码中的作者信息。
+EvaCloudImage 是 [EvaEngine](https://github.com/AlloVince/eva-engine)项目的一个前端组件，基于[New BSD License](http://framework.zend.com/license/new-bsd)发布，简单说，你可以将 EvaCloudImage 用与任何商业或非商业项目中，可以自由更改 EvaCloudImage 的源代码，惟一做的是保留源代码中的作者信息。
 
 感谢
 ---------
