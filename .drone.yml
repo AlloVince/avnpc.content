@@ -1,0 +1,12 @@
+kind: pipeline
+name: validator
+
+steps:
+  - name: markdown-validate
+    image: node:10-alpine
+    commands:
+      - npm install -g lint-md
+      - lint-md source/_posts
+    when:
+      branch: master
+      event: push
