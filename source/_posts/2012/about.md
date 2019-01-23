@@ -83,5 +83,5 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
   - [Allo 的开源项目][]：欢迎 Follow / Fork
 
 
-[Allo的兴趣爱好]: http://zh.wikipedia.org/wiki/User:AlloVince
-[Allo的开源项目]: https://github.com/AlloVince
+[Allo 的兴趣爱好]: http://zh.wikipedia.org/wiki/User:AlloVince
+[Allo 的开源项目]: https://github.com/AlloVince
