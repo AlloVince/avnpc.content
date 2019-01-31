@@ -1,4 +1,5 @@
---- title: 使用 Synology(群晖) NAS + Docker 搭建个人私有云    
+---
+title: 使用 Synology(群晖) NAS + Docker 搭建个人私有云    
 s: use-synology-nas-build-private-cloud    
 date: 2019-01-29 14:29:48    
 tags:    
@@ -6,7 +7,8 @@ tags:
  - Synology  
  - NAS    
 ---    
- 对于个人用户来说，如果有大量的数据需要存储、备份、甚至做简单的大数据处理，NAS 无疑是一个更好<del>(更贵)</del>的选择，而部分高端 NAS 对 Docker 的支持，则将 NAS 的可玩性更提升到了一个新的高度。    
+
+对于个人用户来说，如果有大量的数据需要存储、备份、甚至做简单的大数据处理，NAS 无疑是一个更好<del>(更贵)</del>的选择，而部分高端 NAS 对 Docker 的支持，则将 NAS 的可玩性更提升到了一个新的高度。    
     
 作为一个已经使用群晖 NAS 近 3 年的用户，个人的日常数据管理，数据同步，以及一些 Side Projects 的数据 ETL，数据分析等工作，都已经基于 NAS 完成，可以说将其视为个人私有云也不为过。特记录个人的一些使用经验以供参考。  
     
