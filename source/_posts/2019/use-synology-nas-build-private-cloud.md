@@ -42,9 +42,9 @@ tags:
     
 其他一些有趣的功能，全部基于 Docker 搭建， 如  
     
-- 对象存储服务 (基于 Docker)    
-- Aria2 下载服务 (基于 Docker)    
-- Elastic + Kibana (基于 Docker)    
+- 对象存储服务
+- Aria2 下载服务
+- Elastic + Kibana
 - API 若干，爬虫若干    
   
     
@@ -217,6 +217,14 @@ version: '3.2'
 ```  
   
 同样由于缺失`systemctl`等软件，Kubernetes 也是无法安装到群晖 NAS 的。  
+
+另外由于网络原因，建议使用国内的 Docker Registry 镜像， 可以通过 `sudo vi /var/packages/Docker/target/config/dockerd.json`， 编辑内容为 [Docker 中国镜像](https://www.docker-cn.com/registry-mirror)等。
+
+``` json
+{
+  "registry-mirrors": ["https://registry.docker-cn.com"]
+}
+```
   
 ## NAS 上搭建基于 Minio 的私有云对象存储  
   
