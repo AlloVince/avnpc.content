@@ -1,4 +1,3 @@
-
 ---
 title: 穷人也能用得起 K8s - VPS 单节点部署 Kubernetes 的方法与对比
 s: kubernetes-for-single-vps
