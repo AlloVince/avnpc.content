@@ -128,7 +128,7 @@ minikube --vm-driver=none start --extra-config=kubelet.resolv-conf=/run/systemd/
 如果启动 minikube 后产生了这个问题，则可以删除`resolv.conf`软链接， 自己生成一个`resolv.conf`，当 systemd-resolved 检测到 `/etc/resolv.conf` 不是软链接后，就不会再覆盖这个文件。
 
 ```bash
-rm /etc/resolv.conf && echo "nameserver 114.114.114.114 > /etc/resolv.conf"
+rm /etc/resolv.conf && echo "nameserver 114.114.114.114" > /etc/resolv.conf
 kubectl delete pods -n kube-system --selector k8s-app=kube-dns
 ```
 
