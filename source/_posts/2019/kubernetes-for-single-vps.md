@@ -187,6 +187,16 @@ snap unalias kubectl
 
 和 minikube 相同，microk8s 默认只安装最核心的功能，可以通过 `microk8s.enable dns dashboard` 等开启附加的插件。
 
+如果在 microk8s 上部署一些需要高权限的应用时，可能会报 `spec.template.spec.containers[0].securityContext.privileged: Forbidden: disallowed by cluster policy`，此时可以
+
+```bash
+echo "--allow-privileged=true" >> /var/snap/microk8s/current/args/kubelet
+echo "--allow-privileged=true" >> /var/snap/microk8s/current/args/kube-apiserver
+systemctl restart snap.microk8s.daemon-kubelet.service
+systemctl restart snap.microk8s.daemon-apiserver.service
+```
+
+
 ## 使用 kubeadm 部署单节点 Kubernetes
 
 通过 minikube 或 microk8s 安装 K8s 虽然方便，但是由于很多安装细节被屏蔽，直接用在生产环境也难免让人心存疑虑，那么也可以[使用 kubeadm 部署单节点 kubernetes](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)。
