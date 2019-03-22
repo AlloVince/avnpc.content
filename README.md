@@ -1,5 +1,7 @@
 # Content storage of avnpc.com
 
+[![Build Status](https://cloud.drone.io/api/badges/AlloVince/avnpc.content/status.svg)](https://cloud.drone.io/AlloVince/avnpc.content)
+
 Avnpc posts content remote storage, compatible with hexo
 
 ```
