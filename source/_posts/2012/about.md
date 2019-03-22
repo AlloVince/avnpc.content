@@ -23,6 +23,8 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 13-15 年担任[华尔街见闻](https://wallstreetcn.com/)技术负责人开始第二次创业，帮助见闻从天使轮成长到 B 轮融资，技术团队从自己 1 人到离职前近 50 人;
 
+16 年后使用 node.js 技术栈居多， 关注容器技术、机器学习。
+
 ## 出版作品
 
 - [自制编程语言](http://book.douban.com/subject/25735333/) 2013
@@ -56,7 +58,7 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
   - [Traefik](https://github.com/containous/traefik/) Docker 环境下好用的反向代理
 - [Content](https://github.com/AlloVince/avnpc.content)
 
-服务目前托管于[Linode](https://www.linode.com/)， 如果你也有意购买，可以使用我的[Referral](https://www.linode.com/?r=a33af5735a21b63c784f7cd2cf87dba00fd319a2)
+服务目前托管于 [Linode](https://www.linode.com/) ， 如果你也有意购买，可以使用我的 [Referral](https://www.linode.com/?r=a33af5735a21b63c784f7cd2cf87dba00fd319a2)
 
 ## 关于提问
 
@@ -69,7 +71,7 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
 
 虽然本着礼貌的态度对于上面列举的一些问题也尽可能的做了回答，但如果你没有得到回答或者发现问题不见了，那么答案一般是“RTFM”/“RTFS”或者“STFW”。
 
-希望没有阅读过《[提问的智慧](http://www.wapm.cn/smart-questions/smart-questions-zh.html)》一文的朋友，阅读一下这篇会让你终身受益的文章。
+希望没有阅读过《[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)》一文的朋友，阅读一下这篇会让你终身受益的文章。
 
 - 向我提问的正式方式： 在下面的技术问答网站邀请 AlloVince 回答问题
     - [Allo@StackOverflow](http://stackoverflow.com/users/1445934/allovince)
@@ -80,7 +82,7 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
 - 联系我： i@av2.me
 - 关注我：
   - [Allo 的兴趣爱好][]
-  - [Allo 的开源项目][]：欢迎 Follow / Fork
+  - [Allo 的开源项目][]：欢迎 Follow / PR
 
 
 [Allo 的兴趣爱好]: http://zh.wikipedia.org/wiki/User:AlloVince

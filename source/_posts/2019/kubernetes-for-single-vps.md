@@ -128,7 +128,7 @@ minikube --vm-driver=none start --extra-config=kubelet.resolv-conf=/run/systemd/
 如果启动 minikube 后产生了这个问题，则可以删除`resolv.conf`软链接， 自己生成一个`resolv.conf`，当 systemd-resolved 检测到 `/etc/resolv.conf` 不是软链接后，就不会再覆盖这个文件。
 
 ```bash
-rm /etc/resolv.conf && echo "nameserver 114.114.114.114 > /etc/resolv.conf"
+rm /etc/resolv.conf && echo "nameserver 114.114.114.114" > /etc/resolv.conf
 kubectl delete pods -n kube-system --selector k8s-app=kube-dns
 ```
 
@@ -186,6 +186,16 @@ snap unalias kubectl
 ```
 
 和 minikube 相同，microk8s 默认只安装最核心的功能，可以通过 `microk8s.enable dns dashboard` 等开启附加的插件。
+
+如果在 microk8s 上部署一些需要高权限的应用时，可能会报 `spec.template.spec.containers[0].securityContext.privileged: Forbidden: disallowed by cluster policy`，此时可以
+
+```bash
+echo "--allow-privileged=true" >> /var/snap/microk8s/current/args/kubelet
+echo "--allow-privileged=true" >> /var/snap/microk8s/current/args/kube-apiserver
+systemctl restart snap.microk8s.daemon-kubelet.service
+systemctl restart snap.microk8s.daemon-apiserver.service
+```
+
 
 ## 使用 kubeadm 部署单节点 Kubernetes
 
