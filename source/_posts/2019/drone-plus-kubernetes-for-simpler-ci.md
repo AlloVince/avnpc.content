@@ -1,7 +1,8 @@
 ---  
 title: 容器环境下的持续集成最佳实践：构建基于 Drone + GitFlow + K8s 的云原生语义化 CI 工作流  
 s: drone-gitflow-kubernetes-for-cloud-native-ci  
-date: 2019-03-22 23:58:36  
+date: 2019-03-22 23:58:36
+published: true
 tags: 
   - drone
   - kubernetes
