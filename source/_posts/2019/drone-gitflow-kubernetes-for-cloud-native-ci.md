@@ -30,7 +30,7 @@ tags:
 | CircleCI | Clojure | YAML | 有 | 不支持 | 单进程免费，$50/加 1 进程 |
 | Gitlab CI | Ruby | YAML | 有 | 支持 | 绑定 Gitlab 代码管理 |
 | Jenkins | Java | Groovy | 无 | 支持 |  |
-| Drone | Go | YAML | 有 | 支持 | 商业化初期，暂时免费  |
+| Drone | Go | YAML | 有 | 支持 | Cloud 版本不支持私有项目，自建版本无此限制 |
 
 Travis CI 和 CircleCI 是目前[占有率最高的两个公有云 CI](https://www.datanyze.com/market-share/ci/jenkins-market-share)，易用性上相差无几，只是收费方式有差异。由于不支持私有部署，如果并行的任务量一大，按进程收费其实并不划算；而且由于服务器位置的原因，如果推送镜像到国内，速度很不理想。
 
