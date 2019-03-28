@@ -1,3 +1,4 @@
+
 ---  
 title: Docker 容器环境下的持续集成最佳实践：构建基于 Drone + GitFlow + K8s 的云原生语义化 CI 工作流  
 s: drone-gitflow-kubernetes-for-cloud-native-ci  
@@ -179,9 +180,9 @@ graph TB
 
 ## Step by Step 构建 CI 工作流
 
-###  Step.0: 基于 K8s 部署 Drone v1.0.0-rc6
+###  Step.0: 基于 K8s 部署 Drone v1.0.0
 
-以 Github 为例，截止本文完成时间(2019 年 3 月 23 日)， Drone 的最新版本是 v1.0.0-rc6。官方文档已经提供了分别[基于 Docker、K8s 的 Drone 部署说明](https://docs.drone.io/installation/github/)，不过比较简略，因此这里给出一个相对完整的配置文件。
+以 Github 为例，截止本文完成时间(2019 年 3 月 28 日)， Drone 刚刚发布了第一个正式版本 v1.0.0。官方文档已经提供了分别[基于 Docker、K8s 的 Drone 部署说明](https://docs.drone.io/installation/github/)，不过比较简略，因此这里给出一个相对完整的配置文件。
 
 首先需要在 Github [创建一个 Auth App](https://github.com/settings/developers)，用于 repo 的访问授权。应用创建好之后，会得到 `Client ID` 和 `Client Secret` 。同时 `Authorization callback URL` 应填写 Drone 服务对应域名下的 `/login`，如`https://ci.avnpc.com/login`
 
@@ -463,10 +464,63 @@ semantic-release 要执行 Github release，因此我们需要在 CI 中配置�
 
 ![](https://static.avnpc.com/blog/2019/semantic_release_at_github.png) 
 
+### Step.5:  Kubernetes 自动发布
+
+Docker 镜像推送到仓库后，我们还剩最后一步就可以完成全自动发布的闭环，即通知 Kubernetes 将镜像发布到生产环境。这一步实现比较灵活，因为很多云服务商在容器服务都会提供 Trigger 机制，一般是提供一个 URL，只要请求这个 URL 就可以触发容器服务的发布。Demo 中我们使用更为通用的方法，就是将 `kubectl` 打包为容器，以客户端调用 K8s 集群 Master 节点 API ( `kube-apiserver` ) 的形式完成发布。
+
+假设我们在生产环境下 drone-ci-demo 项目的 K8s 发布文件如下
+
+``` yml
+---  
+apiVersion: extensions/v1beta1  
+kind: Deployment  
+metadata:  
+  name: ci-demo-deployment  
+  namespace: default  
+spec:  
+  replicas: 1  
+  template:  
+    spec:  
+      containers:  
+        - image: allovince/drone-ci-demo  
+          name: ci-demo  
+      restartPolicy: Always
+```
+
+对应 `.drone.yml` 中增加 step 如下。这里使用的插件是[honestbee/drone-kubernetes](https://github.com/honestbee/drone-kubernetes)， 插件中`kubectl` 连接 API 使用的是证书+ Token 的方式鉴权，因此需要先获得证书及 Token， 已经授权的 Token 保存于 k8s secret，可以通过`kubectl get secret [ your default secret name ] -o yaml | egrep 'ca.crt:|token:'`获得并配置到 drone 中，注意插件要求 token 是明文的，需要 base64 解码一下：`echo [ your token ] | base64 -d && echo ''`
+
+``` yml
+- name: k8s-deploy  
+  image: quay.io/honestbee/drone-kubernetes  
+  settings:  
+    kubernetes_server:  
+      from_secret: KUBERNETES_SERVER  
+    kubernetes_cert:  
+      from_secret: KUBERNETES_CERT  
+    kubernetes_token:  
+      from_secret: KUBERNETES_TOKEN  
+    namespace: default  
+    deployment: ci-demo-deployment  
+    repo: allovince/drone-ci-demo  
+    container: ci-demo  
+    tag:  
+      - ${DRONE_TAG}  
+  when:  
+    event: tag
+```
+
+在[示例]([https://github.com/AlloVince/drone-ci-demo/tree/k8s-deploy](https://github.com/AlloVince/drone-ci-demo/tree/k8s-deploy))中，可以看到在语义化发布之后 [CI 会将新版本的 Docker 镜像自动发布到 K8s]([https://cloud.drone.io/AlloVince/drone-ci-demo/28](https://cloud.drone.io/AlloVince/drone-ci-demo/28))，这里为了演示仅打印了指令并未实际运行。相当于运行了如下的指令: 
+
+``` bash
+kubectl -n default set image deployment/ci-demo-deployment ci-demo=allovince/drone-ci-demo:v1.0.2
+```
+
+由于自动发布的环节势必要接触到生产服务器，需要格外注意安全问题，首推的方式当然是将 CI 和 K8s 集群放于同一内网中，同时可以使用 K8s 的 RBAC 权限控制，为[自动发布单独创建一个用户]([https://github.com/honestbee/drone-kubernetes#rbac](https://github.com/honestbee/drone-kubernetes#rbac))，并删除不必要的权限。
+
 
 ## 后话
 
-总结一下，本文展示了从 [Hello World](https://github.com/AlloVince/drone-ci-demo/tree/hello-world) 到 [单人单分支手动发布](https://github.com/AlloVince/drone-ci-demo/tree/single-person) 到 [团队多分支 GitFlow 工作流](https://github.com/AlloVince/drone-ci-demo/tree/gitflow) 到 [团队多分支 semantic-release 全自动发布](https://github.com/AlloVince/drone-ci-demo/tree/semantic-release)，如何从零开始一步一步搭建 CI 将团队开发、测试、发布的流程全部自动化的过程，最终能让开发人员只需要认真提交代码就可以完成日常的所有 DevOps 工作。
+总结一下，本文展示了从 [Hello World](https://github.com/AlloVince/drone-ci-demo/tree/hello-world) 到 [单人单分支手动发布](https://github.com/AlloVince/drone-ci-demo/tree/single-person) 到 [团队多分支 GitFlow 工作流](https://github.com/AlloVince/drone-ci-demo/tree/gitflow) 到 [团队多分支 semantic-release 语义化发布](https://github.com/AlloVince/drone-ci-demo/tree/semantic-release) 到 [通知 K8s 全自动发布](https://github.com/AlloVince/drone-ci-demo/tree/k8s-deploy)，如何从零开始一步一步搭建 CI 将团队开发、测试、发布的流程全部自动化的过程，最终能让开发人员只需要认真提交代码就可以完成日常的所有 DevOps 工作。
 
 最终 Step 的完成品可以适配之前的所有 Step，如果不太在意实现细节的话，可以在此基础上稍作修改，直接使用。
 
