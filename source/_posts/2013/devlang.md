@@ -115,15 +115,15 @@ MinGW 会下载初始安装文件，下载完成后点击 Continue。
 
 安装完毕后可以在安装路径下看到 MinGW 创建了一系列文件，其中 bin 目录是 MinGW 主要程序所在目录。例如解压 crowbar 的源码到 c:，然后运行 cmd 如下编译 crowbar_book_0_1（假设 MinGW 的安装目录为`D:\MinGW`）：
 
-```plain
+```bash
 cd C:\win_sjis\crowbar_book_0_1
 C:\win_sjis\crowbar_book_0_1>D:\MinGW\bin\mingw32-make.exe
 ```
 
 但是每次这样运行编译指令有点麻烦，所以作者推荐复制`mingw32-make.exe`到同目录下，并重命名为`gmake.exe`。然后将`D:\MinGW\bin`加入系统目录。就可以直接运行：
 
-```plain
- gmake
+```bash
+gmake
 ```
 
 进行编译了。
@@ -219,7 +219,7 @@ flex 最新版可以在下面的页面下载：
 
 鬼车默认的系统环境为 Linux。在 Linux 下可以很简单的使用几行指令编译安装
 
-```plain
+```bash
 wget http://www.geocities.jp/kosako3/oniguruma/archive/onig-5.9.4.tar.gz
 tar -xvf onig-5.9.4.tar.gz
 cd onig-5.9.4
@@ -235,7 +235,7 @@ make install
 
 首先按照上文介绍的步骤安装好 Cygwin，由于鬼车要求 make 指令名必须为`make`，因此首先进入 MinGW 的 bin 目录，复制 mingw32-make.exe 并重命名为 make.exe。然后打开 cmd。假设 onig-5.9.4.tar.gz 文件下载到 C:\。运行以下指令进行解压并检查环境。
 
-```plain
+```bash
 C:\>tar -xvf onig-5.9.4.tar.gz
 C:\>cd onig-5.9.4
 C:\onig-5.9.4>bash
@@ -248,14 +248,14 @@ make
 
 但是由于 Windows 下 MinGW 安装路径比较特殊，直接运行`make install`很可能报错。这里需要手动更新鬼车静态链接用库文件`ranlib.a`的索引。运行
 
-```plain
+```bash
 bash-3.1$ cd .libs/
 bash-3.1$ ranlib libonig.a
 ```
 
 然后将 libonig.a 文件复制到 MinGW 安装目录下的 lib 文件夹内。最后运行
 
-```plain
+```bash
 make install
 ```
 

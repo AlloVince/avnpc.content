@@ -15,7 +15,7 @@ title: 使用 xhprof 进行线上 PHP 性能追踪及分析
 
 [xhprof](https://github.com/phacility/xhprof)是 Facebook 开源的轻量级 PHP 性能分析工具，Linux 环境下可以通过 pecl 直接安装，比如在 Ubuntu 下仅需 3 行指令
 
-``` shell
+```bash
 pecl install xhprof-beta
 echo "extension=xhprof.so" > /etc/php5/fpm/conf.d/xhprof.ini
 service php5-fpm restart
@@ -27,7 +27,7 @@ service php5-fpm restart
 
 分析一下示例代码`sample.php`，关键部分只有 2 行：
 
-``` php
+```php
 //开启xhprof并开始记录
 xhprof_enable();
 //运行一些函数
@@ -51,16 +51,16 @@ $xhprof_data = xhprof_disable();
 
 在`xhprof_html/index.php`中还可以看到`[View Full Callgraph]`链接，点击后可以绘制出一张可视化的性能分析图，如果点击后报错的话，可能是缺少依赖`graphviz`，ubuntu 可以通过 apt 安装
 
-``` shell
+```bash
 apt-get install graphviz
 ```
 
 
-##更好的注入方式
+## 更好的注入方式
 
 了解了上面这些，其实就已经可以将 xhprof 整合到任何我们已有的项目中去了。目前大部分 MVC 框架都有唯一的入口文件，只需要在入口文件的开始处注入 xhprof 的逻辑
 
-``` php
+```php
 //开启xhprof
 xhprof_enable(XHPROF_FLAGS_MEMORY | XHPROF_FLAGS_CPU);
 //在程序结束后收集数据
@@ -101,7 +101,7 @@ fastcgi_param PHP_VALUE "auto_prepend_file=/opt/inject.php";
 ```
 
     
-##更好的分析工具：xhprof.io 还是 xhpgui
+## 更好的分析工具：xhprof.io 还是 xhpgui
 
 注入代码后我们还需要实现保存 xhprof 数据以及展示数据的 UI，听起来似乎又是一大堆工作，有现成的轮子可以用吗？
 
@@ -136,7 +136,7 @@ xhgui
 
 安装及配置方法如下，假设 web 服务器根目录为`/opt/htdocs`
 
-``` shell
+```bash
 cd /opt/htdocs
 git clone https://github.com/EvaEngine/xhprof.io.git
 cd xhprof.io/
@@ -193,7 +193,7 @@ vi xhprof/includes/config.inc.php
 
 ### 附录：xhpgui 的安装方法
 
-``` shell
+```bash
 apt-get install mongodb php5-mongo php5-mcrypt
 cp /etc/php5/mods-available/mcrypt.ini /etc/php5/fpm/conf.d/
 cp /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/

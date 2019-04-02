@@ -15,17 +15,17 @@ Phalcon 本身有支持创建多种形式的 Web 应用项目以应对不同场�
 
 本次以最复杂的多模块应用为例，Phalcon 版本为 1.3.2，用一个 Phalcon 所创建的标准项目来分析
 
-##创建项目
+## 创建项目
 
 Phalcon 环境配置安装后，可以通过命令行生成一个标准的 Phalcon 多模块应用
 
-```plain
+```bash
 phalcon project eva --type modules
 ```
 
 入口文件为`public/index.php`，简化后一共 5 行，包含了整个 Phalcon 的启动流程，以下将按顺序说明
 
-``` php
+```php
 require __DIR__ . '/../config/services.php';
 $application = new Phalcon\Mvc\Application();
 $application->setDI($di);
@@ -33,17 +33,17 @@ require __DIR__ . '/../config/modules.php';
 echo $application->handle()->getContent();
 ```
 
-##DI 注册阶段
+## DI 注册阶段
 
 Phalcon 的所有组件服务都是通过[DI（依赖注入）](http://docs.phalconphp.com/en/latest/api/Phalcon_DI.html)进行组织的，这也是目前大部分主流框架所使用的方法。通过 DI，可以灵活的控制框架中的服务：哪些需要启用，哪些不启用，组件的内部细节等等，因此 Phalcon 是一个松耦合可替换的框架，完全可以通过 DI 替换 MVC 中任何一个组件。
 
-``` php
+```php
 require __DIR__ . '/../config/services.php';
 ```
 
 这个文件中默认注册了`Phalcon\Mvc\Router`（路由）、`Phalcon\Mvc\Url`（Url）、`Phalcon\Session\Adapter\Files`（Session）三个最基本的组件。同时当 MVC 启动后，DI 中默认注册的服务还有很多，可以通过 DI 得到所有当前已经注册的服务：
 
-```plain
+```php
 $services = $application->getDI()->getServices();
 foreach($services as $key => $service) {
         var_dump($key);
@@ -72,24 +72,24 @@ foreach($services as $key => $service) {
 
 而每一个服务都可以通过 DI 进行替换。接下来实例化一个标准的 MVC 应用，然后将我们定义好的 DI 注入进去
 
-```plain
+```php
 $application = new Phalcon\Mvc\Application();
 $application->setDI($di);
 ```
 
 
 
-##模块注册阶段
+## 模块注册阶段
 
 与 DI 一样，Phalcon 建议通过引入一个独立文件的方式注册所有需要的模块：
 
-```plain
+```php
 require __DIR__ . '/../config/modules.php';
 ```
 
 这个文件的内容如下
 
-```plain
+```php
 $application->registerModules(array(
     'frontend' => array(
         'className' => 'Eva\Frontend\Module',
@@ -101,7 +101,7 @@ $application->registerModules(array(
 可以看到 Phalcon 所谓的模块注册，其实只是告诉框架 MVC 模块的引导文件`Module.php`所在位置及类名是什么。
 
 
-##MVC 阶段
+## MVC 阶段
 
 `$application->handle()`是整个 MVC 的核心，这个函数中处理了路由、模块、分发等 MVC 的全部流程，处理过程中在关键位置会通过事件驱动触发一系列`application:`事件，方便外部注入逻辑，最终返回一个`Phalcon\Http\Response`。整个[`handle`方法的过程](https://github.com/phalcon/cphalcon/blob/1.3.2/ext/mvc/application.c#L303)并不复杂，下面按顺序介绍：
 
@@ -115,7 +115,7 @@ $application->registerModules(array(
 
 然后从 DI 启动 EventsManager，并且通过 EventsManager 触发事件`application:boot`
 
-###路由阶段
+### 路由阶段
 
 接下来进入路由阶段，从 DI 中获得路由服务`router`，将 uri 传入路由并调用路由的[`handle()`方法](http://docs.phalconphp.com/en/latest/api/Phalcon_Mvc_Router.html)。
 
@@ -125,7 +125,7 @@ $application->registerModules(array(
 
 注意到了么，在 Phalcon 中，**模块启动是后于路由的**，这意味着 Phalcon 的模块功能比较弱，我们无法在某个未启动的模块中注册全局服务，甚至无法简单的在当前模块中调用另一个未启动模块。这可能是 Phalcon 模块功能设计中最大的问题，解决方法暂时不在本文的讨论范围内，以后会另开文章介绍。
 
-####模块启动
+#### 模块启动
 
 模块启动时首先会触发`application:beforeStartModule`事件。事件触发后检查模块的正确性，根据`modules.php`中定义的`className`、`path`等，将模块引导文件加载进来，并调用模块引导文件中必须存在的方法
 
@@ -203,7 +203,7 @@ Render 完毕后调用`Phalcon\Mvc\View->finish()`结束缓冲区的接收。
 
 HTTP 头部发送后一般把响应的内容也发送出去：
 
-```plain
+```php
 echo $application->handle()->getContent();
 ```
 
@@ -220,7 +220,7 @@ echo $application->handle()->getContent();
 
 按照上面的流程，我们其实完全可以自己实现`$application->handle()->getContent()`这一流程，下面就是一个简单的替代方案，代码中暂时没有考虑事件的触发。
 
-``` php
+```php
 //Roter
 $router = $di['router'];
 $router->handle();
@@ -260,7 +260,7 @@ echo $response->getContent();
 ```
 
 
-###流程清单
+### 流程清单
 
 为了方便查找，将整个流程整理为一个树形清单如下：
 
@@ -316,7 +316,7 @@ echo $response->getContent();
    - `echo $application->handle()->getContent();`
 
 
-###MVC 事件
+### MVC 事件
 
 Phalcon 作为 C 扩展型的框架，其优势就在于高性能，虽然我们可以通过上一种方法自己实现整个启动，但更好的方式仍然是避免替换框架本身的内容，而使用事件驱动。
 

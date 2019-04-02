@@ -43,7 +43,7 @@ echo "PHP in Docker";
 
 然后在同目录下创建文本文件并命名为`Dockerfile`，内容为：
 
-```plain
+```dockerfile
 # 从官方PHP镜像构建
 FROM       php
 
@@ -84,7 +84,7 @@ PHP in Docker
 
 想象一下程序进一步复杂，我们应该如何扩展呢，很直接的想法是继续在容器内安装其他用到的服务，并将所有服务运行起来，那么我们的 Dockerfile 很可能发展成这个样子：
 
-```plain
+```dockerfile
 FROM       php
 ADD        index.php /var/www/
 
@@ -113,12 +113,12 @@ ENTRYPOINT ["/opt/bin/php-nginx-mysql-start.sh"]
 
 **选项一、 统一从标准的 OS 镜像扩展**，比如下面分别是 Nginx 和 MySQL 镜像
 
-```plain
+```dockerfile
 FROM ubuntu:14.04
 RUN  apt-get update -y && apt-get install -y nginx
 ```
 
-```plain
+```dockerfile
 FROM ubuntu:14.04
 RUN  apt-get update -y && apt-get install -y mysql
 ```
@@ -129,11 +129,11 @@ RUN  apt-get update -y && apt-get install -y mysql
 
 **选项二、 直接从 Docker Hub 继承官方镜像**，下面同样是 Nginx 和 MySQL 镜像
 
-```plain
+```dockerfile
 FROM nginx:1.9.0
 ```
 
-```plain
+```dockerfile
 FROM mysql:5.6
 ```
 
@@ -172,14 +172,14 @@ FROM mysql:5.6
 MySQL 继承自官方的[MySQL5.6 镜像](https://registry.hub.docker.com/_/mysql)，Dockerfile 仅有一行，无需做任何额外处理，因为普通需求官方都已经在镜像中实现了，因此 Dockerfile 的内容为：
 
 
-```plain
+```dockerfile
 FROM mysql:5.6
 ```
 
 在项目根目录下运行
 
 
-```shell
+```bash
 docker build -t eva/mysql ./mysql
 ```
 
@@ -187,7 +187,7 @@ docker build -t eva/mysql ./mysql
 
 由于容器运行结束时会丢弃所有数据库数据，为了不用每次都要导入数据，我们将采用挂载的方式持久化 MySQL 数据库，官方镜像默认将数据库存放在`/var/lib/mysql`，同时要求容器运行时必须通过环境变量设置一个管理员密码，因此可以使用以下指令运行容器：
 
-```shell
+```bash
 docker run -p 3306:3306 -v ~/opt/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -it eva/mysql
 ```
 
@@ -198,7 +198,7 @@ docker run -p 3306:3306 -v ~/opt/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWOR
 
 Nginx 目录下提前准备了 Nginx 配置文件`nginx.conf`以及项目的配置文件`default.conf`等。Dockerfile 内容为：
 
-```plain
+```dockerfile
 FROM nginx:1.9
 
 ADD  nginx.conf      /etc/nginx/nginx.conf
@@ -213,13 +213,13 @@ VOLUME ["/opt"]
 
 同样构建一下镜像
 
-```shell
+```bash
 docker build -t eva/nginx ./nginx
 ```
 
 并运行容器
 
-```shell
+```bash
 docker run -p 80:80 -v ~/opt:/opt -it eva/nginx
 ```
 
@@ -229,7 +229,7 @@ docker run -p 80:80 -v ~/opt:/opt -it eva/nginx
 
 PHP 容器是最复杂的一个，因为在实际项目中，我们很可能需要单独安装一些 PHP 扩展，并用到一些命令行工具，这里我们以 Redis 扩展以及 Composer 来举例。首先将项目需要的扩展等文件提前下载到 php 目录下，这样构建时就可以从本地复制而无需每次通过网络下载，大大加快镜像构建的速度：
 
-```shell
+```bash
 wget https://getcomposer.org/composer.phar -O php/composer.phar
 wget https://pecl.php.net/get/redis-2.2.7.tgz -O php/redis.tgz
 ```
@@ -238,7 +238,7 @@ php 目录下还准备好了 php 配置文件`php.ini`以及`php-fpm.conf`，基
 
 来看一下 Dockerfile
 
-```plain
+```dockerfile
 FROM php:5.6-fpm
 
 ADD php.ini    /usr/local/etc/php/php.ini
@@ -271,7 +271,7 @@ VOLUME ["/opt"]
 
 现在终于可以构建+运行了：
 
-```shell
+```bash
 docker build -t eva/php ./php
 docker run -p 9000:9000 -v ~/opt:/opt -it eva/php
 ```
@@ -284,7 +284,7 @@ php 容器除了运行 php-fpm 外，还应该作为项目的 php cli 使用，�
 
 例如在容器内运行 Composer，可以通过下面的指令实现：
 
-```shell
+```bash
 docker run -v $(pwd -P):/opt -it eva/php composer install --dev -vvvplainplain
 ```
 	
@@ -296,7 +296,7 @@ docker run -v $(pwd -P):/opt -it eva/php composer install --dev -vvvplainplain
 
 为了方便演示，Redis 仅仅作为缓存使用，没有持久化需求，因此 Dockerfile 仅有一行
 
-```plain
+```dockerfile
 FROM redis:3.0
 ```
 
@@ -305,7 +305,7 @@ FROM redis:3.0
 
 上面已经将原本在一个容器中运行的服务分拆到多个容器，每个容器只运行单一服务。这样一来容器之间需要能互相通信。Docker 容器间通讯的方法有两种，一种是像上文这样将容器端口绑定到一个本地端口，通过端口通讯。另一种则是通过 Docker 提供的[Linking 功能](https://docs.docker.com/userguide/dockerlinks/)，在开发环境下，通过 Linking 通信更加灵活，也能避免端口占用引起的一些问题，比如可以通过下面的方式将 Nginx 和 PHP 链接起来：
 
-```plain
+```bash
 docker run -p 9000:9000 -v ~/opt:/opt --name php -it eva/php
 docker run -p 80:80 -v ~/opt:/opt -it --link php:php eva/nginx
 ```
@@ -314,14 +314,14 @@ docker run -p 80:80 -v ~/opt:/opt -it --link php:php eva/nginx
 
 用一行指令完成安装
 
-```shell
+```bash
 pip install -U docker-composeplainplainplainplain
 ```
 
 然后在 Docker 项目的根目录下准备一个 docker-compose.yml 文件，内容为：
 
 
-```plain
+```yaml
 nginx:
     build: ./nginx
     ports:

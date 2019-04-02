@@ -69,7 +69,7 @@ Travis CI 目前有 2 个网站：如果是开源项目，直接进入[travis-ci
 
 说了这么多，首先还是需要先对编译脚本进行改造，如果不考虑安全问题，项目的`build.gradle`文件可能会是这样：
 
-```plain
+```groovy
 android {
     signingConfigs {
         releaseConfig {
@@ -93,7 +93,7 @@ android {
 
 本地开发环境中，我的做法是将这几个变量加到`gradle.properties`文件中，这样就可以在`build.gradle`内直接使用了。下面是开发环境的`gradle.properties`
 
-```plain
+```bash
 KEYSTORE_PASS=123456
 ALIAS_NAME=evandroid_alias
 ALIAS_PASS=654321
@@ -101,7 +101,7 @@ ALIAS_PASS=654321
 
 这样一来`build.gradle`就变成了
 
-```plain
+```groovy
         releaseConfig {
             storeFile file("../keys/evandroid.jks")
             storePassword project.hasProperty("KEYSTORE_PASS") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")
@@ -112,13 +112,13 @@ ALIAS_PASS=654321
 
 接下来处理证书文件，为了方便文件加密等功能，Travis CI 提供了一个基于 ruby 的 CLI 命令行工具，可以直接使用 gem 安装
 
-```plain
+```bash
 gem install travis
 ```
 
 安装后进入安卓项目根目录，尝试对证书文件加密：
 
-```plain
+```bash
 travis encrypt-file keys/evandroid.jks --add
 ```
 
@@ -130,7 +130,7 @@ travis encrypt-file keys/evandroid.jks --add
 2. 基于密钥通过`openssl`对文件进行加密，上例中会项目根目录生成`evandroid.jks.enc`文件
 3. 在`.travis.yml`中自动生成 Travis CI 环境下解密文件的配置，上例运行后可以看到`.travis.yml`中多了几行：
 
-```plain
+```yaml
 before_install:
 - openssl aes-256-cbc -K $encrypted_e41864bb9dab_key -iv $encrypted_e41864bb9dab_i -in keys/evandroid.jks.enc -out keys/evandroid.jks -d
 ```
@@ -143,7 +143,7 @@ Travis CI 默认在项目根目录下运行，因此注意根据实际需求调�
 
 Travis CI 的`script`部分运行成功后，可以通过配置文件进入到发布阶段。下面是一个 Travis CI 发布的示例：
 
-```plain
+```yaml
 deploy:
   provider: releases
   user: "GITHUB USERNAME"
@@ -164,13 +164,13 @@ deploy:
 
 虽然这样就能完成自动发布，但是直接暴露了 Github 密码是我们更加不能接受的。更好的做法是在 Github -> settings -> Personal access tokens 生成一个只能访问当前项目并只有读取权限的[Github Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)，并通过 Travis CI 将 Access Token 加密。听起来有点繁琐，好在 Travis CLI 中已经可以通过一行指令做好这一切：
 
-```plain
+```bash
 travis setup release
 ```
 
 根据提示填写上述配置项目的信息后，Travis CLI 会自动在`.travis.yml`文件中生成好所有的配置项：
 
-```plain
+```yaml
 deploy:
   provider: releases
   api_key:
@@ -191,14 +191,14 @@ deploy:
 
 这样的报错，看起来是 Travis CLI 还不支持通过密钥访问 Github，因此可以将项目的源临时切换为 http 形式，运行成功后再切换回来：
 
-```plain
+```bash
 git remote set-url origin https://github.com/AlloVince/evandroid.git
 git remote set-url origin git@github.com:AlloVince/evandroid.git
 ```
 
 在实际部署过程中，发现发布到 Github Release 比较坑的点是
 
-```plain
+```bash
 git push
 git push --tags
 ```
@@ -213,7 +213,7 @@ git push --tags
 
 自动发布到 Github 对于开发人员已经足够，但是考虑到项目实际需要以及国情，还是有必要选择一个国内的 App 分发服务，fir.im、蒲公英都是不错的选择，不但允许游客下载，还提供了二维码等更适合对接手机的功能，国内下载速度也很快。由于 fir.im 提供了比较方便的 CLI 工具，因此本文以 fir.im 为例，在`.travis.yml`中添加以下几行：
 
-```plain
+```yaml
 before_install:
 - gem install fir-cli
 after_deploy:
@@ -246,8 +246,9 @@ http://fir.im/w13s
 
 创建后可以得到邮件模板 id，根据 Submail 手册，将模板中所需要的变量置入，最终可以使用一行 Curl 指令发送一封邮件：
 
-```plain
-after_deploy:- curl -d "appid=10948&to=allo.vince@gmail.com&subject=[自动通知] 安卓新版本$TRAVIS_TAG发布&project=u2c0r2&signature=$SUBMAIL_SIGN&vars={\"TRAVIS_REPO_SLUG\":\"$TRAVIS_REPO_SLUG\",\"TRAVIS_TAG\":\"$TRAVIS_TAG\",\"TAG_DESCRIPTION\":\"$(git cat-file tag $TRAVIS_TAG | awk 1 ORS='<br>')\"}" https://api.submail.cn/mail/xsend.json
+```yaml
+after_deploy:
+  - curl -d "appid=10948&to=allo.vince@gmail.com&subject=[自动通知] 安卓新版本$TRAVIS_TAG发布&project=u2c0r2&signature=$SUBMAIL_SIGN&vars={\"TRAVIS_REPO_SLUG\":\"$TRAVIS_REPO_SLUG\",\"TRAVIS_TAG\":\"$TRAVIS_TAG\",\"TAG_DESCRIPTION\":\"$(git cat-file tag $TRAVIS_TAG | awk 1 ORS='<br>')\"}" https://api.submail.cn/mail/xsend.json
 ```
 
 其中 Submail 用到的认证凭据 signature 同样是通过 Travis CI 控制台配置的。
@@ -258,7 +259,7 @@ after_deploy:- curl -d "appid=10948&to=allo.vince@gmail.com&subject=[自动通�
 
 提交代码：
 
-``` shell
+```bash
 git add .
 git commit -m "这里是注释"
 git push origin
@@ -266,14 +267,14 @@ git push origin
 
 打 Tag
 
-``` shell
+```bash
 git tag -a v0.0.1-alpha.1 -m "这里是Tag注释，说清楚这个版本的主要改动，也可以省略-m参数直接写长文本"
 git push origin --tags
 ```
 
 如果发现打错了 tag，可以删除本地及远程 tag
 
-```plain
+```bash
 git tag -d v0.0.1-alpha.1
 git push origin --delete tag v0.0.1-alpha.1
 ```
