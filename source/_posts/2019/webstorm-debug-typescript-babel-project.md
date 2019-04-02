@@ -14,7 +14,7 @@ WebStorm 有很方便的 Debug 功能，如果是普通 node.js 项目的话，�
   
 由于 node.js 7+ 后都使用 [Inspector](https://nodejs.org/en/docs/guides/debugging-getting-started/) 来实现 Debug， 因此需要注意最低保证 node.js 版本 >= 7 及 JetBrains WebStorm 版本 >= 2017.1+。  
   
-鉴于 js 项目的多样性，实际项目中，经常会使用 Babel 或者 TypeScript 编译，特别记录下[WebStorm 在使用 TypeScript 或 Babel 时的 Debug 配置]以备忘。 下文以 node.js v10 及 WebStorm 2019.1 为例。  
+鉴于 js 项目的多样性，实际项目中，经常会使用 Babel 或者 TypeScript 编译，特别记录下[WebStorm 在使用 TypeScript 或 Babel 时的 Debug 配置](https://avnpc.com/pages/webstorm-debug-typescript-babel-project)以备忘。 下文以 node.js v10 及 WebStorm 2019.1 为例。  
   
   
 ## WebStorm Debug 基于 Babel 的项目  
@@ -48,7 +48,7 @@ npm install --save-dev babel-core babel-cli babel-register
 
 如下图
 
-![](https://static.avnpc.com/blog/2019/webstorm_debug_babel.png)
+![WebStorm debug Babel](https://static.avnpc.com/blog/2019/webstorm_debug_babel.png)
 
 ## WebStorm Debug 基于 TypeScript 的项目  
 
@@ -69,4 +69,4 @@ npm install --save-dev typescript ts-node
 
 如图
 
-![](https://static.avnpc.com/blog/2019/webstorm_debug_typescript.png)
+![WebStorm debug TypeScript](https://static.avnpc.com/blog/2019/webstorm_debug_typescript.png)
