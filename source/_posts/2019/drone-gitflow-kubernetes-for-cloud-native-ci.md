@@ -12,6 +12,8 @@ tags:
   - semantic release
 ---  
  
+@[toc]
+
 云原生 (Cloud Native) 是伴随的容器技术发展出现的的一个词，最早出自 Pivotal 公司（即开发了 Spring 的公司）的一本技术小册子 [Migrating to Cloud-Native Application Architectures](https://content.pivotal.io/ebooks/migrating-to-cloud-native-application-architectures)， 其中定义了云原生应用应当具备的一些特质，如无状态、可持续交付、微服务化等。随后云原生概念被广为引用，并围绕这一概念由数家大厂牵头，成立了 [CNCF 基金会](https://www.cncf.io/)来推进云原生相关技术的发展，主要投资并孵化云原生生态内的若干项目，包括了如 Kubernetes / etcd / CoreDNS 等耳熟能详的重要项目。而这张大大的[云原生版图](https://landscape.cncf.io/)仍然在不断的扩展和完善。
 
 从个人理解来说，传统的应用由于年代久远，更多会考虑单机部署、进程间通信等典型的“单机问题”，虽然也能工作在容器下，但由于历史包袱等原因，架构上已经很难做出大的调整。而“云原生”的应用大都是从一开始就为容器而准备，很少考虑在单机环境下使用，有些甚至无法脱离容器环境工作；考虑的场景少，从而更轻量，迭代更快。比如 etcd 之于 zookeeper ， traefik 之于 nginx 等，相信只要在容器环境下实现一次同样的功能，就能强烈的体会到云原生应用所特有的便捷之处。

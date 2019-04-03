@@ -9,6 +9,8 @@ tags:
  - Minikube
 ---
 
+@[toc]
+
 Docker 在生产环境的部署方案，目前的最优解显然是 Kubernetes 了，Kubernetes （下称 K8s）提供了非常完备的功能，几乎能覆盖所有能想到的运维场景，这点无需多言。
 
 唯独对于流量不大，对于机器资源要求比较严苛的小项目，K8s 就显得不那么友好了: 一套[高可用的 K8s 集群](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-intro/#cluster-diagram)，至少需要 3 个  Master 节点，Worker 节点虽然没有明确要求，但至少 2 个 Worker 节点显然是比较恰当的。也就是说哪怕只是一个静态的 html 页面，K8s 也至少需要 4-5 台主机。

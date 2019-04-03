@@ -8,6 +8,8 @@ author: AlloVince
 title: 基于 Travis CI 搭建 Android 自动打包发布工作流（支持 Github Release 及 fir.im）
 ---
 
+@[toc]
+
 最近付费购买了[Travis CI](https://travis-ci.com/)，Travis CI 的收费模式很有意思，不是按项目或者用户，而是按工作进程收费，比如初级版本是$129/月，总共提供 2 个工作进程。在项目不多的情况下，除了用于跑单元测试外，不免想利用的更充分一些，因此抽空搭建了一套[基于 Travis CI 的 Android 自动发布工作流](http://avnpc.com/pages/android-auto-deploy-workflow-on-travis-ci)。
 
 未自动化前安卓开发总是避免不了这样的工作流程：
