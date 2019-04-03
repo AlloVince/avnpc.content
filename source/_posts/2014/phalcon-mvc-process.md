@@ -9,6 +9,8 @@ author: AlloVince
 title: Phalcon Framework 的 Mvc 结构及启动流程（部分源码分析）
 ---
 
+@[toc]
+
 很久没更新 Blog 甚是惭愧，但是[工作方面还是有不少进展](http://avnpc.com/pages/fought-side-by-side-with-me-in-wallstreetcn)，技术方面一个重大的转变是我选择了[Phalcon Framework](http://phalconphp.com/en/)作为未来一段时间的核心框架。技术选型的原因会单开一篇 Blog 另说，本次优先对[Phalcon 的 MVC 架构与启动流程](http://avnpc.com/pages/phalcon-mvc-process)进行分析说明，如有遗漏还望指出。
 
 Phalcon 本身有支持创建多种形式的 Web 应用项目以应对不同场景，包括[迷你应用](http://docs.phalconphp.com/en/latest/reference/micro.html)、[单模块标准应用](http://docs.phalconphp.com/en/latest/reference/applications.html#single-module)、以及较复杂的[多模块应用](http://docs.phalconphp.com/en/latest/reference/applications.html#multi-module)
