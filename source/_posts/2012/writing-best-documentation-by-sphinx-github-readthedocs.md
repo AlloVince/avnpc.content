@@ -11,8 +11,7 @@ title: 写最好的文档：Sphinx + Read the Docs
 
 写文档一向是个苦差事，但只有写出好的文档，才能有资格霸气十足的对别人淡淡道出:RTFD(Read the Fuck Document)。为了这一崇高目标，经过一些比较和调查，最终锁定[Sphinx + ReadTheDocs 作为文档写作工具](http://avnpc.com/pages/writing-best-documentation-by-sphinx-github-readthedocs)，以下逐一道来：
 
-使用 Sphinx 生成文档
-------------------
+## 使用 Sphinx 生成文档
 
 [Sphinx](http://sphinx-doc.org/)是一个基于 Python 的文档生成项目。最早只是用来生成 Python 的项目文档，但随着这个项目的逐渐完善，很多非 Python 的知名项目也采用 Sphinx 作为文档写作工具，甚至完全可以[用 Sphinx 来写书](http://hyry.dip.jp/tech/book/page/sphinx/index.html)。
 
@@ -27,18 +26,18 @@ title: 写最好的文档：Sphinx + Read the Docs
 
 其实上面这么多功能，最本质的核心还是在于 Sphinx 采用了[轻量级标记语言](http://en.wikipedia.org/wiki/Lightweight_markup_language)中的[reStructuredText](http://docutils.sourceforge.net/rst.html)作为文档写作语言。reStructuredText 是类似 Wiki，Markdown 的一种纯文本标记语言，所有 Sphinx 的文档其实都是扩展名为 rst 的纯文本文件，然后经过转换器转换为各种输出格式，并且可以配合版本控制系统轻松实现 Diff。
 
-###Sphinx 安装
+### Sphinx 安装
 
 首先安装好 Python 环境，建议选择 Pyhon2.7.3,并且把 Python 及 Python/Scripts 目录加入环境变量，然后只需要一行命令即可
 
-```plain
-    easy_install -U Sphinx
+```bash
+easy_install -U Sphinx
 ```
 
 安装完毕之后，进入任意目录，运行
 
-```plain
-    sphinx-quickstart
+```bash
+sphinx-quickstart
 ```
 
 会进入一个设置向导，根据向导一步一步设置文档项目，其实必填项只有项目名称，作者和版本，其他设置都可以一路回车：
@@ -73,7 +72,7 @@ title: 写最好的文档：Sphinx + Read the Docs
 如果向导中的所有设置都保存在 conf.py 中，可以随时调整。
 
 
-###Sphinx 生成文档
+### Sphinx 生成文档
 
 source 目录就是存放文档源代码的目录，默认的索引页面为 index.rst
 
@@ -102,8 +101,8 @@ source 目录就是存放文档源代码的目录，默认的索引页面为 ind
 会看到 build 目录下会生成 HTML 格式的文档。同理我们可以 make letex 生成 LeTex 以及其他格式。
 
 
-托管到 Read the Docs
-------------------
+## 托管到 Read the Docs
+
 
 [Read the Docs](http://readthedocs.org)是一个基于 Sphinx 的在线文档托管系统，接受一个 Git Repository 或 SVN 仓库作为文档来源。
 
