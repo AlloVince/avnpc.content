@@ -43,6 +43,8 @@ PPT 原稿保存于[我的 gist](https://gist.github.com/AlloVince)，请安装 
 
 - 2018.5 [GraphQL 从入门到“放弃”](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
   - `npm install -g reveal-md && wget -q -O graphql.md https://gist.githubusercontent.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1/raw/graphql.md && reveal-md graphql.md`
+- 2018.4 [EvaEngine.js 介绍与入门](https://gist.github.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d)
+  - `npm install -g reveal-md && wget -q -O EvaEngine.js.md https://gist.githubusercontent.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d/raw/EvaEngine.js.md && reveal-md EvaEngine.js.md`
 - 2015.7 [如何写出好的 PHP 代码](https://gist.github.com/AlloVince/a656e2842c7b6a43c81d)
   - `npm install -g reveal-md && wget -q -O php_code_review.md https://gist.githubusercontent.com/AlloVince/a656e2842c7b6a43c81d/raw/php_code_review.md && reveal-md php_code_review.md`
 - 2015.4 [关于产品与项目的一些思考](https://gist.github.com/AlloVince/04dab3ad5c1f24c9faea)
