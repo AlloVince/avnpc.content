@@ -39,7 +39,7 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 ## 技术分享 PPT
 
-PPT 原稿保存于[我的 gist](https://gist.github.com/AlloVince)，请安装 node.js 后使用后文指令在本地打开查看
+以下整理了一些对内技术分享 PPT，gist 保存的是原始文件，请安装 node.js 后使用后文指令在本地打开查看已获得更好用户体验。 PPT 动画效果基于 [reveal-md](https://github.com/webpro/reveal-md) 项目
 
 - 2018.5 [GraphQL 从入门到“放弃”](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
   - `npm install -g reveal-md && wget -q -O graphql.md https://gist.githubusercontent.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1/raw/graphql.md && reveal-md graphql.md`
