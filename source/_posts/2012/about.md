@@ -41,6 +41,10 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 以下整理了一些对内技术分享 PPT，gist 保存的是原始文件，请安装 node.js 后使用后文指令在本地打开查看已获得更好用户体验。 PPT 动画效果基于 [reveal-md](https://github.com/webpro/reveal-md) 项目
 
+- 2018.8 [如何严肃的写一个爬虫](https://gist.github.com/AlloVince/55aa29c8b24c041ee8a832add04f9b40)
+  - `npm install -g reveal-md && wget -q -O scrapy.md https://gist.githubusercontent.com/AlloVince/55aa29c8b24c041ee8a832add04f9b40/raw/scrapy.md && reveal-md scrapy.md`
+- 2018.8 [使用Yeoman生成项目脚手架](https://gist.github.com/AlloVince/8a53f1ff58748c719d15cbbe91ff5bd5)
+  - `npm install -g reveal-md && wget -q -O yeoman.md https://gist.githubusercontent.com/AlloVince/8a53f1ff58748c719d15cbbe91ff5bd5/raw/yeoman.md && reveal-md yeoman.md`
 - 2018.5 [GraphQL 从入门到“放弃”](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
   - `npm install -g reveal-md && wget -q -O graphql.md https://gist.githubusercontent.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1/raw/graphql.md && reveal-md graphql.md`
 - 2018.4 [EvaEngine.js 介绍与入门](https://gist.github.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d)
