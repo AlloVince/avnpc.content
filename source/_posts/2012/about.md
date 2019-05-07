@@ -37,6 +37,15 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 - [EvaOAuth](http://avnpc.com/pages/evaoauth) 统一接口设计的 OAuth Client，可以用相同的代码支持 OAuth1.0/OAuth2.0 网站，快速集成第三方用户体系。
 - [EvaThumber](http://avnpc.com/pages/evathumber) 基于 URL 对图片进行缩放、水印、剪裁等常规操作。
 
+## 技术分享 PPT
+
+PPT 原稿保存于[我的 gist](https://gist.github.com/AlloVince)，请安装 node.js 后使用后文指令在本地打开查看
+
+- 2015.4 [RESTFul API 设计](https://gist.github.com/AlloVince/ba8c33138adbdd39d757)
+  - `npm install -g reveal-md && wget -q -O restful.md https://gist.githubusercontent.com/AlloVince/ba8c33138adbdd39d757/raw/restfulapi.md && reveal-md restful.md`
+- 2014.2 [Phalcon 的技术选型及优缺点评估](http://evaengine.github.io/EvaEngine/)
+
+
 ## 关于 avnpc.com
 
 avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内容都托管在 Github, 使用的主要技术包括：
