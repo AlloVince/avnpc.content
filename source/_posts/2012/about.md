@@ -41,6 +41,12 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 PPT 原稿保存于[我的 gist](https://gist.github.com/AlloVince)，请安装 node.js 后使用后文指令在本地打开查看
 
+- 2018.5 [GraphQL 从入门到“放弃”](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
+  - `npm install -g reveal-md && wget -q -O graphql.md https://gist.githubusercontent.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1/raw/graphql.md && reveal-md graphql.md`
+- 2015.7 [如何写出好的 PHP 代码](https://gist.github.com/AlloVince/a656e2842c7b6a43c81d)
+  - `npm install -g reveal-md && wget -q -O php_code_review.md https://gist.githubusercontent.com/AlloVince/a656e2842c7b6a43c81d/raw/php_code_review.md && reveal-md php_code_review.md`
+- 2015.4 [关于产品与项目的一些思考](https://gist.github.com/AlloVince/04dab3ad5c1f24c9faea)
+  - `npm install -g reveal-md && wget -q -O project.md https://gist.githubusercontent.com/AlloVince/04dab3ad5c1f24c9faea/raw/project.md && reveal-md project.md`
 - 2015.4 [RESTFul API 设计](https://gist.github.com/AlloVince/ba8c33138adbdd39d757)
   - `npm install -g reveal-md && wget -q -O restful.md https://gist.githubusercontent.com/AlloVince/ba8c33138adbdd39d757/raw/restfulapi.md && reveal-md restful.md`
 - 2014.2 [Phalcon 的技术选型及优缺点评估](http://evaengine.github.io/EvaEngine/)
