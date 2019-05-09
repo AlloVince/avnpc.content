@@ -27,8 +27,8 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 ## 出版作品
 
-- [自制编程语言](http://book.douban.com/subject/25735333/) 2013
-- [游戏开发的数学和物理](http://book.douban.com/subject/26274169/) 2014
+- [《自制编程语言》](http://book.douban.com/subject/25735333/) 2013
+- [《游戏开发的数学和物理》](http://book.douban.com/subject/26274169/) 2014
 
 ## 开源项目
 
@@ -39,26 +39,23 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 ## 技术分享 PPT
 
-以下整理了一些对内技术分享 PPT，gist 保存的是原始文件，请安装 node.js 后使用后文指令在本地打开查看已获得更好用户体验。 PPT 动画效果基于 [reveal-md](https://github.com/webpro/reveal-md) 项目
+以下整理了历年来的一些对外宣讲和对内技术分享
 
-- 2018.9 [8102 年如何入门 Elastic](https://gist.github.com/AlloVince/35dc272fe0f6703b195425e07f22ed38)
-  - `npm install -g reveal-md && wget -q -O elastic.md https://gist.githubusercontent.com/AlloVince/35dc272fe0f6703b195425e07f22ed38/raw/elastic.md && reveal-md elastic.md`
-- 2018.8 [如何严肃的写一个爬虫](https://gist.github.com/AlloVince/55aa29c8b24c041ee8a832add04f9b40)
-  - `npm install -g reveal-md && wget -q -O scrapy.md https://gist.githubusercontent.com/AlloVince/55aa29c8b24c041ee8a832add04f9b40/raw/scrapy.md && reveal-md scrapy.md`
-- 2018.8 [使用 Yeoman 生成项目脚手架](https://gist.github.com/AlloVince/8a53f1ff58748c719d15cbbe91ff5bd5)
-  - `npm install -g reveal-md && wget -q -O yeoman.md https://gist.githubusercontent.com/AlloVince/8a53f1ff58748c719d15cbbe91ff5bd5/raw/yeoman.md && reveal-md yeoman.md`
-- 2018.5 [GraphQL 从入门到“放弃”](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
-  - `npm install -g reveal-md && wget -q -O graphql.md https://gist.githubusercontent.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1/raw/graphql.md && reveal-md graphql.md`
-- 2018.4 [EvaEngine.js 介绍与入门](https://gist.github.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d)
-  - `npm install -g reveal-md && wget -q -O EvaEngine.js.md https://gist.githubusercontent.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d/raw/EvaEngine.js.md && reveal-md EvaEngine.js.md`
-- 2015.7 [如何写出好的 PHP 代码](https://gist.github.com/AlloVince/a656e2842c7b6a43c81d)
-  - `npm install -g reveal-md && wget -q -O php_code_review.md https://gist.githubusercontent.com/AlloVince/a656e2842c7b6a43c81d/raw/php_code_review.md && reveal-md php_code_review.md`
-- 2015.4 [关于产品与项目的一些思考](https://gist.github.com/AlloVince/04dab3ad5c1f24c9faea)
-  - `npm install -g reveal-md && wget -q -O project.md https://gist.githubusercontent.com/AlloVince/04dab3ad5c1f24c9faea/raw/project.md && reveal-md project.md`
-- 2015.4 [RESTFul API 设计](https://gist.github.com/AlloVince/ba8c33138adbdd39d757)
-  - `npm install -g reveal-md && wget -q -O restful.md https://gist.githubusercontent.com/AlloVince/ba8c33138adbdd39d757/raw/restfulapi.md && reveal-md restful.md`
+- 2018.9 [「8102 年如何入门 Elastic」](https://allovince.github.io/gimare/?35dc272fe0f6703b195425e07f22ed38) [源文件](https://gist.github.com/AlloVince/35dc272fe0f6703b195425e07f22ed38)
+- 2018.8 [「如何严肃的写一个爬虫」](https://allovince.github.io/gimare/?55aa29c8b24c041ee8a832add04f9b40) [源文件](https://gist.github.com/AlloVince/55aa29c8b24c041ee8a832add04f9b40)
+- 2018.8 [「使用 Yeoman 生成项目脚手架」](https://allovince.github.io/gimare/?8a53f1ff58748c719d15cbbe91ff5bd5) [源文件](https://gist.github.com/AlloVince/8a53f1ff58748c719d15cbbe91ff5bd5)
+- 2018.5 [「GraphQL 从入门到“放弃”」](https://allovince.github.io/gimare/?8ba1c92890c74cc7f4e68f09c79ec0d1) [源文件](https://gist.github.com/AlloVince/8ba1c92890c74cc7f4e68f09c79ec0d1)
+- 2018.4 [「EvaEngine.js 介绍与入门」](https://allovince.github.io/gimare/?cb92c08e0b1c9e5b8b4f6becae12cc5d) [源文件](https://gist.github.com/AlloVince/cb92c08e0b1c9e5b8b4f6becae12cc5d)
+- 2015.7 [「如何写出好的 PHP 代码」](https://allovince.github.io/gimare/?a656e2842c7b6a43c81d) [源文件](https://gist.github.com/AlloVince/a656e2842c7b6a43c81d)
+- 2015.4 [「关于产品与项目的一些思考」](https://allovince.github.io/gimare/?04dab3ad5c1f24c9faea) [源文件](https://gist.github.com/AlloVince/04dab3ad5c1f24c9faea)
+- 2015.4 [「如何设计好的 RESTFul API」](https://allovince.github.io/gimare/?ba8c33138adbdd39d757) [源文件](https://gist.github.com/AlloVince/ba8c33138adbdd39d757)
 - 2014.2 [Phalcon 的技术选型及优缺点评估](http://evaengine.github.io/EvaEngine/)
 
+PPT 基于 [Gimare](https://github.com/AlloVince/gimare) 制作。 你也可以使用以下指令在本地打开
+
+```
+npm install -g reveal-md && wget -q -O ppt.md https://源文件地址 && reveal-md ppt.md
+```
 
 ## 关于 avnpc.com
 
@@ -96,9 +93,9 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
 
 希望没有阅读过《[提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md)》一文的朋友，阅读一下这篇会让你终身受益的文章。
 
-- 向我提问的正式方式： 在下面的技术问答网站邀请 AlloVince 回答问题
+- 向我提问的正式方式：
     - [Allo@StackOverflow](http://stackoverflow.com/users/1445934/allovince)
-    - [Allo@SegmentFault](http://segmentfault.com/u/allovince)
+    - [加我的Telegram技术讨论组](https://t.me/joinchat/HKvcQAw2kqASoYfxiSrIbA)
 
 ## 联系方式
 
