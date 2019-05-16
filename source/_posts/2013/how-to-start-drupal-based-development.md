@@ -62,7 +62,7 @@ Drupal 内置了大量的缓存机制来提升性能，但是在开发环境中�
 进入后台
 
 ```plain
-administer -> configuration -> perfromance
+administer -> configuration -> performance
 ```
 
 将
