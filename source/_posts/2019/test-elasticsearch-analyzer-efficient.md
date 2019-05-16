@@ -2,9 +2,10 @@
 title: 如何快速测试 Elasticsearch 的 Analyzer
 s: test-elasticsearch-analyzer-efficient
 date: 2019-05-16 14:32:36
+published: true  
 tags:
-  - Elasticsearch
-  - Analyzer
+ - Elasticsearch
+ - Analyzer
 ---
 
 使用 Elasticsearch 搭建搜索引擎的过程中，免不了会反复测试 Analyzer 的效果，如果每次都建立一个索引，配置索引的 Analyzer，插入 Document，无疑效率会很低。ES 提供了 `_analyze` 接口，可以[无需创建索引快速测试 Analyzer](https://avnpc.com/pages/test-elasticsearch-analyzer-efficient)，推荐搭配 Kibana 中的 Dev Tools 一同使用。
