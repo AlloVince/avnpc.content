@@ -30,7 +30,7 @@ tags:
 |--|--|--|--|--|--|
 | Travis CI | Ruby | YAML | 有 | 不支持 | 公共项目免费,私有项目 $69/单进程, $129/2 进程 |
 | CircleCI | Clojure | YAML | 有 | 不支持 | 单进程免费，$50/加 1 进程 |
-| Gitlab CI | Ruby | YAML | 有 | 支持 | 绑定 Gitlab 代码管理 |
+| Gitlab CI | Ruby | YAML | 有 | 支持 | 阶梯付费, 免费版功能过少, 绑定 Gitlab |
 | Jenkins | Java | Groovy | 无 | 支持 |  |
 | Drone | Go | YAML | 有 | 支持 | Cloud 版本不支持私有项目，自建版本无此限制 |
 
