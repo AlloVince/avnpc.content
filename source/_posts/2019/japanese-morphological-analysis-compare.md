@@ -9,7 +9,7 @@ tags:
  - Elasticsearch
 ---
 
-对于搜索引擎来说，分词器的质量是对搜索结果影响最大的一个环节，日语分词（[形態素解析](https://ja.wikipedia.org/wiki/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90)）经过多年的发展也有了一些比较成熟的分词系统，下面[介绍并比较目前主流的开源日语分词系统](https://avnpc.com/pages/japanese-free-morphological-analysis-compare) 
+对于搜索引擎来说，分词器的质量是对搜索结果影响最大的一个环节，日语分词（[形態素解析](https://ja.wikipedia.org/wiki/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90)）经过多年的发展也有了一些比较成熟的分词系统，下面[介绍并比较目前主流的开源日语分词系统](https://avnpc.com/pages/japanese-morphological-analysis-compare)。
   
 ## 日语分词词典  
   
@@ -17,12 +17,12 @@ tags:
 
 说到日文词典，可能首先想到是知名的商业词典，如「広辞苑」、「大辞林」等，然而由于商业词典等存在版权和授权问题，一般都无法用于开源项目。其次这类商业词典一般以词义解释为主，而对于分词来说，词汇的释义并不是最重要的，而是词性、词根等，所以也并不是所有的商业词典都适用于分词。
 
-因此开源项目一般都采用具备开源许可证的免费词典，目前使用比较多的有
+因此开源项目一般都采用具备开源许可证的免费词典，目前使用比较多的有：
 
 - [UniDic](https://unidic.ninjal.ac.jp/): 由国立国语研究所推出，主要用于分词问题研究的词典，质量非常优秀，并且按照现代、近代、古代，书面语、口语等划分了多个专门词典，License 也有 GPL/LGPL/BSD 多个选择，可以说是日语分词研究的首选词典了。
-- [ipadic](http://ipadic.osdn.jp/): 这个词典首先是由「奈良先端科学技術大学院大学松本研究室」所开发的分词软件 ChaSen 整理并使用的，词汇的来源是「情報処理振興事業協会(IPA)」所编著的「IPA 品詞体系(THiMCO97)」，由于 ChaSen 这个软件已经停止更新，因此这个词典的最后一个版本也停止在 2.7.0，更新时间是 2007 年。因此从应用角度来看并不适合使用在实际产品中，但是胜在体积小巧，适合用于个人学习或 demo。总词条数，约 14W 条
+- [ipadic](http://ipadic.osdn.jp/): 这个词典首先是由「奈良先端科学技術大学院大学松本研究室」所开发的分词软件 ChaSen 整理并使用的，词汇的来源是「情報処理振興事業協会(IPA)」所编著的「IPA 品詞体系(THiMCO97)」，由于 ChaSen 这个软件已经停止更新，因此这个词典的最后一个版本也停止在 2.7.0，更新时间是 2007 年。从应用角度来看 ipadic 并不适合使用在实际产品中，但是胜在体积小巧，适合用于个人学习或 demo，总词条数约 14W 条。
 - [NAIST-jdic](http://sourceforge.jp/projects/naist-jdic/) : 由于 ipadic 停止更新，NAIST-jdic 就是在 ipadic 继续整理并将词条数增补至 30W，许可证 BSD。最后更新时间为 2008 年。
-- [mecab-ipadic](https://sourceforge.net/projects/mecab/files/mecab-ipadic/) / [mecab-jumandic](https://sourceforge.net/projects/mecab/files/mecab-jumandic/) 由知名项目 MeCab (下文会详细介绍) 按照自己项目的格式整理而成的词典
+- [mecab-ipadic](https://sourceforge.net/projects/mecab/files/mecab-ipadic/) / [mecab-jumandic](https://sourceforge.net/projects/mecab/files/mecab-jumandic/) 由知名项目 MeCab (下文详细介绍) 按照自己项目的格式整理而成的词典
 - [mecab-ipadic-NEologd](https://github.com/neologd/mecab-ipadic-neologd) 由工程师 [@overlast](https://twitter.com/overlast) 个人维护的项目，并得到的 LINE 公司的赞助，主要在 mecab-ipadic 的基础上增补了很多互联网的新词
 
 可以通过[这个网页比较几个日语分词词典的差异](http://www.mwsoft.jp/programming/munou/mecab_dic_perform.html)。
@@ -31,7 +31,7 @@ tags:
 
 ## MeCab  
   
-[MeCab](https://taku910.github.io/mecab/) 是京都大学信息专业和日本电信电话株式会社通讯研究所共同研究的项目，模型基于 CRF(条件随机场) ，基于 C++实现，主要作者是「工藤 拓」，是日本自然语言研究领域专家，就职于 Google 负责日语输入法相关项目。  
+[MeCab](https://taku910.github.io/mecab/) 是京都大学信息专业和日本电信电话株式会社通讯研究所共同研究的项目，模型基于 CRF(条件随机场) ，基于 C++实现，主要作者是「工藤 拓」，是日本自然语言研究领域大拿，就职于 Google 负责日语输入法相关项目。  
   
 MeCab 主要特点有：  
   
@@ -50,7 +50,7 @@ Kuromoji 基本支持前文提到的所有词典，如果未指定的话，默�
 
 Kuromoji 的分词算法基于 [Viterbi Algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm)，因此可以看做是基于 HMM (隐马尔科夫模型) 的分词。
 
-由于 Atilika 是一个纯商业公司，因此 Kuromoji 也更偏向作为日文分词的工程实现，作为 Java 开源项目，与主流的 Java 搜索项目如 Lucene，Elastic 有很好的匹配，工程化程度比较规范，容易上手。而在学术方面的贡献就比较少了。
+由于 Atilika 是一个纯商业公司，因此 Kuromoji 也更偏向作为日文分词的工程实现，作为 Java 开源项目，与主流的 Java 搜索项目如 Lucene，Elastic 有很好的匹配，工程方面比较规范，容易上手。而在学术方面的贡献就比较少了。
   
 ## Juman++  
 
@@ -64,19 +64,19 @@ Juman 除了采用自己整理的词典外，还引入了来自 Wikipedia 的词
 
 [KyTea](http://www.phontron.com/kytea/) 是由卡内基·梅隆大学的 Graham Neubig 主导研究的项目，实现语言是 C++， 算法方面融合了 SVM 和逻辑回归等多个模型，默认使用的词典是 UniDic。
 
-作者的方向偏学术，因此 KyTea 更多也只是作为研究成果的展示，版本早已停止更新，在工程方面项目也较少。
+作者的方向偏学术，因此 KyTea 更多也只是作为研究成果的展示，版本早已停止更新，实际应用的项目也较少。
 
-# Sudachi  
+## Sudachi  
 
 [Sudachi](https://github.com/WorksApplications/Sudachi)  由 Works Applications 公司开发，和 Kuromoji 非常类似，都是 Java 实现的商业开源项目，对比 Kuromoji， Sudachi 可以调整的参数更细致一些，比如可以调整分词的粒度，默认词典同时包括了 UniDic 和 NEologd，算法使用的应该是 Lattice LSTM。
 
-项目开源仅 2 年，相对更新维护也比较多，也官方提供了 Elasticsearch 插件，对开发者比较友好。
+项目开源仅 2 年，更新维护比较轻快，官方提供了 Elasticsearch 插件，对开发者比较友好。
   
 ## nagisa  
   
 [nagisa](https://github.com/taishi-i/nagisa) 是 NTT DOCOMO 的「池田 大志」 个人开发的基于 RNN 的项目，训练好的模型可以直接使用 pip 安装后使用，不过由于是 Python 开发，运行效率上就远远比不了上述的 C++项目了。
 
-nagisa 整体代码较少，并给出了完整的训练代码和语料库，如果是以学习为目的的话，可能是最适合的。
+nagisa 整体代码较少，并给出了完整的训练代码和语料库，如果是以学习 NLP 为目的的话，可能是最适合的。
 
 ## 其他
 
