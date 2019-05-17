@@ -53,7 +53,7 @@ AlloVince， 又名 Allo / 某 A / AV / 艾鲁， 网名源自“艾鲁维斯”
 
 PPT 基于 [Gimare](https://github.com/AlloVince/gimare) 制作。 你也可以使用以下指令在本地打开
 
-```
+```plain
 npm install -g reveal-md && wget -q -O ppt.md https://源文件地址 && reveal-md ppt.md
 ```
 
@@ -95,7 +95,7 @@ avnpc.com 从内容到设计、开发都是完全原创的，所有代码及内�
 
 - 向我提问的正式方式：
     - [Allo@StackOverflow](http://stackoverflow.com/users/1445934/allovince)
-    - [加我的Telegram技术讨论组](https://t.me/joinchat/HKvcQAw2kqASoYfxiSrIbA)
+    - [加我的 Telegram 技术讨论组](https://t.me/joinchat/HKvcQAw2kqASoYfxiSrIbA)
 
 ## 联系方式
 
