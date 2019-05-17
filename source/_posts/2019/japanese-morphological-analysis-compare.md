@@ -9,7 +9,7 @@ tags:
  - Elasticsearch
 ---
 
-对于搜索引擎来说，分词器的质量是对搜索结果影响最大的一个环节，日语分词（[形態素解析](https://ja.wikipedia.org/wiki/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90)）经过多年的发展也有了一些比较成熟的分词系统，下面[介绍并比较目前主流的开源日语分词系统](https://avnpc.com/pages/japanese-free-morphological-analysis-compare) 
+对于搜索引擎来说，分词器的质量是对搜索结果影响最大的一个环节，日语分词（[形態素解析](https://ja.wikipedia.org/wiki/%E5%BD%A2%E6%85%8B%E7%B4%A0%E8%A7%A3%E6%9E%90)）经过多年的发展也有了一些比较成熟的分词系统，下面[介绍并比较目前主流的开源日语分词系统](https://avnpc.com/pages/japanese-morphological-analysis-compare) 
   
 ## 日语分词词典  
   
