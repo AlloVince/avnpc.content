@@ -1,10 +1,10 @@
 ---
-title: 日文分词器的介绍与比较
+title: 日语分词器的介绍与比较
 s: japanese-morphological-analysis-compare
 date: 2019-05-17 16:19:53
 published: true
 tags:
- - 日文
+ - 日语
  - 分词
  - Elasticsearch
 ---
@@ -50,7 +50,7 @@ Kuromoji 基本支持前文提到的所有词典，如果未指定的话，默�
 
 Kuromoji 的分词算法基于 [Viterbi Algorithm](https://en.wikipedia.org/wiki/Viterbi_algorithm)，因此可以看做是基于 HMM (隐马尔科夫模型) 的分词。
 
-由于 Atilika 是一个纯商业公司，因此 Kuromoji 也更偏向作为日文分词的工程实现，作为 Java 开源项目，与主流的 Java 搜索项目如 Lucene，Elastic 有很好的匹配，工程方面比较规范，容易上手。而在学术方面的贡献就比较少了。
+由于 Atilika 是一个纯商业公司，因此 Kuromoji 也更偏向作为日语分词的工程实现，作为 Java 开源项目，与主流的 Java 搜索项目如 Lucene，Elastic 有很好的匹配，工程方面比较规范，容易上手。而在学术方面的贡献就比较少了。
   
 ## Juman++  
 
