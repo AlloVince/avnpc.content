@@ -68,9 +68,9 @@ Juman 除了采用自己整理的词典外，还引入了来自 Wikipedia 的词
 
 ## Sudachi  
 
-[Sudachi](https://github.com/WorksApplications/Sudachi)  由 Works Applications 公司开发，和 Kuromoji 非常类似，都是 Java 实现的商业开源项目，对比 Kuromoji， Sudachi 可以调整的参数更细致一些，比如可以调整分词的粒度，默认词典同时包括了 UniDic 和 NEologd，算法使用的应该是 Lattice LSTM。
+[Sudachi](https://github.com/WorksApplications/Sudachi)  由 Works Applications 公司开发，和 Kuromoji 非常类似，都是 Java 实现的商业开源项目，对比 Kuromoji， Sudachi 可以调整的参数更细致一些，默认词典同时包括了 UniDic 和 NEologd，算法使用的应该是 Lattice LSTM。
 
-项目开源仅 2 年，更新维护比较轻快，官方提供了 Elasticsearch 插件，对开发者比较友好。
+项目开源仅 2 年，更新维护比较勤快，官方提供了 Elasticsearch 插件，对开发者比较友好。
   
 ## nagisa  
   
