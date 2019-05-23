@@ -1,5 +1,5 @@
 ---
-title: 使用 Elasticsearch 做一个好用的日语搜索引擎    
+title: 使用 Elasticsearch 做一个好用的日语搜索引擎及自动补全    
 s: better-japanese-search-by-elasticsearch  
 date: 2019-05-23 16:24:47
 published: true
@@ -12,7 +12,7 @@ tags:
 
 @[toc]
 
-最近基于 Elastic Stack 搭建了一个日语搜索服务，发现日文的搜索相比英语和中文，有不少特殊之处，因此记录下[用 Elasticsearch 搭建日语搜索引擎](https://avnpc.com/pages/japanese-morphological-analysis-compare)的全过程，帮助其他人少走弯路。本文所有的示例，适用于 Elastic 6.X 及 7.X 版本。
+最近基于 Elastic Stack 搭建了一个日语搜索服务，发现日文的搜索相比英语和中文，有不少特殊之处，因此记录下[用 Elasticsearch 搭建日语搜索引擎](https://avnpc.com/pages/japanese-morphological-analysis-compare)的一些要点。本文所有的示例，适用于 Elastic 6.X 及 7.X 版本。
   
 ## 日语搜索的特殊性  
   
@@ -120,7 +120,7 @@ Response
 }
 ```
 
-#### [CJK Width Token Filter (CJK 宽度过滤)](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-cjk-width-tokenfilter.html)
+### [CJK Width Token Filter (CJK 宽度过滤)](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-cjk-width-tokenfilter.html)
 
 将全角 ASCII 字符 转换为半角 ASCII 字符
 
@@ -169,9 +169,9 @@ POST _analyze
 }
 ```
 
-####  [`ja_stop`  Token Filter (日语停止词过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-stop.html)
+###  [`ja_stop`  Token Filter (日语停止词过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-stop.html)
 
-一般来讲，日语的停止词主要包括部分助词、助动词、连接词及标点符号等，Kuromoji 默认使用的停止词参考[lucene 日语停止词源码](https://github.com/apache/lucene-solr/blob/master/lucene/analysis/kuromoji/src/resources/org/apache/lucene/analysis/ja/stopwords.txt)。 再次基础上也可以自己在配置中添加停止词
+一般来讲，日语的停止词主要包括部分助词、助动词、连接词及标点符号等，Kuromoji 默认使用的停止词参考[lucene 日语停止词源码](https://github.com/apache/lucene-solr/blob/master/lucene/analysis/kuromoji/src/resources/org/apache/lucene/analysis/ja/stopwords.txt)。 在此基础上也可以自己在配置中添加停止词
 
 ``` json
 POST _analyze
@@ -208,7 +208,7 @@ POST _analyze
 }
 ```
 
-#### [`kuromoji_baseform`  Token Filter (日语词根过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-baseform.html)
+### [`kuromoji_baseform`  Token Filter (日语词根过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-baseform.html)
 
 将动词、形容词转换为该词的词根
 
@@ -233,7 +233,7 @@ POST _analyze
 }
 ```
 
-#### [`kuromoji_readingform`  Token Filter (日语读音过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-readingform.html)
+### [`kuromoji_readingform`  Token Filter (日语读音过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-readingform.html)
 
 将单词转换为发音，发音可以是片假名或罗马字 2 种形式
 
@@ -283,7 +283,7 @@ POST _analyze
 
 当遇到多音词时，读音过滤仅会给出一个读音。
 
-#### [`kuromoji_part_of_speech`  Token Filter (日语语气词过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-speech.html)
+### [`kuromoji_part_of_speech`  Token Filter (日语语气词过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-speech.html)
 
 语气词过滤与停止词过滤有一定重合之处，语气词过滤范围更广。停止词过滤的对象是固定的词语列表，停止词过滤则是根据词性过滤的，具体过滤的对象参考[源代码](https://github.com/apache/lucene-solr/blob/master/lucene/analysis/kuromoji/src/resources/org/apache/lucene/analysis/ja/stoptags.txt)。
 
@@ -316,7 +316,7 @@ POST _analyze
 ```
 
 
-#### [`kuromoji_stemmer`  Token Filter (日语长音过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-stemmer.html)
+### [`kuromoji_stemmer`  Token Filter (日语长音过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-stemmer.html)
 
 去除一些单词末尾的长音， 如「コンピューター」 => 「コンピュータ」
 
@@ -341,7 +341,7 @@ POST _analyze
 }
 ```
 
-#### [`kuromoji_number`  Token Filter (日语数字过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-number.html)
+### [`kuromoji_number`  Token Filter (日语数字过滤)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-kuromoji-number.html)
 
 将汉字的数字转换为 ASCII 数字
 
