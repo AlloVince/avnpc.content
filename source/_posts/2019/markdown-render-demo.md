@@ -62,6 +62,16 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## 例 3: Markdown 增强扩展
 
+### Code
+
+``` js
+function helloWorld() {
+  return 'hello world!';
+}
+```
+
+[运行](https://codepen.io/AlloVince/pen/wLeYEb)
+
 ### SmartyPants
 
 SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
