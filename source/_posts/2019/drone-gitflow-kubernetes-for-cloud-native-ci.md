@@ -198,7 +198,7 @@ kubectl apply -f drone-pvc.yaml
 Drone 的配置主要涉及两个镜像:
 
 - `drone/kubernetes-secrets` 加密数据服务，用于读取 K8s 的 secrets
-- `drone/drone:1.0.0-rc.6` 就是 Drone 的 server 端，由于在 K8s 下 Drone 利用了 Job 机制，因此不需要部署 agent。
+- `drone/drone:1.0.0` 就是 Drone 的 server 端，由于在 K8s 下 Drone 利用了 Job 机制，因此不需要部署 agent。
 
 这部分配置较长，可以直接参考示例 [drone.yaml](https://github.com/AlloVince/drone-ci-demo/blob/master/kubernetes/drone.yaml)
 
@@ -381,7 +381,7 @@ Docker 这个 Plugin 由 Drone 官方提供，用于 Docker 镜像的构建和�
 
 不过基于这个工作流工作一段时间，会发现仍然存在痛点，那就是每次发布都要想一个版本号，写 ChangeLog，并且人工去 release。
 
-标记版本号涉及到上线后的回滚，追溯等一系列问题,应该是一项严肃的工作，其实如何标记早已有比较好的方案，即[语义化版本](https://semver.org/lang/zh-CN/)。在这个方案中，版本号一共有 3 位，形如 `1.0.0`，分别代表：
+标记版本号涉及到上线后的回滚，追溯等一系列问题,应该是一项严肃的工作，其实如何标记版本号早已有比较好的方案，即[语义化版本](https://semver.org/lang/zh-CN/)。在这个方案中，版本号一共有 3 位，形如 `1.0.0`，分别代表：
 
 1.  主版本号：当你做了不兼容的 API 修改，
 2.  次版本号：当你做了向下兼容的功能性新增，
