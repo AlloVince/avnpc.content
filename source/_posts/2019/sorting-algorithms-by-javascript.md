@@ -1,4 +1,3 @@
-
 ---  
 title: 用 Javascript 写排序算法  
 s: sorting-algorithms-by-javascript  
