@@ -1,3 +1,4 @@
+
 ---  
 title: 用 Javascript 写排序算法  
 s: sorting-algorithms-by-javascript  
@@ -19,7 +20,7 @@ tags:
 
 因此我将所有的算法都整理为 CodePen 形式的在线演示，点击下文每段代码后的「在线运行」，就可以在浏览器中直接运行所有测试用例，你如果想自己进行调试或修改，只需要点击在线演示右上角的「Edit On CodePen」，就可以 Fork 一个到自己的 CodePen 修改为自己想要的版本了。如果你也曾经跟我一样对算法感到头疼，相信这是能最大限度降低上手门槛的方法。
 
-所有 CodePen 在线演示地址可查看 [Sorting Algorithms](https://codepen.io/collection/nNvpBx/)， 以下所有算法及描述按有小到大排序。
+所有 CodePen 在线演示地址可查看 [Sorting Algorithms](https://codepen.io/collection/nNvpBx/)， 以下所有算法及描述按由小到大排序。
 
 
 ## 冒泡排序 (Bubble Sort)
@@ -212,6 +213,8 @@ function quickSort(nums, left, right) {
   return nums;
 }
 ```
+
+[在线运行快速排序 In Place 版本](https://codepen.io/AlloVince/pen/mZmgNx)
 
 - 最坏时间复杂度 $O(n^2)$
 - 最优时间复杂度 $O(n*log(n))$
