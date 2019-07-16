@@ -9,7 +9,9 @@ tags:
  - 排序  
  - 算法  
  - Javascript  
----  
+---
+
+@[toc]
   
 这是个人算法知识复习及梳理的第一篇，用 [Javascript 实现主要的排序算法](https://avnpc.com/pages/sorting-algorithms-by-javascript)，一直觉得算法是自己的弱项，因此写的时候也是诚惶诚恐，希望尽量做到好的代码可读性，同时少犯错误。
 
@@ -24,7 +26,7 @@ tags:
 
 ## 冒泡排序 (Bubble Sort)
 
-冒泡排序应该是大多数人的入门算法了，其实个人觉得「冒泡」一词有误导之嫌，叫「交换排序」更符合实际情况。因为从字面理解「冒泡」好像是选中第一数，将其一直移动到最后，但实际上一次「冒泡」过程中，可能数组中的每个元素位置都会被改变。通过不断交换相邻元素的方式，让最大的元素排到最后，个人觉得这样更容易记忆。算法描述如下
+冒泡排序应该是大多数人的入门算法了，其实个人觉得「冒泡」一词有误导之嫌，叫「交换排序」更符合实际情况。因为从字面理解「冒泡」好像是选中第一个数，将其一直移动到最后，但实际上一次「冒泡」过程中，可能数组中的每个元素位置都会被改变。通过不断交换相邻元素的方式，让最大的元素排到最后，个人觉得这样更容易记忆。算法描述如下
 
 1.  比较相邻的元素。如果第一个比第二个大，就交换他们两个。
 2.  对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。
@@ -70,13 +72,16 @@ function bubbleSort(nums) {
 function selectionSort(nums) {
   for (let i = 0; i < nums.length; i++) {
     let minIndex = i;
+    //令最小值为未排序的第一个元素
     let min = nums[i];
+    //在未排序数组中找到最小值的 index
     for (let j = i + 1; j < nums.length; j++) {
       if (nums[j] < min) {
         min = nums[j];
         minIndex = j;
       }
     }
+    //将当前最小值与已排序部分的最后一个元素交换
     [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
   }
   return nums;
@@ -107,6 +112,7 @@ function selectionSort(nums) {
 function insertionSort(nums) {
   for (let i = 1; i < nums.length; i++) {
     let j = i;
+    //只要左边的元素小于当前元素，就与左边元素交换，使得当前元素插入合适位置
     while (nums[j - 1] !== undefined && nums[j - 1] > nums[j]) {
       [nums[j - 1], nums[j]] = [nums[j], nums[j - 1]];
       j--;
@@ -166,16 +172,20 @@ function heapSort(nums) {
 
 ```js
 function quickSort(nums) {
+  //递归终止条件, 当数组仅剩一个元素
   if (nums.length <= 1) {
     return nums;
   }
+  //选择数组最后一个元素作为基准值
   const pivot = nums.pop();
   const left = [];
   const right = [];
   while (nums.length > 0) {
     const n = nums.pop();
+    //小于基准值的放入left, 大于等于基准值的放入right
     n < pivot ? left.push(n) : right.push(n);
   } 
+  //递归的应用于left，right
   return [...quickSort(left), pivot, ...quickSort(right)];
 }
 ```
@@ -187,14 +197,22 @@ function quickSort(nums) {
 
 ```js
 function partition(nums, left, right) {
+  //以最后一个元素作为基准值
   const pivot = nums[right];
+  //i 和 partitionIndex 可看做双指针，初始位置都指向最左边，partitionIndex 指向小于基准值的元素
   let partitionIndex = left;
   for (let i = left; i < right; i++) {
+    //发现小于基准值的元素
     if (nums[i] < pivot) {
+      //通过交换让较小的元素排到左边
+      //如果元素始终小于基准值，元素和自身交换，相当于位置不变
       [nums[i], nums[partitionIndex]] = [nums[partitionIndex], nums[i]];
+      //最后一次 partitionIndex 将指向大于等于基准值的第一个元素
       partitionIndex++;
     }
   }
+  //最后将基准元素交换到中间
+  //如果之前的所有元素都小于基准元素，基准元素和自身交换，相当于位置不变
   [nums[right], nums[partitionIndex]] = [nums[partitionIndex], nums[right]];
   return partitionIndex;
 }
@@ -202,11 +220,13 @@ function partition(nums, left, right) {
 function quickSort(nums, left, right) {
   left = left === undefined ? 0 : left;
   right = right === undefined ? nums.length - 1 : right;
+  //递归终止条件，当左边界与右边界重叠
   if (left >= right) {
     return nums;
   }
-  
+  //对数组进行分割，并得到分割元素的位置
   const partitionIndex = partition(nums, left, right);
+  //递归的应用于对分割后的子数组
   quickSort(nums, left, partitionIndex - 1);
   quickSort(nums, partitionIndex + 1, right);
   return nums;
@@ -243,7 +263,9 @@ function mergeSort(nums) {
   if (nums.length <= 1) {
     return nums;
   }
+  //找到数组中间元素位置
   const mid = Math.floor(nums.length / 2);
+  //对分割后的子数组递归的进行分割及合并
   return merge(mergeSort(nums.slice(0, mid)), mergeSort(nums.slice(mid)));
 }
 ```
