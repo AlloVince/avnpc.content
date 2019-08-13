@@ -10,7 +10,7 @@ author: AlloVince
 ---  
   
   
-[EPWING](http://www.epwing.or.jp/) 对于熟悉日文环境的童鞋可能并不算陌生，简而言之[EPwin](https://avnpc.com/pages/ebwin-epwin-dictionaries) 是一个基于日语环境的电子词典标准（准确的说应该是 [JIS X 4081 标准](http://ja.wikipedia.org/wiki/JIS_X_4081)），任何人可以参考这个标准制作出电子词典文件包。  
+[EPWING](http://www.epwing.or.jp/) 对于熟悉日文环境的童鞋可能并不算陌生，简而言之 [EPwin](https://avnpc.com/pages/ebwin-epwin-dictionaries) 是一个基于日语环境的电子词典标准（准确的说应该是 [JIS X 4081 标准](http://ja.wikipedia.org/wiki/JIS_X_4081)），任何人可以参考这个标准制作出电子词典文件包。  
   
 而 [EBwin](http://ebstudio.info/manual/EBWin4/EBWin4.html) 则是 window 下解析 EPwin 格式的软件外壳，而只要符合 EPwin 标准，任何平台上都可以开发出 EPwin 电子词典软件，比如 Android 和 iOS 下的 [EBPokcet](http://ebstudio.info/manual/EBPocket_android/)。  
   
@@ -44,15 +44,15 @@ Ebwin 的功能其实非常简单，就是输入单词，搜索整个词典，�
 * 英英：[American Heritage dictionary](https://avnpc.com/pages/ebwin-epwin-dictionaries) / [Longman Dictionary 4](https://avnpc.com/pages/ebwin-epwin-dictionaries)  
 * 英语近义词/反义词词典：[WordNet2.0](https://avnpc.com/pages/ebwin-epwin-dictionaries)  
   
-下面是下载地址：  
+下面是 EBWin 在各平台的下载方式:  
   
 * Windows 下使用 [EBWin4](http://ebstudio.info/download/ebpocket/ebwin4_7_1.zip)
 * Mac 下使用 [EBMac](http://ebstudio.info/download/ebpocket/EBMac1.43.2.dmg)
 * Android 下可以搜索 [EBPocket](https://play.google.com/store/apps/details?id=info.ebstudio.ebpocket&hl=en_US) 或者下载 [APK](http://sv.dlandroid.com/apps/EBPocket-Professional[dlandroid.com].apk)
 * iOS 下可以搜索 EBPocket
-  
-词典：  
 
+
+下面是词典的下载, 资源通过搜索发现, 如果有问题请留言告知:
 
 - [(EPWING)小学館中日-日中統合辞書](https://downloads.freemdict.com/100G_Super_Big_Collection/EBwin%E8%AF%8D%E5%85%B8/%28EPWING%29%E5%B0%8F%E5%AD%A6%E9%A4%A8%E4%B8%AD%E6%97%A5-%E6%97%A5%E4%B8%AD%E7%B5%B1%E5%90%88%E8%BE%9E%E6%9B%B8/)
 - [(EPWING)新英和和英辞典](https://downloads.freemdict.com/100G_Super_Big_Collection/EBwin%E8%AF%8D%E5%85%B8/%28EPWING%29%E6%96%B0%E8%8B%B1%E5%92%8C%E5%92%8C%E8%8B%B1%E8%BE%9E%E5%85%B8/)
