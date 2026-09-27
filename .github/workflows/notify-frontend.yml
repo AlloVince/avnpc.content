@@ -1,0 +1,22 @@
+name: Rebuild avnpc.com
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "source/**"
+
+permissions:
+  contents: read
+
+jobs:
+  trigger-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger static site build
+        env:
+          GH_TOKEN: ${{ secrets.FRONT_REPO_WORKFLOW_TOKEN }}
+        run: |
+          test -n "$GH_TOKEN" || { echo "Missing Actions secret FRONT_REPO_WORKFLOW_TOKEN"; exit 1; }
+          gh workflow run deploy-blog.yml --repo AlloVince/avnpc.front --ref master --field target=production
