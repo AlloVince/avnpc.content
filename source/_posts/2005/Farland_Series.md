@@ -7,7 +7,7 @@ author: "AlloVince"
 legacy_id: 127
 comment_status: "closed"
 comments: false
-listed: false
+listed: true
 tags:
   - "TV Game"
   - "神奇传说"

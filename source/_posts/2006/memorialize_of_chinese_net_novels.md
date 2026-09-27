@@ -7,7 +7,7 @@ author: "AlloVince"
 legacy_id: 58
 comment_status: "closed"
 comments: false
-listed: false
+listed: true
 tags:
   - "YY小说"
   - "七街志"

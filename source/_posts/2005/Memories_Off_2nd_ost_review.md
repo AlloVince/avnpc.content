@@ -7,7 +7,7 @@ author: "AlloVince"
 legacy_id: 17
 comment_status: "closed"
 comments: false
-listed: false
+listed: true
 tags:
   - "GalGame"
   - "无所求"

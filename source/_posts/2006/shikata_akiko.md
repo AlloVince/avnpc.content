@@ -7,7 +7,7 @@ author: "AlloVince"
 legacy_id: 66
 comment_status: "closed"
 comments: false
-listed: false
+listed: true
 tags:
   - "七街志"
   - "同人音乐"
