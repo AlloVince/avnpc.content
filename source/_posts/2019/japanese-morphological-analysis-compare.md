@@ -87,7 +87,7 @@ nagisa 整体代码较少，并给出了完整的训练代码和语料库，如�
 将以上所有介绍的日语分词器做一个横向比较，可以根据实际需要自行选择。
   
 |  | 算法/模型 | 实现语言 | 词典 | 处理速度 | ES 插件 | Lisence |  
-|--|--|--|--|--|--|--|--|  
+|--|--|--|--|--|--|--|
 | MeCab | CRF | C++ | 可选 | 最高 | [有](https://github.com/animalmatsuzawa/elasticsearch-analysis-mecab) | GPL/LGPL/BSD |  
 | Kuromoji | Viterbi | Java | 可选, 默认 ipadic | 中 | 内置 | Apache License v2.0 |
 | Juman++ | RNNLM | C++ | 自制 | 高 | 无 | Apache License v2.0 |
