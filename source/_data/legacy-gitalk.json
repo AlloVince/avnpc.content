@@ -50,5 +50,8 @@
   "build-php-develop-env-by-docker": "POST_196",
   "evaoauth": "POST_194",
   "install-lnmp-on-osx": "POST_193",
-  "interview-by-wolonge": "POST_195"
+  "interview-by-wolonge": "POST_195",
+  "kubernetes-for-single-vps": "POST_200",
+  "sorting-algorithms-by-javascript": "POST_209",
+  "speed-up-drone-ci-workflow": "POST_204"
 }
