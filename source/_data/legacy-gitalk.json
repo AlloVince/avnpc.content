@@ -51,7 +51,14 @@
   "evaoauth": "POST_194",
   "install-lnmp-on-osx": "POST_193",
   "interview-by-wolonge": "POST_195",
+  "baidu-yun-trial-evaluation": "POST_142",
+  "better-japanese-search-by-elasticsearch": "POST_207",
+  "japanese-morphological-analysis-compare": "POST_206",
   "kubernetes-for-single-vps": "POST_200",
+  "markdown-render-demo": "POST_198",
   "sorting-algorithms-by-javascript": "POST_209",
-  "speed-up-drone-ci-workflow": "POST_204"
+  "speed-up-drone-ci-workflow": "POST_204",
+  "test-elasticsearch-analyzer-efficient": "POST_205",
+  "use-synology-nas-build-private-cloud": "POST_199",
+  "webstorm-debug-typescript-babel-project": "POST_203"
 }
