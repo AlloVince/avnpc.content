@@ -80,7 +80,7 @@ ES 已经[内置了一些 Analyzers](https://www.elastic.co/guide/en/elasticsear
 日语分词是一个比较大的话题，因此单独开了一篇文章[介绍和比较主流的开源日语分词项目](https://avnpc.com/pages/japanese-morphological-analysis-compare)。引用一下最终的结论
 
 |  | 算法/模型 | 实现语言 | 词典 | 处理速度 | ES 插件 | Lisence |  
-|--|--|--|--|--|--|--|--|  
+|---|---|---|---|---|---|---|
 | MeCab | CRF | C++ | 可选 | 最高 | [有](https://github.com/animalmatsuzawa/elasticsearch-analysis-mecab) | GPL/LGPL/BSD |  
 | Kuromoji | Viterbi | Java | 可选, 默认 ipadic | 中 | 内置 | Apache License v2.0 |
 | Juman++ | RNNLM | C++ | 自制 | 高 | 无 | Apache License v2.0 |
